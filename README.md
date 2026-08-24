@@ -1,6 +1,6 @@
 # board-game-design
 
-An [Agent Skill](https://agentskills.io/specification) (**v2.2.0**) for designing tabletop game **mechanisms** and shipping a **paper print-and-play prototype** — now with **design state**, **experiments**, **diagnostics**, and **evidence-driven iteration**. Compatible with Cursor, Claude Code, and other runtimes that load `SKILL.md` skills.
+An [Agent Skill](https://agentskills.io/specification) (**v2.3.0**) for designing tabletop game **mechanisms** and shipping a **paper print-and-play prototype** — with **design state**, **experiments**, **diagnostics**, **experiment prioritization**, and **evidence-driven iteration**. Compatible with Cursor, Claude Code, and other runtimes that load `SKILL.md` skills.
 
 Core loop agents follow:
 
@@ -11,6 +11,14 @@ Shorthand: **concept → mechanism skeleton → paper PnP → playtest / balance
 > Repo-level `README.md` is for humans (install, structure, attribution). Agent instructions live in [`SKILL.md`](SKILL.md) and progressive-disclosure companions — per [Anthropic skill authoring guidance](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills).
 
 See [`CHANGELOG.md`](CHANGELOG.md) for version history.
+
+### What's new in v2.3.0
+
+- **Experiment prioritization** — [`reasoning/experiment-priority.md`](reasoning/experiment-priority.md) ranks hypotheses by Impact × Uncertainty × Cost; [`templates/design-state.md`](templates/design-state.md) adds an **Experiment Backlog**
+- **Version lineage** — design-state and iteration templates track why each build exists and what it superseded
+- **Eval fixtures** — [`eval/fixtures/`](eval/fixtures/) provides minimal project inputs for benchmark Cases B–F; run via [`eval/README.md`](eval/README.md) before releases
+- **Lint confidence** — structured output (Confidence, Evidence, Signals, Missing) in [`lint/rules.md`](lint/rules.md)
+- **Balance calibration** — value estimates require confidence, calibration source, and use scope (heuristics only)
 
 ## Install
 
@@ -47,6 +55,7 @@ The skill description asks agents to load it when you:
 - Choose or balance mechanisms (turn order, auctions, worker placement, cards, …)
 - **Diagnose** problems (boring, unfair, snowball, etc.)
 - Run **playtest experiments** with falsifiable hypotheses
+- **Rank** which experiment to run next when multiple hypotheses are open
 - Write a concept brief or mechanism skeleton
 - Prepare playtests or evaluate **continue / kill**
 - Build a print-and-play prototype
@@ -62,6 +71,7 @@ Good prompts give the agent **mode**, **constraints**, and **artifacts** (or pat
 | **Project path** or `@design-state.md` | Agent reads Locked/Open/Rejected before suggesting changes |
 | **Observed symptom + evidence** | Triggers Diagnose mode instead of random fixes |
 | **One variable to test** | Triggers Experiment mode; avoids stacked rule changes |
+| **Multiple open hypotheses** | Triggers experiment-priority ranking before drafting EXP |
 | **Output ask** ("write files to `./my-game/`") | Gets templates, not prose-only |
 
 **Project-scoped tip:** keep game files in your repo and reference them (`@concept-brief.md`, `@playtests/PT-003.md`). On session 2+, start with: *"Read design-state first, then …"*
@@ -127,6 +137,10 @@ Write experiment.md and a blank playtest-log template for the next session.
 We refuted EXP-001 (bid for start player didn't fix seat bias). Design EXP-002 testing Stat Turn Order instead — one variable only. Link to design-state Open questions.
 ```
 
+```
+Three hypotheses are open in design-state (HYP-001 through HYP-003). Read design-state first, rank them with experiment-priority, update the Experiment Backlog, and draft EXP-004 for rank 1 only.
+```
+
 ### Balance — numbers, cards, economy
 
 Ask for **value budget** or **spreadsheet rows**, not "make it fair."
@@ -134,6 +148,7 @@ Ask for **value budget** or **spreadsheet rows**, not "make it fair."
 ```
 Review CARD-014 through CARD-022 in ./deck-builder/components-sheet.md.
 Build balance-spreadsheet rows using value-budget; flag any card where cost vs total estimated value differs by >40%.
+State confidence, calibration source, and use scope for each estimate — heuristics only, not proven facts.
 Card pool uses triangular set scoring — check curve matches rulebook.
 ```
 
@@ -250,6 +265,9 @@ board-game-design/
 ├── lint/
 ├── tools/
 ├── eval/
+│   ├── benchmark-prompts.md
+│   ├── README.md            # maintainer eval workflow
+│   └── fixtures/            # Cases B–F input projects
 ├── chapters/                # ch01–ch13
 ├── templates/
 │   └── examples/micro-scavenger/
@@ -274,6 +292,7 @@ Code and original skill text in this repository are released under the [MIT Lice
 - Keep [`SKILL.md`](SKILL.md) lean (<500 lines); put deep material in companions.
 - Prefer decision rules, state, and experiments over encyclopedic mechanism dumps.
 - Update [`CHANGELOG.md`](CHANGELOG.md) on each release.
+- Before minor releases: run Cases A–F per [`eval/README.md`](eval/README.md) (≥5/6 to ship).
 
 ## Links
 

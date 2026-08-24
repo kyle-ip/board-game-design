@@ -29,6 +29,7 @@ Agent decision + evaluation release (per architecture review P0–P2).
 - **`templates/examples/micro-scavenger/design-state.md`** — backlog + lineage example
 - **`lint/checklist.md`** — backlog, lineage, confidence template refs
 - **`cheatsheet.md`** — experiment-priority routing for multi-hypothesis sessions
+- **`README.md`** — v2.3.0 overview, what's new, eval workflow, prompt examples
 
 ## [2.2.0] — 2026-08-24
 
