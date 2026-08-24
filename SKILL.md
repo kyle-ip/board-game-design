@@ -1,7 +1,7 @@
 ---
 name: board-game-design
 description: "Design tabletop game mechanisms and paper prototypes using Building Blocks of Tabletop Game Design (13 mechanism chapters) plus workflow, playtesting, balance, and PnP templates. Invoke when the user designs or iterates a board/card game, chooses or balances mechanisms (turn order, auctions, worker placement, cards, etc.), writes a concept brief or mechanism skeleton, prepares playtests, diagnoses design problems, or builds a print-and-play prototype/demo."
-version: "2.0.0"
+version: "2.0.1"
 license: MIT
 compatibility: "Agent Skills hosts (Cursor, Claude Code, and other SKILL.md-compatible runtimes). Markdown-only; no required network or packages."
 metadata:
@@ -178,6 +178,7 @@ Single-code or narrow mechanism questions: jump **directly** to the chapter file
 
 | Path | Purpose |
 |---|---|
+| [CHANGELOG.md](CHANGELOG.md) | Semver release history (matches `version` in frontmatter) |
 | [workflow.md](workflow.md) | Milestones 0–5 with template outputs; stage regression allowed |
 | [kill-criteria.md](kill-criteria.md) | Continue / Restructure / Pause-or-Kill gate |
 | [theme-and-experience.md](theme-and-experience.md) | MDA depth, theme-mechanism matrix, emotion curve |

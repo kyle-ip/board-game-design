@@ -1,6 +1,6 @@
 # board-game-design
 
-An [Agent Skill](https://agentskills.io/specification) (**v2.0.0**) for designing tabletop game **mechanisms** and shipping a **paper print-and-play prototype** — now with **design state**, **experiments**, **diagnostics**, and **evidence-driven iteration**. Compatible with Cursor, Claude Code, and other runtimes that load `SKILL.md` skills.
+An [Agent Skill](https://agentskills.io/specification) (**v2.0.1**) for designing tabletop game **mechanisms** and shipping a **paper print-and-play prototype** — now with **design state**, **experiments**, **diagnostics**, and **evidence-driven iteration**. Compatible with Cursor, Claude Code, and other runtimes that load `SKILL.md` skills.
 
 Core loop agents follow:
 
