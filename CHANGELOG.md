@@ -5,6 +5,42 @@ All notable changes to the **board-game-design** skill follow [Semantic Versioni
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).  
 Current skill version: declared in [`SKILL.md`](SKILL.md) YAML frontmatter (`version`).
 
+## [2.2.0] — 2026-08-24
+
+External resource quality pass: distill high-value URLs into agent-facing companions; demote maintainer bibliography.
+
+### Added
+
+- TTGDA — Tips for New Game Designers, Break My Game Designer Resources, TTGDA Blog (index + `external-resources.md`)
+- `tier` / `used-by` metadata and maintainer checklist in `references/web-resources.md`
+- Break My Game playtest log cross-ref in `playtesting.md`; TTGDA stage link in `workflow.md` Milestone 0
+
+### Changed
+
+- **`external-resources.md`** — rewritten by Agent Mode (~25 links); `load-when` via section headers
+- **`references/web-resources.md`** — maintainer bibliography; core vs optional vs deprecated tiers
+- **`SKILL.md`** — external load rule (agents: `external-resources.md` only); `version: 2.2.0`
+
+### Removed (from agent-facing lists)
+
+- BloomWiki MDA, arXiv Dynamics, indienova/qq repost, ResearchGate MTG paper, redundant blogs, fake local PDF paths, Shapeways, paywalled/low-value index bloat
+
+## [2.1.0] — 2026-08-24
+
+Integration patch: close SKILL → Mode → Artifact → State execution chain (per v2.0.1 review).
+
+### Added
+
+- **Mode → Required Artifacts** — explicit write requirements per Create/Diagnose/Experiment/Balance/Prototype in `SKILL.md`
+- **Regression Protocol** — milestone rollback checklist in `workflow.md`
+- **Evaluation benchmarks** — `eval/benchmark-prompts.md` (Cases A–F with pass criteria)
+- Playtest log fields: **Experiment ID**, **Hypothesis ID**, **Variant** (template + micro-scavenger example)
+
+### Changed
+
+- `SKILL.md` — YAML `description` expanded for activation (hypotheses, kill gate, design-state); `version: 2.1.0`
+- `SKILL.md` — Companion index links to `eval/benchmark-prompts.md`
+
 ## [2.0.1] — 2026-08-24
 
 ### Removed
@@ -74,6 +110,7 @@ Initial public skill package.
 - `templates/` — concept brief, mechanism skeleton, rulebook, components sheet, PnP checklist, playtest log, balance notes
 - `references/web-resources.md` — extended resource index
 
+[2.1.0]: https://github.com/kyle-ip/board-game-design/compare/v2.0.1...v2.1.0
 [2.0.1]: https://github.com/kyle-ip/board-game-design/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/kyle-ip/board-game-design/compare/v1.0.0...v2.0.0
 [1.0.1]: https://github.com/kyle-ip/board-game-design/compare/v1.0.0...v1.0.1

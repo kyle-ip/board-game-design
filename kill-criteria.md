@@ -60,6 +60,7 @@ Tune to project; write thresholds in `design-state.md` if used.
 
 ## Cross-References
 
+- Stage guidance when restructuring: [TTGDA — Tips for New Game Designers](https://www.ttgda.org/get-assistance/newpage)
 - Playtest decision line: `templates/playtest-log.md`
 - Failure mode detail: `diagnostics/`
 - Workflow placement: `workflow.md` Stage 3 end

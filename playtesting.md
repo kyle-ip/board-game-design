@@ -6,6 +6,8 @@ Runnable scripts. Pick **one framework per session**; do not mix inside a single
 
 **When testing one rule change:** link session to `experiments/framework.md` and `templates/experiment.md`. Playtest logging alone is not enough for non-trivial changes.
 
+**Log templates:** [Break My Game — Designer Resources](https://www.breakmygame.com/designer-resources) provides virtual and PnP playtest log formats (TTGDA-endorsed). Copy structure into `templates/playtest-log.md` fields; do not replace skill experiment linkage (EXP/HYP IDs).
+
 ## Framework 1 — Four Fs (Facts / Feelings / Findings / Future)
 Best for **mid-to-late stage**. ([minifiniti](https://minifiniti.com/blogs/game-talk/playtesting-frameworks-tabletop-games))
 
@@ -71,6 +73,7 @@ From [8ration Step 8](https://www.8ration.com/blogs/board-game-design-guide/).
 Update `design-state.md` Evidence after every external session.
 
 ## Cross-References
+- External (Experiment mode): [Break My Game playtest logs](https://www.breakmygame.com/designer-resources), [TTGDA new designer tips](https://www.ttgda.org/get-assistance/newpage)
 - Workflow: `workflow.md` Milestone 3 gate
 - Kill criteria: `kill-criteria.md`
 - Experiment framework: `experiments/framework.md`

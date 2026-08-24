@@ -22,9 +22,25 @@ Format reference: `templates/examples/micro-scavenger/`
 
 **Allowed regressions:** 3→1, 3→2, 4→2. Record in `design-state.md` + `decision.md`.
 
+## Regression Protocol
+
+Milestones are **not irreversible**. Regress only when:
+
+- New evidence contradicts a locked mechanism assumption
+- Diagnosis identifies a **chassis-level** failure (not numbers-only)
+- `kill-criteria.md` triggers **Restructure**
+
+When regressing:
+
+1. **Write `decision.md`** — note superseded choice; move failed mechanisms to **Rejected** in `design-state.md`
+2. **Write `iteration.md`** — record build version bump, observed problem, and regression target milestone
+3. **Preserve history** — do **not** delete `playtests/`, `experiments/`, or prior logs; evidence chain must stay intact
+4. **Update `design-state.md`** — set current milestone, refresh **Next Experiment**, clear stale **Active Hypotheses** tied to rejected chassis
+5. **Do not tune numbers** on a broken chassis — restructure mechanism skeleton before balance passes
+
 ## Milestone 0 — Concept
 
-Lock before mechanism work ([Chitmunk §1](https://chitmunk.com/blog/how-to-design-a-board-game)):
+Lock before mechanism work ([Chitmunk §1](https://chitmunk.com/blog/how-to-design-a-board-game)). For official stage overview and new-designer guidance, see [TTGDA — Tips for New Game Designers](https://www.ttgda.org/get-assistance/newpage).
 
 - [ ] **1-sentence pitch** — verb + object + twist
 - [ ] **Target experience** — 1–3 MDA aesthetics; see `theme-and-experience.md`

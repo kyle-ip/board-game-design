@@ -1,6 +1,6 @@
 # board-game-design
 
-An [Agent Skill](https://agentskills.io/specification) (**v2.0.1**) for designing tabletop game **mechanisms** and shipping a **paper print-and-play prototype** — now with **design state**, **experiments**, **diagnostics**, and **evidence-driven iteration**. Compatible with Cursor, Claude Code, and other runtimes that load `SKILL.md` skills.
+An [Agent Skill](https://agentskills.io/specification) (**v2.2.0**) for designing tabletop game **mechanisms** and shipping a **paper print-and-play prototype** — now with **design state**, **experiments**, **diagnostics**, and **evidence-driven iteration**. Compatible with Cursor, Claude Code, and other runtimes that load `SKILL.md` skills.
 
 Core loop agents follow:
 
@@ -216,6 +216,8 @@ If you see dominant strategy risk in the skeleton, run balance-spreadsheet on th
 | [`probability-and-balance.md`](probability-and-balance.md) | Failure modes, McDie, dice intuition |
 | [`templates/`](templates/) | Project copy-out files |
 | [`templates/examples/micro-scavenger/`](templates/examples/micro-scavenger/) | **Format reference** example game |
+| [`eval/benchmark-prompts.md`](eval/benchmark-prompts.md) | Manual skill evaluation cases (Create through Lint) |
+| [`CHANGELOG.md`](CHANGELOG.md) | Semver release history |
 
 ### Progressive disclosure
 
@@ -246,6 +248,7 @@ board-game-design/
 ├── balance/
 ├── lint/
 ├── tools/
+├── eval/
 ├── chapters/                # ch01–ch13
 ├── templates/
 │   └── examples/micro-scavenger/

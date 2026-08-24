@@ -6,6 +6,9 @@
 |---|---|
 | Date | 2026-08-23 |
 | Build / version | v0.2 |
+| Experiment ID | EXP-001 |
+| Hypothesis ID | HYP-001 |
+| Variant | baseline |
 | Stage | mid |
 | Framework | Good-Bad-Meh |
 | Players | 2, one designer + spouse |
@@ -13,7 +16,7 @@
 
 ## Hypothesis Under Test
 
-HYP-001 / EXP-001 baseline — hand size 3 (before variant).
+Smaller hand (2 vs 3) increases discard-pile tension without adding AP. (EXP-001 baseline run — hand size 3.)
 
 ## Raw Notes
 

@@ -1,7 +1,7 @@
 ---
 name: board-game-design
-description: "Design tabletop game mechanisms and paper prototypes using Building Blocks of Tabletop Game Design (13 mechanism chapters) plus workflow, playtesting, balance, and PnP templates. Invoke when the user designs or iterates a board/card game, chooses or balances mechanisms (turn order, auctions, worker placement, cards, etc.), writes a concept brief or mechanism skeleton, prepares playtests, diagnoses design problems, or builds a print-and-play prototype/demo."
-version: "2.0.1"
+description: "Design and iterate tabletop games with an evidence-driven workflow: Building Blocks mechanisms (13 chapters), falsifiable hypotheses, playtest experiments, design-state, diagnosis, balance, and paper PnP. Invoke when designing or iterating board/card games; diagnosing symptoms (snowball, boredom, unfairness); running experiments with pass/fail criteria; evaluating continue/restructure/kill; maintaining design-state across sessions; balancing cards and economy; or building print-and-play prototypes."
+version: "2.2.0"
 license: MIT
 compatibility: "Agent Skills hosts (Cursor, Claude Code, and other SKILL.md-compatible runtimes). Markdown-only; no required network or packages."
 metadata:
@@ -39,6 +39,22 @@ Pick one mode per session. Load the smallest file set that mode requires.
 
 Mixed requests (e.g. "design + PnP + balance"): run **Diagnose/Balance before Create/Prototype** if symptoms exist; else **Create → Prototype → Balance**. See `cheatsheet.md` priority tree.
 
+## Mode → Required Artifacts
+
+Every session on an **ongoing project** must read and update `design-state.md`. Prose-only advice is not enough when templates apply.
+
+| Mode | Required writes (project folder) | Also update when… |
+|---|---|---|
+| **Create** | `concept-brief.md`, `design-state.md`, `mechanism-skeleton.md` | Locked/Rejected land in design-state; compare 2–4 candidates in skeleton |
+| **Diagnose** | `design-state.md`, `decision.md` (if intervention chosen) | Symptom routed via `diagnostics/*`; no rule change before hypothesis |
+| **Experiment** | `experiment.md`, `playtest-log.md` (linked by EXP/HYP IDs) | Conclusion → design-state Evidence; supported/refuted → decision or iteration |
+| **Balance** | `balance-notes.md`; `balance-spreadsheet.md` when numeric | One fix per pass; link to experiment if testing one variable |
+| **Prototype** | `rulebook-draft.md`, `components-sheet.md`, `pnp-checklist.md` | Run `lint/checklist.md` before delivery |
+
+**After any consequential decision:** update `design-state.md`; write `decision.md`; on version bump write `iteration.md`. After 3+ playtests run `kill-criteria.md` gate.
+
+Format reference for all project files: `templates/examples/micro-scavenger/`.
+
 ## How to Use This Skill
 
 **Invocation patterns:**
@@ -52,6 +68,7 @@ Mixed requests (e.g. "design + PnP + balance"): run **Diagnose/Balance before Cr
 - **Design / iterate a game** — follow **Default Project Outputs**; load `workflow.md` + needed templates. Output format: `templates/examples/micro-scavenger/`.
 - **After playtests** — load `kill-criteria.md` for Continue / Restructure / Pause-or-Kill gate.
 - **Before shipping artifacts** — run `lint/checklist.md`.
+- **External links** (tools, publishing, further reading) — load `external-resources.md` only. **Never** load `references/web-resources.md` unless maintaining the skill.
 
 **Always load the smallest file that answers the question.** Do not bulk-load chapters unless the user asks for a survey.
 
@@ -178,6 +195,7 @@ Single-code or narrow mechanism questions: jump **directly** to the chapter file
 
 | Path | Purpose |
 |---|---|
+| [eval/benchmark-prompts.md](eval/benchmark-prompts.md) | Manual skill evaluation cases (Create through Lint) |
 | [CHANGELOG.md](CHANGELOG.md) | Semver release history (matches `version` in frontmatter) |
 | [workflow.md](workflow.md) | Milestones 0–5 with template outputs; stage regression allowed |
 | [kill-criteria.md](kill-criteria.md) | Continue / Restructure / Pause-or-Kill gate |
@@ -188,7 +206,7 @@ Single-code or narrow mechanism questions: jump **directly** to the chapter file
 | [cheatsheet.md](cheatsheet.md) | Decision rules + symptom routing + mixed-demand priority |
 | [patterns.md](patterns.md) | Selected mechanism patterns |
 | [glossary.md](glossary.md) | Term definitions |
-| [external-resources.md](external-resources.md) | Condensed links; full index in `references/web-resources.md` |
+| [external-resources.md](external-resources.md) | Agent-facing links by Mode (~25); maintainer index in `references/web-resources.md` |
 | [reasoning/](reasoning/) | Design reasoning, decision matrix, hypothesis rules |
 | [diagnostics/](diagnostics/) | Symptom guides (8 core failure modes) |
 | [experiments/](experiments/) | Experiment framework |
