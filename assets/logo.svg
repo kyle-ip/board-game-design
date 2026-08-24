@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Board Game Design logo">
+  <defs>
+    <linearGradient id="logo-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#143041"/>
+      <stop offset="100%" stop-color="#0a1f2b"/>
+    </linearGradient>
+    <linearGradient id="logo-loop" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f4a261"/>
+      <stop offset="100%" stop-color="#e76f51"/>
+    </linearGradient>
+    <filter id="logo-shadow" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <rect width="512" height="512" rx="112" fill="url(#logo-bg)"/>
+
+  <g transform="translate(256 256)" filter="url(#logo-shadow)">
+    <path
+      d="M0 -118 L97 -62 L97 62 L0 118 L-97 62 L-97 -62 Z"
+      fill="#1e4a5f"
+      stroke="#e8dcc8"
+      stroke-width="11"
+      stroke-linejoin="round"
+    />
+
+    <g fill="none" stroke="url(#logo-loop)" stroke-width="15" stroke-linecap="round">
+      <path d="M0 -68 A68 68 0 1 1 -34 52"/>
+      <path d="M-34 52 L-58 36 M-34 52 L-26 28" stroke-width="13"/>
+      <path d="M34 52 A68 68 0 1 1 0 -68"/>
+      <path d="M0 -68 L-16 -92 M0 -68 L16 -92" stroke-width="13"/>
+      <path d="M34 52 A68 68 0 0 1 -34 52"/>
+      <path d="M-34 52 L-50 68 M-34 52 L-10 68" stroke-width="13"/>
+    </g>
+
+    <circle cx="0" cy="-84" r="10" fill="#2a9d8f"/>
+    <circle cx="-48" cy="60" r="10" fill="#2a9d8f"/>
+    <circle cx="48" cy="60" r="10" fill="#2a9d8f"/>
+
+    <g fill="#e8dcc8">
+      <circle cx="0" cy="-6" r="24"/>
+      <path d="M-34 54 C-34 22 -18 10 0 10 C18 10 34 22 34 54 L34 82 L-34 82 Z"/>
+    </g>
+    <circle cx="-10" cy="-10" r="3.5" fill="#0a1f2b"/>
+    <circle cx="10" cy="-10" r="3.5" fill="#0a1f2b"/>
+  </g>
+</svg>

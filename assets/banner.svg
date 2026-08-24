@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 400" role="img" aria-label="Board Game Design">
+  <defs>
+    <linearGradient id="cover-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c2433"/>
+      <stop offset="45%" stop-color="#143041"/>
+      <stop offset="100%" stop-color="#081820"/>
+    </linearGradient>
+    <linearGradient id="cover-loop" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f4a261"/>
+      <stop offset="100%" stop-color="#e76f51"/>
+    </linearGradient>
+    <linearGradient id="cover-title" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#faf6ef"/>
+      <stop offset="100%" stop-color="#dccfb8"/>
+    </linearGradient>
+    <radialGradient id="cover-glow-left" cx="22%" cy="50%" r="45%">
+      <stop offset="0%" stop-color="#f4a261" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#f4a261" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="cover-glow-right" cx="88%" cy="72%" r="35%">
+      <stop offset="0%" stop-color="#2a9d8f" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#2a9d8f" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="cover-mark-shadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+    <filter id="cover-soft-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="18" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <pattern id="cover-hex-grid" width="64" height="55" patternUnits="userSpaceOnUse">
+      <path d="M32 6 L58 21 L58 51 L32 66 L6 51 L6 21 Z" fill="none" stroke="#e8dcc8" stroke-width="1" opacity="0.1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1280" height="400" fill="url(#cover-bg)"/>
+  <rect width="1280" height="400" fill="url(#cover-hex-grid)"/>
+  <rect width="1280" height="400" fill="url(#cover-glow-left)"/>
+  <rect width="1280" height="400" fill="url(#cover-glow-right)"/>
+
+  <g transform="translate(210 200)" filter="url(#cover-mark-shadow)">
+    <circle cx="0" cy="0" r="118" fill="#f4a261" opacity="0.06" filter="url(#cover-soft-glow)"/>
+
+    <path
+      d="M0 -132 L108 -74 L108 74 L0 132 L-108 74 L-108 -74 Z"
+      fill="#1a4358"
+      stroke="#e8dcc8"
+      stroke-width="12"
+      stroke-linejoin="round"
+    />
+
+    <path d="M62 -74 L108 -74 L108 -28 Z" fill="#c9b896"/>
+    <path d="M62 -74 L108 -28" stroke="#8b7355" stroke-width="3.5" stroke-linecap="round"/>
+
+    <g fill="none" stroke="url(#cover-loop)" stroke-width="16" stroke-linecap="round">
+      <path d="M0 -76 A76 76 0 1 1 -38 58"/>
+      <path d="M-38 58 L-64 40 M-38 58 L-30 32" stroke-width="14"/>
+      <path d="M38 58 A76 76 0 1 1 0 -76"/>
+      <path d="M0 -76 L-18 -102 M0 -76 L18 -102" stroke-width="14"/>
+      <path d="M38 58 A76 76 0 0 1 -38 58"/>
+      <path d="M-38 58 L-56 76 M-38 58 L-14 76" stroke-width="14"/>
+    </g>
+
+    <circle cx="0" cy="-94" r="11" fill="#2a9d8f"/>
+    <circle cx="-54" cy="68" r="11" fill="#2a9d8f"/>
+    <circle cx="54" cy="68" r="11" fill="#2a9d8f"/>
+
+    <g fill="#e8dcc8">
+      <circle cx="0" cy="-6" r="26"/>
+      <path d="M-36 58 C-36 24 -18 12 0 12 C18 12 36 24 36 58 L36 88 L-36 88 Z"/>
+    </g>
+    <circle cx="-11" cy="-10" r="4" fill="#0a1f2b"/>
+    <circle cx="11" cy="-10" r="4" fill="#0a1f2b"/>
+
+    <circle cx="86" cy="98" r="18" fill="#e8dcc8"/>
+    <circle cx="86" cy="98" r="6" fill="#0a1f2b"/>
+  </g>
+
+  <g transform="translate(430 200)">
+    <text
+      x="0"
+      y="-8"
+      font-family="Georgia, Times New Roman, serif"
+      font-size="72"
+      font-weight="700"
+      letter-spacing="1"
+      fill="url(#cover-title)"
+    >Board Game Design</text>
+
+    <rect x="0" y="28" width="120" height="5" rx="2.5" fill="url(#cover-loop)"/>
+    <rect x="0" y="28" width="420" height="1.5" rx="0.75" fill="#e8dcc8" opacity="0.15"/>
+  </g>
+
+  <rect x="0" y="396" width="1280" height="4" fill="url(#cover-loop)"/>
+</svg>

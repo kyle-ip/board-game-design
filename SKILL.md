@@ -1,7 +1,7 @@
 ---
 name: board-game-design
 description: "Design and iterate tabletop games with an evidence-driven workflow: Building Blocks mechanisms (13 chapters), falsifiable hypotheses, playtest experiments, design-state, diagnosis, balance, and paper PnP. Invoke when designing or iterating board/card games; diagnosing symptoms (snowball, boredom, unfairness); running experiments with pass/fail criteria; evaluating continue/restructure/kill; maintaining design-state across sessions; balancing cards and economy; or building print-and-play prototypes."
-version: "2.3.0"
+version: "2.3.1"
 license: MIT
 compatibility: "Agent Skills hosts (Cursor, Claude Code, and other SKILL.md-compatible runtimes). Markdown-only; no required network or packages."
 metadata:

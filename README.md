@@ -1,215 +1,59 @@
-# board-game-design
+<p align="center">
+  <a href="assets/banner.svg">
+    <img src="assets/banner.png" alt="Board Game Design" width="100%">
+  </a>
+</p>
 
-An [Agent Skill](https://agentskills.io/specification) (**v2.3.0**) for designing tabletop game **mechanisms** and shipping a **paper print-and-play prototype** — with **design state**, **experiments**, **diagnostics**, **experiment prioritization**, and **evidence-driven iteration**. Compatible with Cursor, Claude Code, and other runtimes that load `SKILL.md` skills.
+<p align="center">
+  <a href="https://agentskills.io/specification"><img src="https://img.shields.io/badge/Agent%20Skills-compatible-2a9d8f?style=flat-square" alt="Agent Skills compatible"></a>
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-2.3.1-f4a261?style=flat-square" alt="Version 2.3.1"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-e8dcc8?style=flat-square&labelColor=143041" alt="MIT License"></a>
+  <a href="SKILL.md"><img src="https://img.shields.io/badge/skill-board--game--design-143041?style=flat-square&labelColor=1e4a5f" alt="Skill ID"></a>
+</p>
 
-Core loop agents follow:
+<!-- <p align="center">
+  <a href="assets/logo.svg">
+    <img src="assets/logo.png" alt="Loop Hex" width="56" height="56">
+  </a>
+</p> -->
 
-**Intent → Hypothesis → Prototype → Experiment → Evidence → Diagnosis → Decision → (update design-state) → repeat**
+<p align="center">
+  <em>Design tabletop mechanisms, run playtest experiments, and ship paper prototypes — with design state, diagnostics, and evidence-driven iteration.</em>
+</p>
 
-Shorthand: **concept → mechanism skeleton → paper PnP → playtest / balance → (optional) POD or digital**
+<p align="center">
+  <a href="#-why">Why</a> ·
+  <a href="#-what-you-get">What you get</a> ·
+  <a href="#-how-it-works">How it works</a> ·
+  <a href="#-install">Install</a> ·
+  <a href="#-usage">Usage</a> ·
+  <a href="#-brand">Brand</a> ·
+  <a href="#-repository-structure">Structure</a> ·
+  <a href="#-attribution--scope">Attribution</a> ·
+  <a href="#-contributing">Contributing</a>
+</p>
 
-> Repo-level `README.md` is for humans (install, structure, attribution). Agent instructions live in [`SKILL.md`](SKILL.md) and progressive-disclosure companions — per [Anthropic skill authoring guidance](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills).
+---
 
-See [`CHANGELOG.md`](CHANGELOG.md) for version history.
+## 🤔 Why
 
-### What's new in v2.3.0
+You sketch a board game. The agent suggests ten mechanisms. Next session it forgets your locked decisions and redesigns from scratch.
 
-- **Experiment prioritization** — [`reasoning/experiment-priority.md`](reasoning/experiment-priority.md) ranks hypotheses by Impact × Uncertainty × Cost; [`templates/design-state.md`](templates/design-state.md) adds an **Experiment Backlog**
-- **Version lineage** — design-state and iteration templates track why each build exists and what it superseded
-- **Eval fixtures** — [`eval/fixtures/`](eval/fixtures/) provides minimal project inputs for benchmark Cases B–F; run via [`eval/README.md`](eval/README.md) before releases
-- **Lint confidence** — structured output (Confidence, Evidence, Signals, Missing) in [`lint/rules.md`](lint/rules.md)
-- **Balance calibration** — value estimates require confidence, calibration source, and use scope (heuristics only)
+The usual workarounds do not help:
 
-## Install
+- **"Design me a worker placement game"** → generic mechanism dump, no project files
+- **"My game feels boring"** → three unrelated rule changes, no diagnosis
+- **"Balance these cards"** → numbers without playtest evidence or a falsifiable hypothesis
 
-### Cursor
+**Board Game Design turns tabletop iteration into a structured agent workflow** — design state, symptom routing, single-variable experiments, and paper PnP templates your agent maintains across sessions.
 
-Copy or clone this repo into your personal or project skills directory, keeping the folder name `board-game-design` (must match the skill `name`):
+Compatible with any host that loads the open [Agent Skills](https://agentskills.io/specification) standard — Cursor, Claude Code, and others read the same `SKILL.md` format.
 
-```text
-~/.cursor/skills/board-game-design/   # user-wide
-# or
-<project>/.cursor/skills/board-game-design/   # project-scoped (preferred when sharing a game repo)
-```
+> Repo-level `README.md` is for humans. Agent instructions live in [`SKILL.md`](SKILL.md) and progressive-disclosure companions — per [Anthropic skill authoring guidance](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills).
 
-Clone example:
+---
 
-```bash
-git clone git@github.com:kyle-ip/board-game-design.git ~/.cursor/skills/board-game-design
-```
-
-### Claude Code / other Agent Skills hosts
-
-Place the directory where your host discovers skills (often `.claude/skills/board-game-design/`). Requirements:
-
-- Folder contains a root [`SKILL.md`](SKILL.md) with YAML `name` + `description`
-- Prefer installing from trusted sources; skim `SKILL.md` and bundled files before use
-
-See the open standard: [agentskills.io/specification](https://agentskills.io/specification).
-
-## When it triggers
-
-The skill description asks agents to load it when you:
-
-- Design or iterate a board / card game
-- Choose or balance mechanisms (turn order, auctions, worker placement, cards, …)
-- **Diagnose** problems (boring, unfair, snowball, etc.)
-- Run **playtest experiments** with falsifiable hypotheses
-- **Rank** which experiment to run next when multiple hypotheses are open
-- Write a concept brief or mechanism skeleton
-- Prepare playtests or evaluate **continue / kill**
-- Build a print-and-play prototype
-
-## How to prompt (v2)
-
-Good prompts give the agent **mode**, **constraints**, and **artifacts** (or paths). Vague prompts still work, but you get sharper outputs when you include:
-
-| Include | Why |
-|---------|-----|
-| **Player count, time, audience** | Stops generic mechanism dumps |
-| **Target feel** (tension, bluff, puzzle, …) | Drives MDA-first design, not mechanism-first |
-| **Project path** or `@design-state.md` | Agent reads Locked/Open/Rejected before suggesting changes |
-| **Observed symptom + evidence** | Triggers Diagnose mode instead of random fixes |
-| **One variable to test** | Triggers Experiment mode; avoids stacked rule changes |
-| **Multiple open hypotheses** | Triggers experiment-priority ranking before drafting EXP |
-| **Output ask** ("write files to `./my-game/`") | Gets templates, not prose-only |
-
-**Project-scoped tip:** keep game files in your repo and reference them (`@concept-brief.md`, `@playtests/PT-003.md`). On session 2+, start with: *"Read design-state first, then …"*
-
-### Create — new game from scratch
-
-Compare mechanisms, write concept + skeleton + design-state. Ask for **2–4 candidates** before locking rules.
-
-```
-Design a 2–4 player, 45-minute medium-weight game about Mars colony logistics.
-Target feel: scarcity tension, long-term planning, light direct conflict.
-Audience: hobby gamers who know Wingspan but not heavy euros.
-Compare worker placement vs action drafting vs open market — recommend one with trade-offs.
-Write concept-brief, design-state, and mechanism-skeleton to ./mars-habitat/ using the micro-scavenger example as format reference.
-Do not write full rules yet.
-```
-
-```
-I want a family co-op card game (2–4p, 20 min) with a Cthulhu investigation theme.
-Core experience: dread + teamwork, not alpha-player quarterbacking.
-Start with theme-and-experience (emotion curve), then suggest mechanisms that fit — avoid hidden roles if they don't serve the feel.
-Output files to ./deep-shallows/.
-```
-
-**Weak → strong**
-
-| Weak | Strong |
-|------|--------|
-| "Make me a worker placement game" | Add players, time, feel, audience, and "compare 2–3 chassis before choosing" |
-| "Design a card game about pirates" | Add "2p, 15 min, gateway, tension from hand limits" + output directory |
-
-### Diagnose — something feels wrong
-
-Name the **symptom**, give **playtest facts**, ask for **diagnosis + minimal experiment** — not an immediate redesign.
-
-```
-We've playtested 4 times (logs in ./orbital-mining/playtests/). Leader is usually decided by round 3; trailing players say they can't catch up.
-Read design-state first. Diagnose (snowball vs low agency vs endgame drag), propose one falsifiable hypothesis, and draft EXP-005 — don't change three rules at once.
-```
-
-```
-After 3 sessions, seat 1 wins 5/7 games at 4 players. Hypothesis: first pick on the worker track is too strong.
-Run first-player-advantage diagnostic. Suggest the smallest rule change to test next, with success criteria (e.g. seat 1 win rate < 35% over 10 plays).
-```
-
-```
-Players say the game is "fine but boring" in the last 20 minutes. Midgame scores were 12–18 VP; final rounds took 25+ minutes with few decisions.
-Diagnose endgame drag vs low agency. Quote which diagnostic guide you used.
-```
-
-### Experiment — test one change
-
-Specify **baseline**, **variant**, and **measurable success**.
-
-```
-Set up EXP-002: test hand limit 3 → 2 only. Everything else stays v0.6.
-Hypothesis: smaller hand increases discard-pile fights without adding AP.
-Success: in 4/5 playtests, both players contest discard at least twice; fun ≥ 3.5/5.
-Write experiment.md and a blank playtest-log template for the next session.
-```
-
-```
-We refuted EXP-001 (bid for start player didn't fix seat bias). Design EXP-002 testing Stat Turn Order instead — one variable only. Link to design-state Open questions.
-```
-
-```
-Three hypotheses are open in design-state (HYP-001 through HYP-003). Read design-state first, rank them with experiment-priority, update the Experiment Backlog, and draft EXP-004 for rank 1 only.
-```
-
-### Balance — numbers, cards, economy
-
-Ask for **value budget** or **spreadsheet rows**, not "make it fair."
-
-```
-Review CARD-014 through CARD-022 in ./deck-builder/components-sheet.md.
-Build balance-spreadsheet rows using value-budget; flag any card where cost vs total estimated value differs by >40%.
-State confidence, calibration source, and use scope for each estimate — heuristics only, not proven facts.
-Card pool uses triangular set scoring — check curve matches rulebook.
-```
-
-```
-Dice combat uses 3d6 keep 2 vs target 9+. Should we add a fourth die? Run McDie reasoning before recommending — don't eyeball.
-Log conclusion in balance-notes.md.
-```
-
-### Prototype — paper PnP deliverables
-
-Ask for **playable paper**, lint check, and tools only if needed.
-
-```
-Turn ./v0.5/mechanism-skeleton.md into a paper PnP: rulebook-draft, components-sheet (one row per card id), pnp-checklist.
-2–4p, 30 min, index-card prototype — no art. Run lint/checklist before finishing. Match micro-scavenger field granularity.
-```
-
-```
-components-sheet.csv is ready in ./my-game/data/. Walk me through nanDECK steps to export poker-size card PNGs; don't suggest TTS until paper playtest passes.
-```
-
-### Continue, restructure, or kill
-
-After **3+ playtests**, ask for the explicit gate.
-
-```
-We've completed PT-001 through PT-004 (./playtests/). Core loop is learnable but average fun was 2.8/5 twice in a row; feedback cites "same thing every turn."
-Run kill-criteria.md with me: Continue, Restructure, or Pause/Kill? Cite evidence. Update design-state and decision.md if we restructure.
-```
-
-### Mechanism lookup — narrow questions
-
-Single topic or code → agent loads one chapter, not the whole skill.
-
-```
-Explain WPL-03 vs soft blocking (bumping) for a 2p game — trade-offs only, no new project files.
-```
-
-```
-When should I use input vs output randomness for a push-your-luck resource game? Keep it to cheatsheet + Ch 6 level.
-```
-
-### Mixed requests (design + PnP + balance)
-
-State priority or let the skill's cheatsheet order apply: **diagnose/balance before prototype** if something is broken.
-
-```
-New 2p card game, 15 min — full pipeline: concept through paper PnP in ./duel-scavenge/.
-If you see dominant strategy risk in the skeleton, run balance-spreadsheet on the 12-card core set before finalizing rulebook.
-```
-
-### Prompt checklist (copy before sending)
-
-- [ ] Players / time / audience / target feel
-- [ ] New project vs continuing (`read design-state first`)
-- [ ] Desired outputs (which templates, which folder)
-- [ ] For iteration: symptom + evidence, not "make it better"
-- [ ] For tests: one variable + success metric
-- [ ] Optional: `@file` references to your repo artifacts
-
-## What you get
+## 📦 What you get
 
 | Path | Role |
 |------|------|
@@ -235,20 +79,247 @@ If you see dominant strategy risk in the skeleton, run balance-spreadsheet on th
 | [`eval/README.md`](eval/README.md) | Eval workflow + `eval/fixtures/` for Cases B–F |
 | [`CHANGELOG.md`](CHANGELOG.md) | Semver release history |
 
-### Progressive disclosure
+**Chapter files load on demand** — agents should read the smallest file that answers the question, not all 13 chapters at once.
 
-Agents should load the **smallest** file that answers the question (metadata → `SKILL.md` → one companion/chapter). Do not bulk-load all chapters for a narrow question.
+**Default outputs are project files**, not prose-only advice. Format reference: [`templates/examples/micro-scavenger/`](templates/examples/micro-scavenger/). First playable build: **paper PnP**; TTS / Tabletopia come after the paper loop works.
 
-### Default outputs (not prose-only)
+---
 
-When you ask to design or prototype a game, the agent should **write project files** from `templates/`, maintain **`design-state.md`**, and match output granularity to **`templates/examples/micro-scavenger/`**.
+## ⚙️ How it works
 
-Default first playable build: **paper PnP**. TTS / Tabletopia come after the paper loop works unless you specify otherwise.
+### Core loop
 
-## Repository layout
+```
+Intent → Hypothesis → Prototype → Experiment → Evidence → Diagnosis → Decision → (update design-state) → repeat
+```
+
+Shorthand: **concept → mechanism skeleton → paper PnP → playtest / balance → (optional) POD or digital**
+
+### Agent modes
+
+Pick one mode per session. Load the smallest file set that mode requires.
+
+| Mode | Trigger | Load first |
+|------|---------|------------|
+| **Create** | New game from scratch | `workflow.md`, `theme-and-experience.md` |
+| **Diagnose** | Symptom (boring, broken, unfair) | `cheatsheet.md` → `diagnostics/*` |
+| **Experiment** | Test a specific hypothesis | `experiments/framework.md` |
+| **Balance** | Numbers, cards, economy | `balance/README.md` |
+| **Prototype** | PnP, rulebook, components | `templates/*`, `tools/*` |
+
+### Hard invariants
+
+1. **Read design-state first** — do not reopen **Locked** decisions without new contradicting evidence
+2. **Diagnose before changing** — symptom + causal hypothesis before any rule change
+3. **Minimal intervention** — one variable per experiment; no stacked fixes
+
+<details>
+<summary><strong>Design principles (click to expand)</strong></summary>
+
+1. **Evidence over opinion** — playtest logs and experiment IDs, not "should feel better"
+2. **State preservation** — `design-state.md` survives across chat sessions
+3. **Progressive disclosure** — metadata → `SKILL.md` → one companion or chapter
+4. **Paper first** — playable index-card prototype before digital or art polish
+5. **Synthesized knowledge** — mechanism trade-offs from *Building Blocks*, not raw book dumps
+
+</details>
+
+### What's new in v2.3.1
+
+See [`CHANGELOG.md`](CHANGELOG.md) for full history.
+
+- **Loop Hex branding** — cover + logo in [`assets/`](assets/); README layout refresh (badges, TOC, collapsible prompts)
+- **v2.3.0** — experiment prioritization, version lineage, eval fixtures, lint confidence, balance calibration
+
+---
+
+## 📥 Install
+
+### Cursor
+
+Copy or clone into your skills directory. Folder name must match the skill `name`: `board-game-design`.
+
+```text
+~/.cursor/skills/board-game-design/          # user-wide
+<project>/.cursor/skills/board-game-design/  # project-scoped (preferred when sharing a game repo)
+```
+
+```bash
+git clone git@github.com:kyle-ip/board-game-design.git ~/.cursor/skills/board-game-design
+```
+
+### Claude Code / other Agent Skills hosts
+
+Place the directory where your host discovers skills (often `.claude/skills/board-game-design/`).
+
+Requirements:
+
+- Root [`SKILL.md`](SKILL.md) with YAML `name` + `description`
+- Prefer installing from trusted sources; skim bundled files before use
+
+See the open standard: [agentskills.io/specification](https://agentskills.io/specification).
+
+---
+
+## 🚀 Usage
+
+Good prompts give the agent **mode**, **constraints**, and **artifacts** (or paths).
+
+| Include | Why |
+|---------|-----|
+| **Player count, time, audience** | Stops generic mechanism dumps |
+| **Target feel** (tension, bluff, puzzle, …) | Drives MDA-first design |
+| **Project path** or `@design-state.md` | Agent reads Locked/Open/Rejected first |
+| **Observed symptom + evidence** | Triggers Diagnose mode |
+| **One variable to test** | Triggers Experiment mode |
+| **Output ask** ("write files to `./my-game/`") | Gets templates, not prose-only |
+
+**Project-scoped tip:** on session 2+, start with *"Read design-state first, then …"*
+
+### When it triggers
+
+- Design or iterate a board / card game
+- Choose or balance mechanisms (turn order, auctions, worker placement, cards, …)
+- **Diagnose** problems (boring, unfair, snowball, etc.)
+- Run **playtest experiments** with falsifiable hypotheses
+- **Rank** which experiment to run next
+- Evaluate **continue / kill** after 3+ playtests
+- Build a print-and-play prototype
+
+<details>
+<summary><strong>Create — new game from scratch</strong></summary>
+
+Compare mechanisms, write concept + skeleton + design-state. Ask for **2–4 candidates** before locking rules.
+
+```
+Design a 2–4 player, 45-minute medium-weight game about Mars colony logistics.
+Target feel: scarcity tension, long-term planning, light direct conflict.
+Audience: hobby gamers who know Wingspan but not heavy euros.
+Compare worker placement vs action drafting vs open market — recommend one with trade-offs.
+Write concept-brief, design-state, and mechanism-skeleton to ./mars-habitat/ using the micro-scavenger example as format reference.
+Do not write full rules yet.
+```
+
+```
+I want a family co-op card game (2–4p, 20 min) with a Cthulhu investigation theme.
+Core experience: dread + teamwork, not alpha-player quarterbacking.
+Start with theme-and-experience (emotion curve), then suggest mechanisms that fit.
+Output files to ./deep-shallows/.
+```
+
+| Weak | Strong |
+|------|--------|
+| "Make me a worker placement game" | Add players, time, feel, audience, and "compare 2–3 chassis before choosing" |
+| "Design a card game about pirates" | Add "2p, 15 min, gateway, tension from hand limits" + output directory |
+
+</details>
+
+<details>
+<summary><strong>Diagnose — something feels wrong</strong></summary>
+
+Name the **symptom**, give **playtest facts**, ask for **diagnosis + minimal experiment**.
+
+```
+We've playtested 4 times (logs in ./orbital-mining/playtests/). Leader is usually decided by round 3; trailing players say they can't catch up.
+Read design-state first. Diagnose (snowball vs low agency vs endgame drag), propose one falsifiable hypothesis, and draft EXP-005 — don't change three rules at once.
+```
+
+```
+After 3 sessions, seat 1 wins 5/7 games at 4 players. Hypothesis: first pick on the worker track is too strong.
+Run first-player-advantage diagnostic. Suggest the smallest rule change to test next, with success criteria (e.g. seat 1 win rate < 35% over 10 plays).
+```
+
+</details>
+
+<details>
+<summary><strong>Experiment — test one change</strong></summary>
+
+Specify **baseline**, **variant**, and **measurable success**.
+
+```
+Set up EXP-002: test hand limit 3 → 2 only. Everything else stays v0.6.
+Hypothesis: smaller hand increases discard-pile fights without adding AP.
+Success: in 4/5 playtests, both players contest discard at least twice; fun ≥ 3.5/5.
+Write experiment.md and a blank playtest-log template for the next session.
+```
+
+```
+Three hypotheses are open in design-state (HYP-001 through HYP-003). Read design-state first, rank them with experiment-priority, update the Experiment Backlog, and draft EXP-004 for rank 1 only.
+```
+
+</details>
+
+<details>
+<summary><strong>Balance · Prototype · Kill gate · Mechanism lookup</strong></summary>
+
+**Balance**
+
+```
+Review CARD-014 through CARD-022 in ./deck-builder/components-sheet.md.
+Build balance-spreadsheet rows using value-budget; flag any card where cost vs total estimated value differs by >40%.
+State confidence, calibration source, and use scope for each estimate.
+```
+
+**Prototype**
+
+```
+Turn ./v0.5/mechanism-skeleton.md into a paper PnP: rulebook-draft, components-sheet, pnp-checklist.
+2–4p, 30 min, index-card prototype — no art. Run lint/checklist before finishing.
+```
+
+**Continue, restructure, or kill**
+
+```
+We've completed PT-001 through PT-004. Core loop is learnable but average fun was 2.8/5 twice in a row.
+Run kill-criteria.md with me: Continue, Restructure, or Pause/Kill? Cite evidence.
+```
+
+**Mechanism lookup**
+
+```
+Explain WPL-03 vs soft blocking (bumping) for a 2p game — trade-offs only, no new project files.
+```
+
+**Mixed requests** — diagnose/balance before prototype if something is broken.
+
+</details>
+
+<details>
+<summary><strong>Prompt checklist (copy before sending)</strong></summary>
+
+- [ ] Players / time / audience / target feel
+- [ ] New project vs continuing (`read design-state first`)
+- [ ] Desired outputs (which templates, which folder)
+- [ ] For iteration: symptom + evidence, not "make it better"
+- [ ] For tests: one variable + success metric
+- [ ] Optional: `@file` references to your repo artifacts
+
+</details>
+
+---
+
+## 🎨 Brand
+
+**Loop Hex** is the mark on the cover and logo — hex tile + evidence loop + meeple.
+
+| Element | Cover | Logo |
+|---------|-------|------|
+| Hex tile | full detail + paper fold + die pip | hex + loop + meeple only |
+| Amber loop | evidence-driven iteration | same |
+| Teal dots | three loop anchors | same |
+| Text on image | **Board Game Design** only | none |
+
+Assets: [`assets/`](assets/) — **PNG** for README preview; **SVG** for source files. MIT-licensed with the repo.
+
+---
+
+## 📁 Repository structure
 
 ```text
 board-game-design/
+├── assets/
+│   ├── logo.svg / logo.png       # Loop Hex icon (minimal, no text)
+│   └── banner.svg / banner.png   # README cover (mark + title only)
 ├── SKILL.md
 ├── CHANGELOG.md
 ├── README.md
@@ -266,16 +337,18 @@ board-game-design/
 ├── tools/
 ├── eval/
 │   ├── benchmark-prompts.md
-│   ├── README.md            # maintainer eval workflow
-│   └── fixtures/            # Cases B–F input projects
-├── chapters/                # ch01–ch13
+│   ├── README.md
+│   └── fixtures/
+├── chapters/                     # ch01–ch13
 ├── templates/
 │   └── examples/micro-scavenger/
 ├── references/
 └── …
 ```
 
-## Attribution & scope
+---
+
+## ⚖️ Attribution & scope
 
 Mechanism frameworks, codes (e.g. `WPL-01`, `CAR-05`), and trade-off language are **synthesized** from:
 
@@ -283,16 +356,24 @@ Mechanism frameworks, codes (e.g. `WPL-01`, `CAR-05`), and trade-off language ar
 
 Chapter files are **not** a verbatim copy of the book and are **not** a substitute for purchasing it.
 
+- **Single-designer focus** — multi-agent design collaboration is out of scope
+- **Default prototype medium** — paper PnP; digital only when requested or after paper works
+- **Language** — in Chinese context, prefer each game's official Chinese name when one exists
+
+---
+
+## 🤝 Contributing
+
+- Keep [`SKILL.md`](SKILL.md) lean (<500 lines); put deep material in companions
+- Prefer decision rules, state, and experiments over encyclopedic mechanism dumps
+- Update [`CHANGELOG.md`](CHANGELOG.md) on each release
+- Before minor releases: run Cases A–F per [`eval/README.md`](eval/README.md) (≥5/6 to ship)
+
+---
+
 ## License
 
 Code and original skill text in this repository are released under the [MIT License](LICENSE).
-
-## Contributing
-
-- Keep [`SKILL.md`](SKILL.md) lean (<500 lines); put deep material in companions.
-- Prefer decision rules, state, and experiments over encyclopedic mechanism dumps.
-- Update [`CHANGELOG.md`](CHANGELOG.md) on each release.
-- Before minor releases: run Cases A–F per [`eval/README.md`](eval/README.md) (≥5/6 to ship).
 
 ## Links
 

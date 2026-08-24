@@ -5,6 +5,19 @@ All notable changes to the **board-game-design** skill follow [Semantic Versioni
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).  
 Current skill version: declared in [`SKILL.md`](SKILL.md) YAML frontmatter (`version`).
 
+## [2.3.1] — 2026-08-24
+
+Branding and README polish (Loop Hex identity + book-to-skill-style layout).
+
+### Added
+
+- **`assets/`** — Loop Hex cover (`banner.svg` / `banner.png`) and shareable logo (`logo.svg` / `logo.png`); PNG for local Markdown preview, SVG as source
+
+### Changed
+
+- **`README.md`** — hero banner, shields badges, table-of-contents nav, Why / How it works sections, collapsible prompt examples; display name **Board Game Design** (skill id unchanged: `board-game-design`)
+- **`.gitignore`** — ignore `node_modules/` (asset export tooling)
+
 ## [2.3.0] — 2026-08-24
 
 Agent decision + evaluation release (per architecture review P0–P2).
