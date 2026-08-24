@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Board Game Design mark">
+  <defs>
+    <linearGradient id="sq-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c2433"/>
+      <stop offset="45%" stop-color="#143041"/>
+      <stop offset="100%" stop-color="#081820"/>
+    </linearGradient>
+    <linearGradient id="sq-loop" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f4a261"/>
+      <stop offset="100%" stop-color="#e76f51"/>
+    </linearGradient>
+    <radialGradient id="sq-glow" cx="50%" cy="48%" r="55%">
+      <stop offset="0%" stop-color="#f4a261" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#f4a261" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="sq-mark-shadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+    <filter id="sq-soft-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="18" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <pattern id="sq-hex-grid" width="64" height="55" patternUnits="userSpaceOnUse">
+      <path d="M32 6 L58 21 L58 51 L32 66 L6 51 L6 21 Z" fill="none" stroke="#e8dcc8" stroke-width="1" opacity="0.1"/>
+    </pattern>
+  </defs>
+
+  <rect width="512" height="512" fill="url(#sq-bg)"/>
+  <rect width="512" height="512" fill="url(#sq-hex-grid)"/>
+  <rect width="512" height="512" fill="url(#sq-glow)"/>
+
+  <!-- Loop Hex mark — scaled up for square crop -->
+  <g transform="translate(256 256) scale(1.26)" filter="url(#sq-mark-shadow)">
+    <circle cx="0" cy="0" r="118" fill="#f4a261" opacity="0.06" filter="url(#sq-soft-glow)"/>
+
+    <path
+      d="M0 -132 L108 -74 L108 74 L0 132 L-108 74 L-108 -74 Z"
+      fill="#1a4358"
+      stroke="#e8dcc8"
+      stroke-width="12"
+      stroke-linejoin="round"
+    />
+
+    <path d="M62 -74 L108 -74 L108 -28 Z" fill="#c9b896"/>
+    <path d="M62 -74 L108 -28" stroke="#8b7355" stroke-width="3.5" stroke-linecap="round"/>
+
+    <g fill="none" stroke="url(#sq-loop)" stroke-width="16" stroke-linecap="round">
+      <path d="M0 -76 A76 76 0 1 1 -38 58"/>
+      <path d="M-38 58 L-64 40 M-38 58 L-30 32" stroke-width="14"/>
+      <path d="M38 58 A76 76 0 1 1 0 -76"/>
+      <path d="M0 -76 L-18 -102 M0 -76 L18 -102" stroke-width="14"/>
+      <path d="M38 58 A76 76 0 0 1 -38 58"/>
+      <path d="M-38 58 L-56 76 M-38 58 L-14 76" stroke-width="14"/>
+    </g>
+
+    <circle cx="0" cy="-94" r="11" fill="#2a9d8f"/>
+    <circle cx="-54" cy="68" r="11" fill="#2a9d8f"/>
+    <circle cx="54" cy="68" r="11" fill="#2a9d8f"/>
+
+    <g fill="#e8dcc8">
+      <circle cx="0" cy="-6" r="26"/>
+      <path d="M-36 58 C-36 24 -18 12 0 12 C18 12 36 24 36 58 L36 88 L-36 88 Z"/>
+    </g>
+    <circle cx="-11" cy="-10" r="4" fill="#0a1f2b"/>
+    <circle cx="11" cy="-10" r="4" fill="#0a1f2b"/>
+
+    <circle cx="86" cy="98" r="18" fill="#e8dcc8"/>
+    <circle cx="86" cy="98" r="6" fill="#0a1f2b"/>
+  </g>
+</svg>

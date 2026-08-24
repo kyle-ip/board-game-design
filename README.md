@@ -1,7 +1,16 @@
-<p align="center">
+<!-- <p align="center">
   <a href="assets/banner.svg">
-    <img src="assets/banner.png" alt="Board Game Design" width="100%">
+    <img src="assets/banner.png" alt="Board Game Design" width="100%" style="border-radius: 16px;">
   </a>
+</p> -->
+
+<p align="center">
+  <span style="display: inline-flex; align-items: center; justify-content: center; gap: 1.25rem; flex-wrap: wrap;">
+    <a href="assets/banner-square.svg">
+      <img src="assets/banner-square.png" alt="Loop Hex" width="128" height="128" style="border-radius: 16px; display: block;">
+    </a>
+    <span style="font-size: 2.25rem; font-weight: 700; letter-spacing: 0.02em; line-height: 1.2;">Board Game Design</span>
+  </span>
 </p>
 
 <p align="center">
@@ -300,16 +309,15 @@ Explain WPL-03 vs soft blocking (bumping) for a 2p game — trade-offs only, no 
 
 ## 🎨 Brand
 
-**Loop Hex** is the mark on the cover and logo — hex tile + evidence loop + meeple.
+**Loop Hex** is the mark on the cover, square banner, and logo — hex tile + evidence loop + meeple.
 
-| Element | Cover | Logo |
-|---------|-------|------|
-| Hex tile | full detail + paper fold + die pip | hex + loop + meeple only |
-| Amber loop | evidence-driven iteration | same |
-| Teal dots | three loop anchors | same |
-| Text on image | **Board Game Design** only | none |
+| Element | Cover | Square banner | Logo |
+|---------|-------|---------------|------|
+| Hex tile | full detail + paper fold + die pip | same as cover (centered) | hex + loop + meeple only |
+| Background | hex grid + glow | same | flat rounded square |
+| Text on image | **Board Game Design** only | none | none |
 
-Assets: [`assets/`](assets/) — **PNG** for README preview; **SVG** for source files. MIT-licensed with the repo.
+Assets: [`assets/`](assets/) — **PNG** for preview; **SVG** for source files. MIT-licensed with the repo.
 
 ---
 
@@ -318,9 +326,10 @@ Assets: [`assets/`](assets/) — **PNG** for README preview; **SVG** for source 
 ```text
 board-game-design/
 ├── assets/
-│   ├── fonts/                    # Fredoka (OFL) for banner typography
-│   ├── logo.svg / logo.png       # Loop Hex icon (minimal, no text)
-│   └── banner.svg / banner.png   # README cover (mark + title only)
+│   ├── fonts/                              # Fredoka (OFL) for banner typography
+│   ├── logo.svg / logo.png                 # Loop Hex icon (minimal, no text)
+│   ├── banner.svg / banner.png             # README cover (mark + title)
+│   └── banner-square.svg / banner-square.png  # square mark banner (social / avatar)
 ├── SKILL.md
 ├── CHANGELOG.md
 ├── README.md
