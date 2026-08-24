@@ -2,6 +2,10 @@
 
 Derive from a filled concept brief. Spreadsheet component data before art. Copy into the project folder.
 
+Format reference: `templates/examples/micro-scavenger/mechanism-skeleton.md`
+
+Compare options: `reasoning/design-reasoning.md`, `reasoning/decision-matrix.md`
+
 ## Core Loop
 One box in, one box out. Describe the repeated player cycle in ≤3 steps.
 
@@ -10,6 +14,17 @@ One box in, one box out. Describe the repeated player cycle in ≤3 steps.
 3. **Output** (what changes / reward):
 
 **The fun (one sentence):**
+
+## Candidate Comparison
+
+Required when ≥2 mechanism architectures were considered. See `reasoning/decision-matrix.md`.
+
+| Candidate | Agency | Interaction | Complexity | Variance | AP Risk | Notes |
+|---|---|---|---|---|---|---|
+| A. | | | | | | |
+| B. | | | | | | |
+
+**Provisional choice:**
 
 ## Structure First (chassis)
 | Slot | Chosen code | Why |
@@ -28,7 +43,7 @@ One box in, one box out. Describe the repeated player cycle in ≤3 steps.
 | Other (AUC/WPL/MOV/ARC/SET/CAR) | | |
 
 ## Rejected Alternatives
-List mechanisms considered and why they were cut. Prevents re-litigating dead ideas.
+List mechanisms considered and why they were cut. Sync to **Rejected** in `design-state.md`.
 
 | Rejected | Why not |
 |---|---|
@@ -59,7 +74,8 @@ Rough list only — detail in `templates/components-sheet.md`.
 - [ ] Structure chosen before theme coat
 - [ ] Rejected alternatives recorded
 - [ ] Currencies split (victory vs working)
+- [ ] Locked decisions synced to `design-state.md`
 
 ## Next
 → `templates/components-sheet.md` + `templates/rulebook-draft.md` for paper PnP
-→ `templates/balance-notes.md` after first solo runs
+→ `templates/balance-spreadsheet.md` + `templates/balance-notes.md` after first solo runs

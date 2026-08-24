@@ -2,6 +2,10 @@
 
 Write for strangers. Icon clarity > prose. Copy into the project folder. Blind-test with `playtesting.md` Framework 5.
 
+Format reference: `templates/examples/micro-scavenger/rulebook-draft.md`
+
+Before delivery: `lint/checklist.md` rulebook section.
+
 ## Header
 - **Title**:
 - **Players** / **Time** / **Ages**:
@@ -53,4 +57,8 @@ Each action: cost → effect → restrictions.
 - [ ] Every question asked during blind test becomes an edit here
 
 ## Out of Scope for This Draft
-Theme fiction, lore, and art direction — freeze mechanisms first.
+Theme fiction, lore, and art direction — freeze mechanisms first. Flavor text OK if zero rules impact.
+
+## Sync
+- [ ] Component ids match `components-sheet.md`
+- [ ] Locked rules reflected in `design-state.md`

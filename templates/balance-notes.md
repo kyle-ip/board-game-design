@@ -1,6 +1,8 @@
 # Balance Notes
 
-Drive from failure-mode tells. See `probability-and-balance.md`. Copy into the project folder.
+Drive from failure-mode tells. See `probability-and-balance.md`, `balance/README.md`, `diagnostics/`. Copy into the project folder.
+
+Use `templates/balance-spreadsheet.md` for numeric work. One fix per pass — `experiments/framework.md`.
 
 ## Build
 | Field | Value |
@@ -10,18 +12,18 @@ Drive from failure-mode tells. See `probability-and-balance.md`. Copy into the p
 | Playtests informing this pass | |
 
 ## Observed Tells
-Mark any that appeared in 2+ playtests.
+Mark any that appeared in 2+ playtests. Load matching `diagnostics/*.md` before fixing.
 
-| Failure mode | Seen? | Evidence |
-|---|---|---|
-| Snowball / runaway leader | | |
-| Kingmaking | | |
-| Dominant strategy | | |
-| Turtling | | |
-| Lucky runaway | | |
-| Analysis paralysis | | |
-| First-player advantage | | |
-| Dead last with no agency | | |
+| Failure mode | Seen? | Evidence | Diagnostic |
+|---|---|---|---|
+| Snowball / runaway leader | | | runaway-leader |
+| Kingmaking | | | kingmaking |
+| Dominant strategy | | | dominant-strategy |
+| Turtling | | | cheatsheet |
+| Lucky runaway | | | randomness-dominates-skill |
+| Analysis paralysis | | | analysis-paralysis |
+| First-player advantage | | | first-player-advantage |
+| Dead last with no agency | | | low-agency |
 
 ## Currency & Curve Audit
 | Check | OK? | Note |
@@ -39,9 +41,16 @@ Mark any that appeared in 2+ playtests.
 | Key % you care about (hit / bust / explode) | |
 
 ## Changes This Pass
-| Change | Expected effect | Measure next playtest |
-|---|---|---|
-| | | |
+| Change | Expected effect | Measure next playtest | Experiment ID |
+|---|---|---|---|
+| | | | |
 
 ## Decision Rule
-Spot tell in 2+ playtests → apply one fix → measure in the next playtest. Do not stack three balance changes at once.
+Spot tell in 2+ playtests → apply **one** fix → measure in the next playtest. Do not stack three balance changes at once.
+
+Global rule: `SKILL.md` Hard Invariant #3 — minimal intervention.
+
+## Sync
+
+- [ ] `design-state.md` risks updated
+- [ ] `iteration.md` if version bump

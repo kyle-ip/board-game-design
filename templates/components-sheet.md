@@ -2,6 +2,10 @@
 
 Data before art. One row per unique component or card. Copy into the project folder; expand as CSV/spreadsheet when the set grows.
 
+Format reference: `templates/examples/micro-scavenger/components-sheet.md`
+
+Before delivery: `lint/checklist.md` components section.
+
 ## Legend
 | Column | Meaning |
 |---|---|
@@ -34,11 +38,15 @@ Data before art. One row per unique component or card. Copy into the project fol
 - [ ] Every id appears in the rulebook or is marked "unused / cut"
 - [ ] Starting hands / setup quantities sum correctly for min and max player counts
 - [ ] No art yet — placeholders only
+- [ ] Cross-checked against `rulebook-draft.md` setup
 
-## Generation Path (optional)
-When counts stabilize:
-- Spreadsheet → NanDeck or Component.Studio for card faces
-- Or hand-write on index cards / paper tokens for first 5 solo plays
+## Tools Reference
+
+Convert this sheet to printable or digital assets:
+
+- **Cards (batch PNG/PDF):** `tools/nanDECK-guide.md` — export table to CSV
+- **Digital table (optional, after paper works):** `tools/TTS-guide.md`
+- **Spreadsheet-driven art:** Component.Studio — see `probability-and-balance.md`
 
 ## Next
 → `templates/pnp-checklist.md`

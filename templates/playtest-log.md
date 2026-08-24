@@ -2,6 +2,10 @@
 
 One framework per session — do not mix. Copy into the project folder. See `playtesting.md`.
 
+Format reference: `templates/examples/micro-scavenger/playtest-log.md`
+
+Non-trivial rule tests: link to `templates/experiment.md`. Hypotheses must be falsifiable — `reasoning/hypothesis-rules.md`.
+
 ## Session Meta
 | Field | Value |
 |---|---|
@@ -13,7 +17,7 @@ One framework per session — do not mix. Copy into the project folder. See `pla
 | Duration | |
 
 ## Hypothesis Under Test
-What one thing are you trying to learn?
+What one thing are you trying to learn? Link EXP-00X if applicable.
 
 ## Raw Notes
 Capture verbatim where possible. Quote = signal.
@@ -48,4 +52,16 @@ Rule: "Needs work" that survives 3 iterations without improvement → Bad.
 - Failures / questions asked:
 
 ## Decision
-Keep / pivot / kill — and the single change for the next build:
+
+Align with `kill-criteria.md`:
+
+- [ ] **Continue** — next experiment or polish
+- [ ] **Restructure** — return to mechanism skeleton
+- [ ] **Pause or Kill**
+
+Single change for next build (one variable):
+
+## Sync
+
+- [ ] Evidence row in `design-state.md`
+- [ ] `experiment.md` updated if applicable

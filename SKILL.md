@@ -1,6 +1,7 @@
 ---
 name: board-game-design
-description: "Design tabletop game mechanisms and paper prototypes using Building Blocks of Tabletop Game Design (13 mechanism chapters) plus workflow, playtesting, balance, and PnP templates. Invoke when the user designs or iterates a board/card game, chooses or balances mechanisms (turn order, auctions, worker placement, cards, etc.), writes a concept brief or mechanism skeleton, prepares playtests, or builds a print-and-play prototype/demo."
+description: "Design tabletop game mechanisms and paper prototypes using Building Blocks of Tabletop Game Design (13 mechanism chapters) plus workflow, playtesting, balance, and PnP templates. Invoke when the user designs or iterates a board/card game, chooses or balances mechanisms (turn order, auctions, worker placement, cards, etc.), writes a concept brief or mechanism skeleton, prepares playtests, diagnoses design problems, or builds a print-and-play prototype/demo."
+version: "2.0.0"
 license: MIT
 compatibility: "Agent Skills hosts (Cursor, Claude Code, and other SKILL.md-compatible runtimes). Markdown-only; no required network or packages."
 metadata:
@@ -12,19 +13,45 @@ metadata:
 
 Knowledge base from *Building Blocks of Tabletop Game Design* by Geoffrey Engelstein & Isaac Shalev (CRC Press, ~517 pages, 13 chapters), plus workflow, playtesting, balance, print guidance, and **project templates** that turn advice into files you can playtest.
 
-Pipeline: **concept → mechanism skeleton → paper PnP prototype → playtest/balance → (optional) POD/digital**.
+**Core loop:** Intent → Model → Hypothesis → Mechanism → Prototype → Experiment → Evidence → Diagnosis → Decision → update `design-state` → repeat.
+
+Legacy pipeline shorthand: **concept → mechanism skeleton → paper PnP → playtest/balance → (optional) POD/digital**.
+
+## Hard Invariants
+
+Apply on every design or iteration session:
+
+1. **Read design-state first** — for an existing project, load `templates/design-state.md` (or project copy) before proposing changes. Do not reopen **Locked** decisions unless new evidence contradicts them.
+2. **Diagnose before changing** — do not change a mechanism before identifying an observed symptom and a plausible causal hypothesis. Load `diagnostics/` or `cheatsheet.md` in Diagnose mode.
+3. **Minimal intervention** — change the smallest design variable that can test the hypothesis. One variable per experiment; do not stack three unrelated fixes.
+
+## Agent Modes
+
+Pick one mode per session. Load the smallest file set that mode requires.
+
+| Mode | Trigger | Load first | Write / update |
+|---|---|---|---|
+| **Create** | New game from scratch | `workflow.md`, `theme-and-experience.md` | concept-brief, design-state, mechanism-skeleton |
+| **Diagnose** | Symptom (boring, broken, unfair) | `cheatsheet.md` → `diagnostics/*` | design-state, decision |
+| **Experiment** | Test a specific hypothesis | `experiments/framework.md` | experiment, playtest-log |
+| **Balance** | Numbers, cards, economy | `balance/README.md` | balance-spreadsheet, balance-notes |
+| **Prototype** | PnP, rulebook, components | `templates/*`, `tools/*` | rulebook-draft, components-sheet, pnp-checklist |
+
+Mixed requests (e.g. "design + PnP + balance"): run **Diagnose/Balance before Create/Prototype** if symptoms exist; else **Create → Prototype → Balance**. See `cheatsheet.md` priority tree.
 
 ## How to Use This Skill
 
 **Invocation patterns:**
 
 - **No argument** — return this file (overview + indexes).
-- **Topic** (e.g., "auctions", "worker placement", "deck building") — load matching `chapters/chNN-*.md` and the relevant entry in `patterns.md`.
+- **Mechanism code** (e.g., `WPL-03`, `CAR-05`) — jump directly to the matching `chapters/chNN-*.md` from the Chapter Index below; skip cheatsheet unless trade-offs are unclear.
+- **Topic** (e.g., "auctions", "worker placement") — load matching chapter + relevant `patterns.md` entry.
 - **Chapter number** (e.g., "ch07") — load that chapter file.
-- **Decision needed** — load `cheatsheet.md`; cross-ref `patterns.md`.
+- **Decision needed** — load `cheatsheet.md`; cross-ref `patterns.md` and `reasoning/decision-matrix.md`.
 - **Term lookup** — load `glossary.md`.
-- **Design / iterate a game** — follow **Default Project Outputs** below; load `workflow.md` + needed templates.
-- **Workflow / playtest / probability / print** — load the companion file.
+- **Design / iterate a game** — follow **Default Project Outputs**; load `workflow.md` + needed templates. Output format: `templates/examples/micro-scavenger/`.
+- **After playtests** — load `kill-criteria.md` for Continue / Restructure / Pause-or-Kill gate.
+- **Before shipping artifacts** — run `lint/checklist.md`.
 
 **Always load the smallest file that answers the question.** Do not bulk-load chapters unless the user asks for a survey.
 
@@ -32,23 +59,26 @@ Pipeline: **concept → mechanism skeleton → paper PnP prototype → playtest/
 
 When the user asks to design, iterate, prototype, or develop a tabletop game, **write project files** (copy from `templates/`; do not only give prose). Prefer the user's project directory; if none, ask where to put them.
 
-| Stage | Write | From template |
+| When | Write | From template |
 |---|---|---|
+| Any ongoing project | design state (maintain) | `templates/design-state.md` |
 | 0 Concept | concept brief | `templates/concept-brief.md` |
-| 1–2 Mechanisms | mechanism skeleton | `templates/mechanism-skeleton.md` |
-| 1 Paper MVP | rulebook draft + components sheet + PnP checklist | `templates/rulebook-draft.md`, `components-sheet.md`, `pnp-checklist.md` |
-| 3 Playtest | playtest log | `templates/playtest-log.md` |
-| 4 Balance | balance notes | `templates/balance-notes.md` |
+| 1–2 Mechanisms | mechanism skeleton (+ candidate comparison) | `templates/mechanism-skeleton.md` |
+| 1 Paper MVP | rulebook + components + PnP checklist | `rulebook-draft.md`, `components-sheet.md`, `pnp-checklist.md` |
+| 3 Playtest | playtest log; experiment if testing one variable | `playtest-log.md`, `experiment.md` |
+| 3+ Decision | decision record | `templates/decision.md` |
+| 4 Balance | balance notes + spreadsheet | `balance-notes.md`, `balance-spreadsheet.md` |
+| Iteration pass | iteration summary | `templates/iteration.md` |
 
-Paper PnP is the default first playable build. TTS / Tabletopia / web demos come only after the paper loop works, unless the user specifies another medium.
+Paper PnP is the default first playable build. TTS / Tabletopia come only after the paper loop works, unless the user specifies another medium. See `tools/`.
 
 ## Core Frameworks & Mental Models
 
 ### MDA alignment
-Mechanics → Dynamics → Aesthetics. Choose Aesthetics first, then design Mechanics that produce Dynamics that evoke them. ([MDA paper](https://www.cs.northwestern.edu/~hunicke/MDA.pdf))
+Mechanics → Dynamics → Aesthetics. Choose Aesthetics first, then design Mechanics that produce Dynamics that evoke them. Depth: `theme-and-experience.md`. ([MDA paper](https://www.cs.northwestern.edu/~hunicke/MDA.pdf))
 
 ### Mechanism categories (13 chapters)
-Structure → Turn Order → Actions → Resolution → Victory → Uncertainty → Economics → Auctions → Worker Placement → Movement → Area Control → Set Collection → Card Mechanisms. Pick **structure first**.
+Structure → Turn Order → Actions → Resolution → Victory → Uncertainty → Economics → Auctions → Worker Placement → Movement → Area Control → Set Collection → Card Mechanisms. Pick **structure first**. Compare 2–4 candidates: `reasoning/design-reasoning.md`.
 
 ### Input vs Output randomness
 - **Input** — random result informs decision *before* commitment → agency.
@@ -83,6 +113,8 @@ POD (TGC) vs mass (Panda) — see `print-specs.md`. Prototype-first uses `templa
 
 ## Chapter Index
 
+Single-code or narrow mechanism questions: jump **directly** to the chapter file below. Use `cheatsheet.md` only for symptoms, trade-offs, or multi-mechanism design.
+
 `patterns.md` holds **selected** high-leverage patterns; full definitions live in the chapter files.
 
 | # | File | Title (mechanism codes) |
@@ -105,16 +137,23 @@ POD (TGC) vs mass (Panda) — see `print-specs.md`. Prototype-first uses `templa
 
 | If you're asking... | See |
 |---|---|
+| Theme, emotion curve, theme-mechanism fit | `theme-and-experience.md` |
+| Design reasoning, compare mechanisms | `reasoning/design-reasoning.md` |
+| Symptom → diagnosis | `cheatsheet.md` → `diagnostics/` |
+| Falsifiable hypotheses | `reasoning/hypothesis-rules.md` |
+| Run experiment | `experiments/framework.md` |
+| Continue or kill project | `kill-criteria.md` |
+| Output quality check | `lint/checklist.md` |
 | Co-op alpha-player problem | Ch 1, Ch 6 |
 | Solo mode / Automa design | Ch 1, Ch 3 |
 | Legacy & campaign structure | Ch 1, Ch 5 |
-| First-player advantage / catch-up | Ch 2 |
+| First-player advantage / catch-up | Ch 2, `diagnostics/first-player-advantage.md` |
 | Real-time vs turn-based | Ch 2 |
 | Action selection (drafting, points, retrieval) | Ch 3 |
 | Tech trees / gating / progression | Ch 3 |
 | Combat resolution / dice pools | Ch 4 |
 | Randomness: input vs output | Ch 4, Ch 6 |
-| Snowball / runaway leader | Ch 5, Ch 7, `probability-and-balance.md` |
+| Snowball / runaway leader | Ch 5, Ch 7, `diagnostics/runaway-leader.md` |
 | Hidden vs exposed victory points | Ch 5 |
 | End-game triggers | Ch 5 |
 | Hidden information, hidden roles | Ch 6 |
@@ -130,23 +169,32 @@ POD (TGC) vs mass (Panda) — see `print-specs.md`. Prototype-first uses `templa
 | Deck building / drafting / trick-taking | Ch 13 |
 | Concept → paper prototype pipeline | `workflow.md`, `templates/` |
 | Playtest frameworks | `playtesting.md` |
-| Balance failure modes & McDie | `probability-and-balance.md` |
+| Balance failure modes & McDie | `balance/README.md` |
 | PnP then POD/mass print | `templates/pnp-checklist.md`, `print-specs.md` |
+| Card generation / TTS | `tools/` |
 | External resources | `external-resources.md` |
 
 ## Companion Files
 
-| File | Purpose |
+| Path | Purpose |
 |---|---|
-| [workflow.md](workflow.md) | Stages 0–5 with required template outputs |
-| [playtesting.md](playtesting.md) | Five playtest frameworks |
-| [probability-and-balance.md](probability-and-balance.md) | Failure modes, dice intuition, McDie rule |
+| [workflow.md](workflow.md) | Milestones 0–5 with template outputs; stage regression allowed |
+| [kill-criteria.md](kill-criteria.md) | Continue / Restructure / Pause-or-Kill gate |
+| [theme-and-experience.md](theme-and-experience.md) | MDA depth, theme-mechanism matrix, emotion curve |
+| [playtesting.md](playtesting.md) | Five playtest frameworks + experiment tie-in |
+| [probability-and-balance.md](probability-and-balance.md) | Failure modes, dice intuition, McDie (also indexed in `balance/`) |
 | [print-specs.md](print-specs.md) | POD vs mass production specs |
-| [cheatsheet.md](cheatsheet.md) | Decision rules + symptom → file routing |
+| [cheatsheet.md](cheatsheet.md) | Decision rules + symptom routing + mixed-demand priority |
 | [patterns.md](patterns.md) | Selected mechanism patterns |
 | [glossary.md](glossary.md) | Term definitions |
 | [external-resources.md](external-resources.md) | Condensed links; full index in `references/web-resources.md` |
-| [templates/](templates/) | Copy-out project files for design and PnP |
+| [reasoning/](reasoning/) | Design reasoning, decision matrix, hypothesis rules |
+| [diagnostics/](diagnostics/) | Symptom guides (8 core failure modes) |
+| [experiments/](experiments/) | Experiment framework |
+| [balance/](balance/) | Balance model, value budget; index to probability doc |
+| [lint/](lint/) | Design lint rules BG001–BG014 + checklist |
+| [tools/](tools/) | nanDECK and TTS shortest-path guides |
+| [templates/](templates/) | Copy-out project files; see `examples/micro-scavenger/` |
 
 ## Scope & Limits
 
@@ -154,4 +202,5 @@ POD (TGC) vs mass (Panda) — see `print-specs.md`. Prototype-first uses `templa
 - **Synthesized, not verbatim** — not a substitute for the original book.
 - **Language** — in Chinese context, prefer each game's official/mainstream Chinese name when one exists; otherwise keep English (optional short gloss on first mention).
 - **Single-designer focus** — multi-agent design collaboration is out of scope.
-- **Default prototype medium** — paper PnP; digital/web only when requested or after paper works.
+- **Default prototype medium** — paper PnP; digital only when requested or after paper works.
+- **No CLI required** — lint and diagnostics are Markdown instructions for the agent, not shell tools.

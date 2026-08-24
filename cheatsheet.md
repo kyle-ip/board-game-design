@@ -2,25 +2,47 @@
 
 Decision rules, trade-off matrices, and tells distilled from *Building Blocks of Tabletop Game Design*. This is the "what would Engelstein & Shalev do?" layer — every line helps you decide something. For term definitions, see `glossary.md`.
 
+## Mixed-Demand Priority
+
+When the user asks for multiple things in one message, run in this order:
+
+1. **Diagnose / Balance** — if symptoms, unfairness, or numbers are mentioned (`diagnostics/`, `balance/`, `design-state.md` first)
+2. **Create / Mechanism** — concept, skeleton, reasoning (`workflow.md`, `reasoning/`)
+3. **Prototype** — rulebook, components, PnP (`templates/`, `tools/`)
+4. **Polish / Publish** — art-adjacent, print specs (last)
+
+Principle: fix the **core loop skeleton** before packaging. Do not generate full PnP for a broken loop unless user explicitly wants a throwaway mockup.
+
+Existing project: always read `templates/design-state.md` (project copy) before any step.
+
 ## Symptom → File Routing
 
 Load the smallest file first. Write project templates when designing/prototyping.
 
 | Symptom / ask | Load first | Then |
 |---|---|---|
-| "Help me design a game" / new concept | `workflow.md` + `templates/concept-brief.md` | `templates/mechanism-skeleton.md` |
-| Need a playable prototype soon | `templates/pnp-checklist.md` | rulebook + components-sheet |
+| Existing project / iteration N | `templates/design-state.md` | mode-specific files below |
+| "Help me design a game" / new concept | `workflow.md` + `theme-and-experience.md` | concept-brief → mechanism-skeleton |
+| Boring / flat / no tension | `diagnostics/endgame-drag.md` or `low-agency.md` | experiment; do not add mechanisms blindly |
+| Snowball / runaway leader | `diagnostics/runaway-leader.md` | `balance/value-budget.md` |
+| First player always wins | `diagnostics/first-player-advantage.md` | Ch 2 |
+| One strategy always wins | `diagnostics/dominant-strategy.md` | balance-spreadsheet |
+| Feels too random | `diagnostics/randomness-dominates-skill.md` | Ch 4, Ch 6 |
+| Analysis paralysis | `diagnostics/analysis-paralysis.md` | cut branching; Ch 2 simultaneous |
+| Kingmaking / spite | `diagnostics/kingmaking.md` | Ch 5 |
+| Test a hypothesis | `experiments/framework.md` | `templates/experiment.md` |
+| Continue or kill project | `kill-criteria.md` | `decision.md` |
+| Output quality before delivery | `lint/checklist.md` | fix or flag TBD |
+| Need a playable prototype soon | `templates/pnp-checklist.md` | rulebook + components-sheet + `tools/` |
 | Open vs closed economy? | this file Stage 6 | `chapters/ch07-economics.md` |
-| Snowball / runaway leader | `probability-and-balance.md` | Ch 5, Ch 7 |
-| Feels too random | this file Stage 4 (input vs output) | Ch 4, Ch 6 |
-| Analysis paralysis | Universal Tells below | cut branching; Ch 2 simultaneous |
 | Alpha player in co-op | Stage 0 below | Ch 1, Ch 6 |
 | Which auction form? | Stage 7 | Ch 8 |
 | Worker placement blocking pain | Stage 8 | Ch 9 |
 | Deck builder / market row | Stage 11 | Ch 13 |
-| Dice pool math unsure | `probability-and-balance.md` | McDie |
+| Dice pool math unsure | `balance/README.md` | McDie |
 | Playtest structure | `playtesting.md` | `templates/playtest-log.md` |
 | Print for friends vs factory | `templates/pnp-checklist.md` then `print-specs.md` | — |
+| Theme feels pasted on | `theme-and-experience.md` | revisit mechanism skeleton |
 
 ## Stage 0 — Structure & Scope
 
