@@ -318,6 +318,7 @@ Assets: [`assets/`](assets/) — **PNG** for README preview; **SVG** for source 
 ```text
 board-game-design/
 ├── assets/
+│   ├── fonts/                    # Fredoka (OFL) for banner typography
 │   ├── logo.svg / logo.png       # Loop Hex icon (minimal, no text)
 │   └── banner.svg / banner.png   # README cover (mark + title only)
 ├── SKILL.md
