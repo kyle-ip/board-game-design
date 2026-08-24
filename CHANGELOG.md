@@ -5,6 +5,31 @@ All notable changes to the **board-game-design** skill follow [Semantic Versioni
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).  
 Current skill version: declared in [`SKILL.md`](SKILL.md) YAML frontmatter (`version`).
 
+## [2.3.0] — 2026-08-24
+
+Agent decision + evaluation release (per architecture review P0–P2).
+
+### Added
+
+- **`reasoning/experiment-priority.md`** — heuristic ranking (Impact × Uncertainty × Cost) for next experiment
+- **`eval/fixtures/`** — minimal project inputs for Cases B, D, E, F
+- **`eval/README.md`** — maintainer manual eval workflow and release scoring discipline
+- **Confidence Output Template** in `lint/rules.md` (Confidence, Evidence, Signals, Missing)
+- **Calibration metadata** on balance rows (`confidence`, `calibration source`, `use scope`)
+
+### Changed
+
+- **`templates/design-state.md`** — Version Lineage, Experiment Backlog, Rejected revival columns
+- **`templates/iteration.md`** — Version Lineage block (supersedes, evidence)
+- **`templates/balance-spreadsheet.md`** — anchor confidence + per-row conf/calib columns
+- **`balance/value-budget.md`** — calibration metadata requirements
+- **`SKILL.md`** — Experiment mode loads experiment-priority when backlog unset; `version: 2.3.0`
+- **`experiments/framework.md`** — rank before experiment when multiple hypotheses
+- **`eval/benchmark-prompts.md`** — fixture paths under `eval/fixtures/`
+- **`templates/examples/micro-scavenger/design-state.md`** — backlog + lineage example
+- **`lint/checklist.md`** — backlog, lineage, confidence template refs
+- **`cheatsheet.md`** — experiment-priority routing for multi-hypothesis sessions
+
 ## [2.2.0] — 2026-08-24
 
 External resource quality pass: distill high-value URLs into agent-facing companions; demote maintainer bibliography.

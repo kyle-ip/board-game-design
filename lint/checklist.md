@@ -6,7 +6,7 @@ Format reference for project files: `templates/examples/micro-scavenger/`
 
 ## Playtest Evidence Lint
 
-Use with `lint/rules.md` BG001–BG012.
+Use with `lint/rules.md` BG001–BG012. For each ⚠ or ?, use the **Confidence Output Template** (Confidence, Evidence, Signals, Missing).
 
 - [ ] Latest playtest log linked from `design-state.md`
 - [ ] Win/seat data recorded if competitive
@@ -55,7 +55,8 @@ Use with `lint/rules.md` BG001–BG012.
 ## Design State
 
 - [ ] Locked / Open / Rejected sections populated
-- [ ] Next experiment defined if Open items remain
+- [ ] Experiment Backlog ranked if ≥2 hypotheses; rank 1 filled in Next Experiment
+- [ ] Version Lineage updated on build bump
 - [ ] Current risks ≤5 items
 
 ## Balance (if numeric game)

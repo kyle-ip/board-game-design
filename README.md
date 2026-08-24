@@ -200,7 +200,7 @@ If you see dominant strategy risk in the skeleton, run balance-spreadsheet on th
 |------|------|
 | [`SKILL.md`](SKILL.md) | Entrypoint: modes, invariants, indexes, default outputs |
 | [`templates/design-state.md`](templates/design-state.md) | Single source of truth for project decisions |
-| [`reasoning/`](reasoning/) | Design reasoning, decision matrix, hypothesis rules |
+| [`reasoning/`](reasoning/) | Design reasoning, decision matrix, hypothesis rules, experiment priority |
 | [`diagnostics/`](diagnostics/) | Symptom guides for 8 core failure modes |
 | [`experiments/`](experiments/) | Experiment framework |
 | [`kill-criteria.md`](kill-criteria.md) | Continue / Restructure / Pause-or-Kill gate |
@@ -217,6 +217,7 @@ If you see dominant strategy risk in the skeleton, run balance-spreadsheet on th
 | [`templates/`](templates/) | Project copy-out files |
 | [`templates/examples/micro-scavenger/`](templates/examples/micro-scavenger/) | **Format reference** example game |
 | [`eval/benchmark-prompts.md`](eval/benchmark-prompts.md) | Manual skill evaluation cases (Create through Lint) |
+| [`eval/README.md`](eval/README.md) | Eval workflow + `eval/fixtures/` for Cases B–F |
 | [`CHANGELOG.md`](CHANGELOG.md) | Semver release history |
 
 ### Progressive disclosure

@@ -29,13 +29,51 @@ Agent-side design linter (Markdown instructions, no CLI). Run before locking mec
 | ? | Insufficient evidence — collect in next playtest |
 | ✓ | No evidence of issue |
 
+## Confidence Output Template
+
+For each fired rule (⚠ or ?), expand beyond the one-line summary. Use this block so Lint → Diagnosis handoff is explicit.
+
+```
+BG001 First Player Advantage — ⚠
+
+Confidence: Medium
+Evidence: 7 plays, seat tracked
+Signals:
+- P1 win rate 57% (fair share 25% at 4p)
+- P1 took best market slot turn 1 in 5/7 games
+Missing:
+- Player count distribution across sessions
+- Skill/experience pairing by seat
+```
+
+| Confidence | When to use |
+|---|---|
+| **Low** | 1–2 plays, indirect signal, or designer intuition only |
+| **Medium** | 3+ plays with partial metrics, or strong quotes + weak numbers |
+| **High** | Clear metric breach + reproducible pattern across sessions |
+
+**Rules:**
+
+- Use **?** when Confidence would be Low **and** evidence column in Rules table is unmet — do not upgrade to ⚠ without data.
+- List **Missing** fields the next playtest should capture.
+- Route ⚠ items to `diagnostics/*`; do not propose fixes before hypothesis.
+
 ## Example Output (agent)
 
 ```
 Design Lint — v0.6
 
-⚠ BG001 First Player Advantage — P1 won 4/7 games
-⚠ BG003 Runaway Leader — leader income +1/round from round 3
+⚠ BG001 First Player Advantage
+   Confidence: Medium | Evidence: 7 plays
+   Signals: P1 won 4/7; first-turn resource advantage noted
+   Missing: seat rotation log
+   → diagnostics/first-player-advantage.md
+
+⚠ BG003 Runaway Leader
+   Confidence: Low | Evidence: 3 plays, round scores partial
+   Signals: leader +2 VP by round 3 in 2/3 games
+   Missing: income trace per round
+
 ? BG009 Analysis Paralysis — no turn timing recorded
 ✓ BG005 Dead Turn — no dead turns observed at 4p
 ```
@@ -57,3 +95,4 @@ Design Lint — v0.6
 
 - Failure mode table: `probability-and-balance.md`
 - Fix via experiment: `experiments/framework.md`
+- Rank next test: `reasoning/experiment-priority.md`

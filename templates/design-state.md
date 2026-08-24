@@ -13,6 +13,17 @@ Format reference: `templates/examples/micro-scavenger/design-state.md`
 | Current milestone | 0 Concept / 1 Core MVP / 2 Structure / 3 Playtest / 4 Polish / 5 Publish |
 | Last updated | |
 
+## Version Lineage
+
+Track why this build exists and what it replaced. Detail in `iterations/ITER-*.md` and `decisions/DEC-*.md`.
+
+| Field | Value |
+|---|---|
+| Previous version | e.g. v0.2 |
+| Supersedes | DEC-003, ITER-007 (if any) |
+| Reason for bump | One line — why this version |
+| Evidence | EXP-012 / PT-005 (links) |
+
 ## Locked (do not reopen without new contradicting evidence)
 
 Decisions that are settled. Link to `decisions/DEC-*.md` when formalized.
@@ -31,11 +42,11 @@ Unresolved design questions. Do not guess — mark Open until evidence closes th
 
 ## Rejected
 
-Ideas explicitly cut. Prevents re-litigating dead paths.
+Ideas explicitly cut. Prevents re-litigating dead paths. Not all rejected ideas are permanent — note revival conditions.
 
-| Rejected | Why not | Rejected on |
-|---|---|---|
-| | | |
+| Rejected | Why not | Rejected on | Superseded by | Revivable if |
+|---|---|---|---|---|
+| | | | DEC-xxx / v0.x | new evidence shows… |
 
 ## Active Hypotheses
 
@@ -60,7 +71,16 @@ Top design risks right now (max 5).
 1.
 2.
 
-## Next Experiment
+## Experiment Backlog
+
+Rank candidates before writing `experiment.md`. Method: `reasoning/experiment-priority.md`. When ≥2 active hypotheses, rank all; otherwise rank 1 is the next test.
+
+| Rank | ID | Impact | Uncertainty | Cost | Score | Rationale |
+|---|---|---|---|---|---|---|
+| 1 | HYP-00X | H/M/L | H/M/L | H/M/L | | |
+| 2 | | | | | | |
+
+### Next Experiment (rank 1)
 
 | Field | Value |
 |---|---|
@@ -74,5 +94,6 @@ Top design risks right now (max 5).
 After updating this file, also sync when applicable:
 
 - **Locked / Rejected** → `mechanism-skeleton.md` (Rejected Alternatives), `decision.md`
-- **Hypotheses / Evidence** → `experiment.md`, `playtest-log.md`
+- **Hypotheses / Evidence / Backlog** → `experiment.md`, `playtest-log.md`
+- **Version Lineage** → `iteration.md` on bump; link superseded decisions
 - **Risks / balance tells** → `balance-notes.md`

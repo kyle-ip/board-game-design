@@ -31,6 +31,7 @@ Load the smallest file first. Write project templates when designing/prototyping
 | Analysis paralysis | `diagnostics/analysis-paralysis.md` | cut branching; Ch 2 simultaneous |
 | Kingmaking / spite | `diagnostics/kingmaking.md` | Ch 5 |
 | Test a hypothesis | `experiments/framework.md` | `templates/experiment.md` |
+| Multiple hypotheses — what to test next? | `reasoning/experiment-priority.md` | update **Experiment Backlog** in `design-state.md` |
 | Continue or kill project | `kill-criteria.md` | `decision.md` |
 | Output quality before delivery | `lint/checklist.md` | fix or flag TBD |
 | Need a playable prototype soon | `templates/pnp-checklist.md` | rulebook + components-sheet + `tools/` |

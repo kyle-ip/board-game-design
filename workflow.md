@@ -35,7 +35,7 @@ When regressing:
 1. **Write `decision.md`** — note superseded choice; move failed mechanisms to **Rejected** in `design-state.md`
 2. **Write `iteration.md`** — record build version bump, observed problem, and regression target milestone
 3. **Preserve history** — do **not** delete `playtests/`, `experiments/`, or prior logs; evidence chain must stay intact
-4. **Update `design-state.md`** — set current milestone, refresh **Next Experiment**, clear stale **Active Hypotheses** tied to rejected chassis
+4. **Update `design-state.md`** — set current milestone, update **Version Lineage**, re-rank **Experiment Backlog**, clear stale **Active Hypotheses** tied to rejected chassis
 5. **Do not tune numbers** on a broken chassis — restructure mechanism skeleton before balance passes
 
 ## Milestone 0 — Concept

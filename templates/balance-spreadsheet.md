@@ -9,6 +9,9 @@ Copy into project folder. Expand as CSV. See `balance/balance-model.md` and `bal
 | Game | |
 | Version | |
 | VP anchor | e.g. 1 VP = 1 VP; 1 Scrap ≈ 0.5 VP |
+| Anchor confidence | Low / Medium / High |
+| Calibration source | heuristic / playtest / data |
+| Use scope | comparison only — internal consistency within this game |
 
 ## Resource Conversion Baseline
 
@@ -32,9 +35,9 @@ Expected resources **per turn** for average play:
 
 ## Card / Action Value Budget
 
-| id | name | cost | imm VP | delayed VP | resource | tempo | info | risk | total est | target | OK? |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| | | | | | | | | | | | |
+| id | name | cost | imm VP | delayed VP | resource | tempo | info | risk | total est | target | conf | calib | OK? |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| | | | | | | | | | | | L/M/H | heur/play/data | |
 
 ## Set Collection Curve (if applicable)
 

@@ -11,6 +11,14 @@ Summarize one design iteration (version bump). Copy to project `iterations/ITER-
 | Previous build | v0.7 |
 | New build | v0.8 |
 
+## Version Lineage
+
+| Field | Value |
+|---|---|
+| Supersedes | DEC-003, DEC-005 (decision IDs this iteration replaces) |
+| Reason | One line — why v0.8 exists |
+| Evidence | EXP-012, PT-005 (playtest/experiment IDs) |
+
 ## Observed Problem
 
 Symptom in plain language (quote playtest if possible):
@@ -65,6 +73,7 @@ One sentence:
 
 ## Sync
 
-- [ ] `design-state.md` updated
+- [ ] `design-state.md` updated (including Version Lineage + Experiment Backlog)
+- [ ] Superseded decisions marked in `decisions/DEC-*.md`
 - [ ] `balance-notes.md` if numeric
 - [ ] `rulebook-draft.md` if rules changed

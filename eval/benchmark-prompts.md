@@ -33,7 +33,7 @@ Write concept-brief, design-state, and mechanism-skeleton to ./eval-case-a/ — 
 
 ```
 After 3 playtests, players say the game is "fine but nothing exciting happens."
-Project files are in ./eval-case-b/. Read design-state first.
+Project files are in ./eval/fixtures/case-b/ (or copy to ./eval-case-b/). Read design-state first.
 Diagnose before proposing rule changes.
 ```
 
@@ -74,7 +74,7 @@ linked by EXP-001 / HYP-001.
 ```
 Three playtests confirm the core loop is boring — same action every turn.
 Run kill-criteria gate. If Restructure, regress to mechanism skeleton and preserve
-all playtest history in ./eval-case-d/.
+all playtest history in ./eval/fixtures/case-d/ (copy to ./eval-case-d/ if mutating).
 ```
 
 **Pass criteria:**
@@ -92,7 +92,7 @@ all playtest history in ./eval-case-d/.
 **Prompt:**
 
 ```
-Review CARD-014 through CARD-018 in ./eval-case-e/components-sheet.md.
+Review CARD-014 through CARD-018 in ./eval/fixtures/case-e/components-sheet.md.
 Use value-budget framing. Flag cards where cost vs estimated value differs by >40%.
 State clearly these are heuristics, not proven balance facts.
 ```
@@ -103,6 +103,7 @@ State clearly these are heuristics, not proven balance facts.
 - [ ] Per-card rows with cost vs total estimated value
 - [ ] Flags outliers with >40% gap (or explains why threshold waived)
 - [ ] Treats VP-equivalents as **sanity check**, not empirical truth
+- [ ] States **confidence**, **calibration source**, and **use scope** per `balance/value-budget.md`
 - [ ] Recommends playtest to confirm if suggesting numeric changes
 
 ---
@@ -112,7 +113,7 @@ State clearly these are heuristics, not proven balance facts.
 **Prompt:**
 
 ```
-Review ./eval-case-f/ for design issues. Run design lint BG001–BG014.
+Review ./eval/fixtures/case-f/ for design issues. Run design lint BG001–BG014.
 Only flag issues with evidence; mark insufficient evidence as ? not ⚠.
 ```
 
@@ -120,6 +121,7 @@ Only flag issues with evidence; mark insufficient evidence as ? not ⚠.
 
 - [ ] Outputs lint-style report with BG001–BG014 coverage (or subset with reason)
 - [ ] Uses ⚠ / ? / ✓ semantics from `lint/rules.md`
+- [ ] For each ⚠ or ?, uses **Confidence Output Template** (Confidence, Evidence, Signals, Missing)
 - [ ] Does **not** claim first-player advantage without seat/win data (? if missing)
 - [ ] Routes confirmed issues to matching `diagnostics/*.md`
 - [ ] Does not bulk-load all chapters
@@ -140,4 +142,4 @@ Re-run after each skill release that touches `SKILL.md`, `workflow.md`, or templ
 
 - Mode definitions: `SKILL.md` Agent Modes + Mode → Required Artifacts
 - Regression steps: `workflow.md` Regression Protocol
-- Playtest linkage: `templates/playtest-log.md`
+- Fixture inputs: `eval/fixtures/` (Cases B–F); maintainer guide: `eval/README.md`

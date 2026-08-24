@@ -2,7 +2,7 @@
 
 Relative value framework for internal consistency. Not a substitute for playtesting — a sanity check before and after tests.
 
-Use with `value-budget.md` and `templates/balance-spreadsheet.md`.
+Use with `value-budget.md` and `templates/balance-spreadsheet.md`. Every VP-equivalent estimate needs **confidence**, **calibration source**, and **use scope** (comparison within this game only) — see `value-budget.md` Calibration Metadata.
 
 ## Value Dimensions
 

@@ -2,7 +2,7 @@
 
 Upgrade playtests from **logging** to **experiment management**. Use in **Experiment** mode.
 
-Prerequisite: read `reasoning/hypothesis-rules.md`. Every experiment links to one falsifiable hypothesis.
+Prerequisite: read `reasoning/hypothesis-rules.md`. Every experiment links to one falsifiable hypothesis. When multiple hypotheses compete, rank first via `reasoning/experiment-priority.md` and update **Experiment Backlog** in `design-state.md`.
 
 ## When to Write an Experiment
 

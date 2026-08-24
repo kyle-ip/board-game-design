@@ -1,7 +1,7 @@
 ---
 name: board-game-design
 description: "Design and iterate tabletop games with an evidence-driven workflow: Building Blocks mechanisms (13 chapters), falsifiable hypotheses, playtest experiments, design-state, diagnosis, balance, and paper PnP. Invoke when designing or iterating board/card games; diagnosing symptoms (snowball, boredom, unfairness); running experiments with pass/fail criteria; evaluating continue/restructure/kill; maintaining design-state across sessions; balancing cards and economy; or building print-and-play prototypes."
-version: "2.2.0"
+version: "2.3.0"
 license: MIT
 compatibility: "Agent Skills hosts (Cursor, Claude Code, and other SKILL.md-compatible runtimes). Markdown-only; no required network or packages."
 metadata:
@@ -32,8 +32,8 @@ Pick one mode per session. Load the smallest file set that mode requires.
 | Mode | Trigger | Load first | Write / update |
 |---|---|---|---|
 | **Create** | New game from scratch | `workflow.md`, `theme-and-experience.md` | concept-brief, design-state, mechanism-skeleton |
-| **Diagnose** | Symptom (boring, broken, unfair) | `cheatsheet.md` → `diagnostics/*` | design-state, decision |
-| **Experiment** | Test a specific hypothesis | `experiments/framework.md` | experiment, playtest-log |
+| **Diagnose** | Symptom (boring, broken, unfair) | `cheatsheet.md` → `diagnostics/*`; if ≥2 candidate fixes, also `reasoning/experiment-priority.md` | design-state, decision |
+| **Experiment** | Test a specific hypothesis | `experiments/framework.md`; if ≥2 hypotheses or backlog unset, also `reasoning/experiment-priority.md` | experiment, playtest-log |
 | **Balance** | Numbers, cards, economy | `balance/README.md` | balance-spreadsheet, balance-notes |
 | **Prototype** | PnP, rulebook, components | `templates/*`, `tools/*` | rulebook-draft, components-sheet, pnp-checklist |
 
@@ -47,7 +47,7 @@ Every session on an **ongoing project** must read and update `design-state.md`. 
 |---|---|---|
 | **Create** | `concept-brief.md`, `design-state.md`, `mechanism-skeleton.md` | Locked/Rejected land in design-state; compare 2–4 candidates in skeleton |
 | **Diagnose** | `design-state.md`, `decision.md` (if intervention chosen) | Symptom routed via `diagnostics/*`; no rule change before hypothesis |
-| **Experiment** | `experiment.md`, `playtest-log.md` (linked by EXP/HYP IDs) | Conclusion → design-state Evidence; supported/refuted → decision or iteration |
+| **Experiment** | `experiment.md`, `playtest-log.md` (linked by EXP/HYP IDs) | Update **Experiment Backlog**; conclusion → design-state Evidence |
 | **Balance** | `balance-notes.md`; `balance-spreadsheet.md` when numeric | One fix per pass; link to experiment if testing one variable |
 | **Prototype** | `rulebook-draft.md`, `components-sheet.md`, `pnp-checklist.md` | Run `lint/checklist.md` before delivery |
 
@@ -158,6 +158,7 @@ Single-code or narrow mechanism questions: jump **directly** to the chapter file
 | Design reasoning, compare mechanisms | `reasoning/design-reasoning.md` |
 | Symptom → diagnosis | `cheatsheet.md` → `diagnostics/` |
 | Falsifiable hypotheses | `reasoning/hypothesis-rules.md` |
+| Rank next experiment | `reasoning/experiment-priority.md` |
 | Run experiment | `experiments/framework.md` |
 | Continue or kill project | `kill-criteria.md` |
 | Output quality check | `lint/checklist.md` |
@@ -196,6 +197,7 @@ Single-code or narrow mechanism questions: jump **directly** to the chapter file
 | Path | Purpose |
 |---|---|
 | [eval/benchmark-prompts.md](eval/benchmark-prompts.md) | Manual skill evaluation cases (Create through Lint) |
+| [eval/README.md](eval/README.md) | Maintainer eval workflow + fixture paths |
 | [CHANGELOG.md](CHANGELOG.md) | Semver release history (matches `version` in frontmatter) |
 | [workflow.md](workflow.md) | Milestones 0–5 with template outputs; stage regression allowed |
 | [kill-criteria.md](kill-criteria.md) | Continue / Restructure / Pause-or-Kill gate |
@@ -207,7 +209,7 @@ Single-code or narrow mechanism questions: jump **directly** to the chapter file
 | [patterns.md](patterns.md) | Selected mechanism patterns |
 | [glossary.md](glossary.md) | Term definitions |
 | [external-resources.md](external-resources.md) | Agent-facing links by Mode (~25); maintainer index in `references/web-resources.md` |
-| [reasoning/](reasoning/) | Design reasoning, decision matrix, hypothesis rules |
+| [reasoning/](reasoning/) | Design reasoning, decision matrix, hypothesis rules, experiment priority |
 | [diagnostics/](diagnostics/) | Symptom guides (8 core failure modes) |
 | [experiments/](experiments/) | Experiment framework |
 | [balance/](balance/) | Balance model, value budget; index to probability doc |
