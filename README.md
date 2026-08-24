@@ -4,14 +4,21 @@
   </a>
 </p> -->
 
-<p align="center">
-  <span style="display: inline-flex; align-items: center; justify-content: center; gap: 1.25rem; flex-wrap: wrap;">
-    <a href="assets/banner-square.svg">
-      <img src="assets/banner-square.png" alt="Loop Hex" width="128" height="128" style="border-radius: 16px; display: block;">
-    </a>
-    <span style="font-size: 2.25rem; font-weight: 700; letter-spacing: 0.02em; line-height: 1.2;">Board Game Design</span>
-  </span>
-</p>
+<div align="center">
+  <table cellpadding="0" cellspacing="0">
+    <tr>
+      <td valign="middle">
+        <a href="assets/banner-square.svg">
+          <img src="assets/banner-square.png" alt="Loop Hex" width="128" height="128" style="border-radius: 16px;">
+        </a>
+      </td>
+      <td width="20"></td>
+      <td valign="middle">
+        <h1>Board Game Design</h1>
+      </td>
+    </tr>
+  </table>
+</div>
 
 <p align="center">
   <a href="https://agentskills.io/specification"><img src="https://img.shields.io/badge/Agent%20Skills-compatible-2a9d8f?style=flat-square" alt="Agent Skills compatible"></a>
