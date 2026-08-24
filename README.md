@@ -1,16 +1,16 @@
-<!-- <p align="center">
-  <a href="assets/banner.svg">
-    <img src="assets/banner.png" alt="Board Game Design" width="100%" style="border-radius: 16px;">
-  </a>
-</p> -->
-
 <p align="center">
+  <a href="assets/banner.svg">
+    <img src="assets/banner.png" alt="Board Game Design" width="100%" style="border-radius: 10px;">
+  </a>
+</p>
+
+<!-- <p align="center">
   <a href="assets/banner-square.svg">
     <img src="assets/banner-square.png" alt="Loop Hex" width="128" height="128" style="border-radius: 16px;" align="middle">
   </a>
   &#160;&#160;&#160;
   <strong><font size="6">Board Game Design</font></strong>
-</p>
+</p> -->
 
 <p align="center">
   <a href="https://agentskills.io/specification"><img src="https://img.shields.io/badge/Agent%20Skills-compatible-2a9d8f?style=flat-square" alt="Agent Skills compatible"></a>
