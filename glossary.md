@@ -1,0 +1,194 @@
+# Glossary
+
+Every significant term from *Building Blocks of Tabletop Game Design*, alphabetically sorted with chapter references.
+
+- **Action (ACT)** — Atomic or compound step chosen by a player to advance the game (Ch 3).
+- **Action Drafting (ACT-02)** — Mathematical parent of Worker Placement: selecting from a dwindling set of actions (Ch 3, Ch 9).
+- **Action Points (ACT-01)** — Currency spent on actions; favors flexibility over strictness (Ch 3).
+- **Action Queue (ACT-06)** — Pre-programmed sequence of actions; rolling (head execution) or batch (full-replacement) variants (Ch 3).
+- **Action Retrieval (ACT-03)** — Spent action tokens return to a player's pool, restoring availability (Ch 3).
+- **Action Timer (TRN-12)** — Real-time per-player or per-action clock (Ch 2).
+- **Advantage Token (ACT-14)** — Marker granting a one-shot edge (Ch 3).
+- **Agential Card Draw** — Modern card games where players choose when/how to draw, discard, convert (vs. one-in-one-out) (Ch 13).
+- **AI-based Solo (STR-04)** — Automa-style solo AI that mimics multiplayer feel (Ch 1).
+- **AI vs. Non-AI Co-op** — AI co-ops have a behavior-algorithm opponent; non-AI co-ops present a puzzle (Ch 1).
+- **All-pay Auction** — All bidders pay their bids regardless of winning (Ch 8).
+- **Alliances (ECO-19)** — Persistent multi-player agreements, often with shared victory (Ch 7).
+- **Alpha Player Problem / Quarterbacking** — One player dominates group decisions in co-ops (Ch 1).
+- **Always Available Purchases (ECO-08)** — Fixed-cost open market (Ch 7).
+- **Anchor/Distance** — Hidden-movement technique: track last known position + distance counter (Ch 10).
+- **Area Influence** — Umbrella category covering player/token/area relationships; Area Majority and Area Control are sub-branches (Ch 11).
+- **Area Majority (ARC-02)** — Most forces in an area control it; opposing forces co-exist (Ch 11).
+- **Area Parameters (ARC-05)** — Attributes tied to controlling areas: VP, resources, powers, stacking (Ch 11).
+- **Asset** — Any source of value: money, goods, properties, turn order, board position, hand size (Ch 7).
+- **Automatic Resource Growth (ECO-06)** — Resources multiply over time without player action (Ch 7).
+- **Automa** — Solo AI philosophy (Pedersen): represents outputs without simulating a full player (Ch 1).
+- **Bash-the-Loser** — Falling-behind player becomes everyone's target (Ch 1).
+- **Become First Player Action** — Action granting first-player status next round (Ch 2).
+- **Bias (MOV-14)** — Pieces auto-move or move more easily in a direction (Automatic vs Influencer) (Ch 10).
+- **Blocking (hard)** — Occupied building cannot be used by others; standard scarcity (Ch 9).
+- **Blocking (soft)** — Occupied buildings cost more / trigger duel / allow bumping (Ch 9).
+- **Bombs** — Unbeatable combinations in ladder-climbing games, override any preceding set (Ch 13).
+- **Bonus Time** — Real-time phase-end extension for non-finishing players (Ch 2).
+- **Bribery (ECO-16)** — Payment to alter another player's behavior (Ch 7).
+- **Bumping** — Occupied building reused; original worker displaced, owner gains a bonus (Ch 9).
+- **Cards** — Portable rulebook additions; each carries a small payload of rules (Ch 13).
+- **Catch the Leader** — Mechanism helping trailing players; Stat Turn Order is one implementation (Ch 2, Ch 5, Ch 7).
+- **Chaining (MOV-13)** — Stationary pieces extended as chains, creating a journey feel (Ch 10).
+- **Chit-Pull System** — Pool-building resolution using drawn tokens/chips instead of cards (Ch 13).
+- **Closed Economy** — All resources already exist; only move between players; zero-sum timing dynamics (Ch 7).
+- **Command Cards (ACT-05)** — Cards played to trigger actions; information horizon = hand size (Ch 3).
+- **Communication Limits (UNC-06)** — Restrictions on what/how players communicate (Hanabi, The Mind) (Ch 6).
+- **Competitive Games (STR-01)** — Two or more players, single winner (Ch 1).
+- **Completing Targets (VIC-11)** — Game ends after N goals completed (Pandemic) (Ch 5).
+- **Connections (VIC-14)** — Game ends when N board connections are made (Ch 5).
+- **Constrained Bidding (AUC-06)** — Fixed budget of bidding tokens; solves length + small-value-distinction problems (Ch 8).
+- **Consumable vs. Resettable Legacy** — Spectrum from physically altered components to reorderable decks (Ch 1).
+- **Contracts (ECO-15)** — Persistent agreements with in-game consequences (Ch 7).
+- **Cooperative Games (STR-02)** — All players win/lose together against the game (Ch 1).
+- **Critical Hits and Failures (RES-03)** — Extreme die faces: bonus success / catastrophic failure; exploding dice can produce unbounded hits (Ch 4).
+- **Crossroads Mechanism** — Hidden-trigger narrative choices activated by player actions (Ch 1, Ch 3).
+- **Deck Building (CAR-05)** — Iteratively acquire cards to improve a personal deck; self-improving engine (Ch 13).
+- **Delayed Purchase (ECO-04)** — Buy now, receive later (Ch 7).
+- **Delayed Resolution** — Building rewards pay at round end (Caylus); enables combos + placement-order independence (Ch 9).
+- **Die Icons (RES-05)** — Custom die faces with symbols; cognitively simpler than numbers (Ch 4).
+- **Different Dice (MOV-07)** — Different dice per unit/state determine move distance (Ch 10).
+- **Discounts (ECO-10)** — Reduced cost for repeat customers or bulk (Ch 7).
+- **Drift (MOV-08)** — Two cards: sum = forward, difference = sideways (Snow Tails) (Ch 10).
+- **Drafting (CAR-06)** — Ordered selection of cards/elements; Rochester / pick-and-pass / snake / parallel variants (Ch 13).
+- **Drafting Verbs/Nouns/Adjectives** — Deck builders draft verbs (Dominion); Orléans drafts nouns; Assault of the Giants drafts adjectives (Ch 12, Ch 13).
+- **Dutch Auction** — Price drops until a buyer accepts; market-row implementation is most ergonomic (Ch 8).
+- **Dutch Priority Auction (AUC-16)** — Dutch auction where first to pass gets priority (Ch 8).
+- **Echo** — Follow variant (Glory to Rome/SPQF) where multiple matching cards power the action (Ch 3).
+- **Elapsed Real Time (VIC-13)** — Game ends after set actual time; watch for stalling (Ch 5).
+- **Enclosure (RES-12)** — Capture by surrounding (Go, Reversi); corners valuable (Ch 4).
+- **End-Game Bonuses (VIC-06)** — Hidden/exposed bonuses scored at game end; roadmap for new players (Ch 5).
+- **English Auction (AUC-02)** — Open ascending-bid auction (Ch 8).
+- **Escalating Sets** — Sets with min/max valid size; capped sets incentivize diversification (Ch 12).
+- **Exchanging (ECO-01)** — Direct conversion of resources at fixed ratios (Ch 7).
+- **Finale (VIC-16)** — Mini-game determines victor after main game; reserve for lighter games (Ch 5).
+- **Fixed Number of Events (VIC-12)** — Game ends after event occurs N times; use deck-splitting to avoid clustering (Ch 5).
+- **Fixed Number of Rounds (VIC-09)** — Game ends after set rounds; prefer natural tracking over round marker (Ch 5).
+- **Fixed Turn Order (TRN-01)** — Player order never changes (Ch 2).
+- **Follow (ACT-08)** — Other players may join the active player's action; engagement up, pace down (Ch 3).
+- **Follow Suit** — Requirement to play a card of the lead suit if possible (Ch 13).
+- **Force Commitment (RES-14)** — Battle is about guessing opponent's intent, not just comparing army sizes (Ch 4).
+- **Force Projection (ARC-06)** — A unit's potential to act in adjacent spaces threatens and shapes opponent decisions (Ch 11).
+- **Fungible Hierarchical Resources** — Conversion chains ordered by value (Century: yellow<red<green<brown) (Ch 7).
+- **Gating and Unlocking (ACT-15)** — Designer-controlled pacing via prerequisite mechanisms (Ch 3).
+- **Hate Drafting** — Taking a sub-optimal card to deny an opponent; emergent behavior in synergy-heavy drafts (Ch 2, Ch 13).
+- **Hidden and Exposed Victory Points (VIC-05)** — Hidden VPs alleviate last-turn over-analysis; exposed VPs with fixed turns create edge effects (Ch 5).
+- **Hidden Control (UNC-11)** — Players have hidden influence on locations, revealed to perform actions (Ch 6).
+- **Hidden Information (UNC-08)** — Information one player has that others don't (Ch 6).
+- **Hidden Roles (UNC-04)** — Players have secret identities with different win conditions (Ch 6).
+- **Highest Lowest (VIC-20)** — Anti-specialization: player with the highest *lowest* score wins; forces breadth (Ch 5).
+- **Impulse (MOV-09)** — Turn broken into small impulses; faster units move in more impulses (Ch 10).
+- **Income (ECO-05)** — Recurring resource generation (Ch 7).
+- **Input Randomness** — Random result informs decision *before* commitment; player feels agency (Ch 4, Ch 6).
+- **Interleaved vs. Sequential Phases (TRN-15)** — Interleaved: each player acts per phase; Sequential: one player does all phases (Ch 2).
+- **Interrupts (TRN-17)** — Out-of-turn actions; resolved via LIFO stack (Ch 2).
+- **Investment (ECO-13)** — Pay now for future return (Ch 7).
+- **I Cut, You Choose (ECO-09)** — One player divides, the other selects; obscures value, self-policing fairness (Ch 7).
+- **King of the Hill (VIC-17)** — Points earned by occupying a special board position (Ch 5).
+- **Ladder Climbing (CAR-02)** — Equal-or-higher set plays; shedding + set-comparison hybrid (Ch 13).
+- **Laying Off** — Adding cards to existing melds on the table (Rummy) (Ch 13).
+- **Legacy Games (STR-10)** — Multi-session with permanent, irreversible changes; gated unlocks (Ch 1).
+- **LIFO / FIFO** — Last-In-First-Out vs. First-In-First-Out stack/tie resolution (Ch 2, Ch 3).
+- **Line of Sight (ARC-08)** — Determines visibility/attack; thread-laying vs. model's-eye-view vs. cylinder-proxy (Ch 11).
+- **Loans (ECO-07)** — Borrowed resources; either punishment or leverage (Ch 7).
+- **Lot** — The item or group of items up for auction (Ch 8).
+- **Market (ECO-03)** — Self-balancing price mechanism for resource production (Ch 7).
+- **Market Row** — Refilling display of purchasable cards drawn from a randomized deck (Ascension, Star Realms) (Ch 13).
+- **Master Builder** — Special worker type or token-pull mechanism governing placement priority (Ch 9).
+- **Melding and Splaying (CAR-03)** — Melds are sets in a specific relationship; splaying is physical overlap revealing/concealing icons (Ch 13).
+- **Memory (UNC-03)** — Hidden, trackable information (HTI); tracking gives advantage; sharply reduces accessibility (Ch 6).
+- **Minimap (RES-13)** — Conflicts move to a separate battle board (Titan, Bismarck) (Ch 4).
+- **Multiple-Lot Auction (AUC-11)** — Simultaneous auction of multiple lots; mathematically identical to Area Majority (Ch 8).
+- **Negotiation (ECO-18)** — Non-binding discussion preceding trade/alliance (Ch 7).
+- **No-Shuffle Deck Builder** — Variant preserving deck order (Aeon's End); removes shuffle variance (Ch 13).
+- **Once-Around Auction (AUC-07)** — Each player gets one bid opportunity (Ch 8).
+- **Once-Per-Game Abilities (ACT-13)** — Powerful single-use actions (Ch 3).
+- **One-in-One-Out Economy** — Symmetric, metered card flow; each turn adds one, removes one (Ch 13).
+- **One vs. All (STR-03)** — Asymmetric: one overlord vs. individual heroes (Ch 1).
+- **Open Auction (AUC-01)** — Free-form ascending bid; messy without auctioneer (Ch 8).
+- **Open Economy** — Bank pumps new resources into system; fosters progress, easier to balance (Ch 7).
+- **Order Counters (ACT-09)** — Pre-planned action sequence via facedown tokens (Ch 3).
+- **Orthogonal Sets** — Second set dimension counterbalancing a primary one (7 Wonders science) (Ch 12).
+- **Output Randomness** — Random outcome resolves a committed decision; creates drama/tension (Ch 4, Ch 6).
+- **Over-tricking** — Taking more tricks than contracted; value depends on game (Ch 13).
+- **Ownership (ECO-14)** — Persistent possession generating ongoing benefits (Ch 7).
+- **Partnership vs. Collaborative Play** — Partnership = each retains agency; collaborative = consensus (Ch 1).
+- **Pattern Movement (MOV-03)** — Pieces move in fixed patterns (Chess knight, Shogi lance) (Ch 10).
+- **Performative Uncertainty** — Uncertainty from player's own dexterity/physical skill (Ch 6).
+- **Player Elimination (VIC-08)** — Winner is the only player remaining; anti-pattern except in short/light games (Ch 5).
+- **Player Judge (RES-16)** — One player subjectively selects winner; best with anonymous submissions (Ch 4).
+- **Pool Building** — Larger category containing deck building; pools can be chips, workers, dice (Ch 13).
+- **Prisoner's Dilemma (RES-08)** — Simultaneous-reveal mechanism where cooperation vs. betrayal produces different payoffs (Ch 4).
+- **Probability Management (UNC-09)** — Players manage risk under uncertainty (Ch 6).
+- **Progressive Turn Order (TRN-04)** — Pass token; next passer goes next; large gaps problematic at high player counts (Ch 2).
+- **Promotion** — Pieces reaching the board's end convert to a more powerful version (Chess, Shogi) (Ch 10).
+- **Push-Your-Luck (UNC-02)** — Risk current gains for more; levers: sunk-cost attachment + uncalculable odds (Ch 6).
+- **Pyramidal Deck** — Quantity of cards in each rank equals the rank's value (The Great Dalmuti) (Ch 13).
+- **Race (VIC-07)** — First to a target wins; many VP-threshold games are races in disguise (Ch 5).
+- **Random Production (ECO-12)** — Resource output determined randomly each round (Ch 7).
+- **Random Turn Order (TRN-11)** — Player order changes randomly each round (Ch 2).
+- **Real-Time (TRN-07)** — No turn order; all players act simultaneously under clock (Ch 2).
+- **Relative Position (MOV-11)** — Only relative order tracked, not absolute position (Ch 10).
+- **Representational AI** — Automa principle: mimic outputs, don't model the full player (Ch 1, Ch 3).
+- **Resolution** — How conflicts/outcomes are determined (Ch 4).
+- **Rerolling and Locking (RES-21)** — Dice may be rerolled or locked; rerolling averages ~+0.75 but can worsen result (Ch 4).
+- **Resource** — Money and goods specifically (not structures or intangibles) (Ch 7).
+- **Resource to Move (MOV-05)** — Players expend a resource to move; mitigates Roll-and-Move randomness (Ch 10).
+- **Reverse Auction (AUC-13)** — Price to avoid a penalty; use as seasoning, not anchor (Ch 8).
+- **Rock, Paper, Scissors (RES-07)** — Antidote to transitive strength ladders (Ch 4).
+- **Role Order (TRN-10)** — Role selection determines turn order (Ch 2).
+- **Roles with Asymmetric Information (UNC-05)** — Different win conditions + different starting information (Ch 6).
+- **Roll and Move (MOV-02)** — Randomizer determines move distance; anti-pattern without mitigation (Ch 10).
+- **Rondel (ACT-10)** — Circular action track; movement costs increase with distance (Ch 3).
+- **Score-and-Reset (STR-09)** — Stop, score, reset, repeat; cumulative scoring across rounds (Ch 1).
+- **Scenario/Mission/Campaign Games (STR-08)** — Variable maps/resources/win conditions in narrative or standalone scenarios (Ch 1).
+- **Sealed-Bid Auction (AUC-04)** — All bid simultaneously; quick for sub-system auctions (Ch 8).
+- **Selection Order Bid (AUC-10)** — Pay half your bid when you pass (Ch 8).
+- **Semi-Cooperative Games (STR-05)** — Group wins/loses, but one player is crowned individual winner (Ch 1).
+- **Set Collection** — Scoring by collecting sets; synergy makes value non-linear (Ch 12).
+- **Set Element Exclusivity** — Whether an element can belong to only one set (SET) or be reused (routes) (Ch 12).
+- **Shared Action Queue (ACT-07)** — All players contribute to a single queue (Ch 3).
+- **Shortcuts (MOV-23)** — Shorter/riskier routes warping board geometry (Ch 10).
+- **Simultaneous Action Selection (TRN-09)** — All choose actions at once; Yomi-enabling (Ch 2).
+- **Single Loser Games (STR-06)** — One player loses; others survive (Ch 1).
+- **Sinking-Cost Fallacy** — Emotional driver of Push-Your-Luck; invest based on past investment, not expected return (Ch 6).
+- **Snake Draft** — Invert draft order each round to mitigate turn-order imbalance (Ch 13).
+- **Solo Games (STR-04)** — Single-player mode or standalone (Ch 1).
+- **Squaring (n²)** — Sharply accelerating set curve (1, 4, 9, 16); reserve for small sets / shoot-the-moon (Ch 12).
+- **Stacking Limits** — Caps on how many units may occupy a space (Ch 11).
+- **Standard Worker Placement (WPL-01)** — Workers claim exclusive action spaces; hard blocking by default (Ch 9).
+- **Static Capture (RES-11)** — Pieces captured when another occupies/passes their space (Chess, Checkers) (Ch 4).
+- **Stat Check (RES-02)** — Roll + modifier vs. target number; unit quality matters (Ch 4).
+- **Stat Turn Order (TRN-02)** — Player order set by a stat (e.g., highest bid); Catch-the-Leader implementation (Ch 2).
+- **Story Points** — Narrative memory markers (Legacy of Dragonholt) (Ch 3).
+- **Strong Left-Right Binding** — Games heavily impacted by turn order and seating adjacency (Ch 7, Ch 8, Ch 9).
+- **Sunk-Cost Fallacy** — Players invest more based on past investment rather than expected return; Push-Your-Luck lever (Ch 6).
+- **Super-set / Set of Sets** — A set whose elements are themselves sets (Ticket to Ride tickets) (Ch 12).
+- **Tech Trees / Tech Tracks (ACT-16)** — Player-driven specialization via prerequisite chains (Ch 3).
+- **Territories and Regions (ARC-04)** — Hierarchical maps where controlling a set of territories grants bonuses; spatial Set Collection (Ch 11).
+- **Tessellation (MOV-01)** — Grid-based movement; hexagons preferred over squares when diagonal realism matters (Ch 10).
+- **Time Track (TRN-13)** — Action cost = waiting time; "price tag" on each action (Ch 2).
+- **Trading (ECO-02)** — Player-to-player resource exchange; needs Set Collection for differential valuation (Ch 7).
+- **Traitor Games (STR-07)** — Hidden traitors inside a cooperative game (Ch 1).
+- **Triangular Numbers** — Sequence 1, 3, 6, 10, 15, 21; marginal value of nth card = n; default escalating curve (Ch 12).
+- **Trick Taking (CAR-01)** — Players play cards to win tricks; specialized auction where lot = bids (Ch 13).
+- **Trump** — A suit that outranks the lead suit regardless of value; fixed / bid-determined / single-card-shifting (Ch 13).
+- **Tug of War (VIC-19)** — Back-and-forth positional scoring (Ch 5).
+- **Turn / Round / Phase / Stage** — Hierarchical time units; Phases named, Rounds uniform, Stages above Rounds (Ch 2).
+- **Unknown Information (UNC-07)** — Information no player has (Ch 6).
+- **Unlocks** — Gated legacy content revealed at session end; often whole new mechanisms (Ch 1).
+- **Upgrades (ECO-11)** — Improve existing components (Ch 7).
+- **Variable Player Powers (ACT-12)** — Asymmetric faction abilities; best on simple frameworks (Ch 3).
+- **Variable Setup (UNC-10)** — Different starting configurations; "last page of the rules" (Dominion's 10 kingdom cards) (Ch 6).
+- **Vickrey Auction (AUC-09)** — Second-bid auction; truthful bidding dominant but unintuitive (Ch 8).
+- **Victory Points as a Resource (VIC-04)** — VPs spendable as currency; players cautious when not themed as money (Ch 5).
+- **Voting (RES-15)** — Players vote Yay/Nay; Area Majority variant encouraging negotiation (Ch 4).
+- **Wheeling** — Drafting behavior: pass a desired card betting it returns; emergent, not a rule (Ch 13).
+- **Worker Upkeep / Feeding** — Recurring cost for permanent workers; throttles worker acquisition (Ch 9).
+- **Yomi** — Japanese term for anticipating opponents' moves; central to simultaneous selection (Ch 2, Ch 3, Ch 4, Ch 6).
+- **Zone of Control (ARC-07)** — Spaces an opponent cannot pass through unchallenged; Hard (wargame friction) vs. Soft (costly but possible) (Ch 11).

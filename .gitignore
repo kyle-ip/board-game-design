@@ -1,0 +1,23 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors / agents
+.idea/
+.vscode/
+*.swp
+*~
+.trae/
+
+# Local / generated
+*.log
+.env
+.env.*
+!.env.example
+
+# Python / tooling noise (if evals added later)
+__pycache__/
+.venv/
+venv/
+*.pyc
