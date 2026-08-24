@@ -40,11 +40,6 @@ A curated web resource list assembled for building the "Board Game Designer" ski
 - Language: English
 - Value: Walks through MDA, core loops, feedback loops, flow, and emergence across six Bloom taxonomy levels (Remembering → Creating). Good template for the skill's educational output.
 
-### MDA: The Game Design Trilogy (Chinese intro)
-- Source: https://blog.csdn.net/qq526978749/article/details/132668024
-- Language: Chinese
-- Value: A Chinese-language introduction to MDA for terminology consistency when the skill addresses Chinese-speaking users.
-
 ---
 
 ## 2. Classic Books & Textbooks
