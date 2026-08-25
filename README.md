@@ -14,7 +14,7 @@
 
 <p align="center">
   <a href="https://agentskills.io/specification"><img src="https://img.shields.io/badge/Agent%20Skills-compatible-2a9d8f?style=flat-square" alt="Agent Skills compatible"></a>
-  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-4.0.0-f4a261?style=flat-square" alt="Version 4.0.0"></a>
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-5.0.0-f4a261?style=flat-square" alt="Version 5.0.0"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-e8dcc8?style=flat-square&labelColor=143041" alt="MIT License"></a>
   <a href="SKILL.md"><img src="https://img.shields.io/badge/skill-board--game--design-143041?style=flat-square&labelColor=1e4a5f" alt="Skill ID"></a>
 </p>
@@ -68,16 +68,18 @@ Compatible with any host that loads the open [Agent Skills](https://agentskills.
 |------|------|
 | [`SKILL.md`](SKILL.md) | Entrypoint: modes, invariants, indexes, default outputs |
 | [`templates/design-state.md`](templates/design-state.md) | Single source of truth — Locked, Claims, Evidence, Kill overrides |
-| [`genre-profile/`](genre-profile/) | Euro, party, social-deduction, solo design lenses |
+| [`genre-profile/`](genre-profile/) | Euro, party, social-deduction, solo, coop design lenses |
 | [`routing/symptom-index.md`](routing/symptom-index.md) | Symptom → diagnostic routing ontology |
+| [`routing/context-budget.md`](routing/context-budget.md) | Per-mode context budget (required / optional / forbidden) |
 | [`reasoning/`](reasoning/) | Design reasoning, decision matrix, hypothesis rules, experiment priority |
-| [`diagnostics/`](diagnostics/) | Symptom guides for 8 core failure modes |
+| [`diagnostics/`](diagnostics/) | System (BG*) + experience (ED001–ED008) guides |
 | [`experiments/`](experiments/) | Experiment framework |
 | [`kill-criteria.md`](kill-criteria.md) | Continue / Restructure / Pause-or-Kill gate + parameterizable thresholds |
 | [`lint/`](lint/) | Design lint BG001–BG020 + Design Confidence Model |
 | [`prototype/`](prototype/) | Fidelity ladder, selection matrix, optional-runtime boundary |
-| [`balance/`](balance/) | Balance model, value budget with dependency dimensions |
-| [`theme-and-experience.md`](theme-and-experience.md) | MDA depth, theme-mechanism fit, emotion curve |
+| [`runtime/`](runtime/) | **Optional** Python companion (`bgd-sim`) — Monte Carlo, population, P2 CLI |
+| [`balance/`](balance/) | Balance model, value budget with Effective Value Range |
+| [`theme-and-experience.md`](theme-and-experience.md) | MDA depth, Target Player Model, theme-mechanism fit, emotion curve |
 | [`tools/`](tools/) | Export pipeline, component schema, nanDECK, TTS |
 | [`chapters/`](chapters/) | 13 mechanism distillations (*Building Blocks* categories) |
 | [`patterns.md`](patterns.md) | High-leverage mechanism patterns |
@@ -142,9 +144,16 @@ Pick one mode per session. Load the smallest file set that mode requires.
 
 </details>
 
-### What's new in v4.0.0
+### What's new in v5.0.0
 
 See [`CHANGELOG.md`](CHANGELOG.md) for full history.
+
+- **Experience Diagnostics ED001–ED008** + Target Player Model + co-op genre
+- **Context budget** — `routing/context-budget.md`
+- **Optional `runtime/`** — `bgd-sim` population Monte Carlo, regress, P2 CLI
+- **Eval Cases H & K** (optional) — runtime regression + design-quality rubric
+
+### What's new in v4.0.0
 
 - **Prototype Fidelity Ladder** — P0–P5 with hypothesis → fidelity selection
 - **Simulate mode** — seeded `simulation-run` artifacts; runtime optional (`prototype/runtime.md`)
@@ -179,6 +188,17 @@ Requirements:
 - Prefer installing from trusted sources; skim bundled files before use
 
 See the open standard: [agentskills.io/specification](https://agentskills.io/specification).
+
+### Optional simulation companion
+
+Not required for design modes. For executable Micro-Scavenger Monte Carlo / population / regress / P2 CLI:
+
+```bash
+pip install -e ./runtime
+bgd-sim run --game micro-scavenger --runs 1000 --seed 42 --population mixed --out sim.json
+```
+
+See [`runtime/README.md`](runtime/README.md) and [`prototype/runtime.md`](prototype/runtime.md).
 
 ---
 
@@ -337,10 +357,12 @@ board-game-design/
 ├── cheatsheet.md
 ├── playtesting.md
 ├── probability-and-balance.md
-├── genre-profile/                # euro, party, social-deduction, solo
+├── genre-profile/                # euro, party, social-deduction, solo, coop
 ├── prototype/                    # fidelity ladder, selection, runtime boundary
+├── runtime/                      # optional bgd-sim companion (Python)
 ├── routing/
-│   └── symptom-index.md
+│   ├── symptom-index.md
+│   └── context-budget.md
 ├── reasoning/
 ├── diagnostics/
 ├── experiments/

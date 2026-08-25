@@ -174,6 +174,25 @@ def check_simulation_run(content: str) -> list[CheckResult]:
         )
     )
 
+    # Soft fields (warn-style but still recorded as pass if absent — informational)
+    has_population = bool(re.search(r"population", content, re.I))
+    has_runner = bool(re.search(r"runner", content, re.I))
+    results.append(
+        CheckResult(
+            "simulation.population_or_profiles",
+            has_population or bool(re.search(r"agent profiles", content, re.I)),
+            "Population or Agent profiles named",
+        )
+    )
+    if has_runner or has_population:
+        results.append(
+            CheckResult(
+                "simulation.runner_noted",
+                True,
+                "Runner / population fields present (v5 optional runtime)",
+            )
+        )
+
     return results
 
 

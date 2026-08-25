@@ -12,6 +12,19 @@ Mechanisms answer *how*; this file answers *what should it feel like* and *does 
 
 Do not select mechanisms because they are fashionable — map to aesthetics.
 
+## Target Player Model
+
+Maintain weights in `templates/concept-brief.md` and `templates/design-state.md`:
+
+```yaml
+target_player:
+  experience: { challenge, discovery, social, mastery }   # 0–1
+  tolerance:  { randomness, downtime, complexity }
+  motivation: { optimization, expression, negotiation }
+```
+
+When comparing mechanisms, state which weights each candidate serves. Experience diagnostics (ED001–ED008) use this model as ground truth for "who is this for?"
+
 ## Emotion Curve
 
 Sketch intensity (1–5) by phase:
@@ -23,7 +36,7 @@ Sketch intensity (1–5) by phase:
 | Pre-end spike | 4–5 | Race, reveal, contest |
 | Resolution | 4–5 | Clear winner, celebration or groan |
 
-Flat line at 3 = "fine but forgettable." Match curve to audience (party = spikes; euro = sustained 3–4).
+Flat line at 3 = "fine but forgettable." Match curve to audience (party = spikes; euro = sustained 3–4). Route forgettable / flat experience symptoms via `routing/symptom-index.md` → Experience Diagnostics (ED003, ED004, ED008) — not P1 simulation alone.
 
 Record in concept brief **Emotion curve** field.
 

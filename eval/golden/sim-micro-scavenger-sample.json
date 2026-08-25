@@ -1,0 +1,181 @@
+{
+  "agent_version": "params-schema-1",
+  "fixed_profiles": null,
+  "game": "micro-scavenger",
+  "metrics": {
+    "average_game_length": 26.42,
+    "comeback_rate": 0.07,
+    "dominant_action": "take_deck",
+    "dominant_action_rate": 0.6434519303557911,
+    "first_player_win_rate": 0.46774193548387094,
+    "runs": 100,
+    "score_mean": 0.945,
+    "score_spread": 1.29,
+    "strategy_distribution": {
+      "adversarial": {
+        "games": 15,
+        "win_rate": 0.4,
+        "wins": 6
+      },
+      "conservative": {
+        "games": 40,
+        "win_rate": 0.275,
+        "wins": 11
+      },
+      "greedy": {
+        "games": 41,
+        "win_rate": 0.24390243902439024,
+        "wins": 10
+      },
+      "opportunistic": {
+        "games": 52,
+        "win_rate": 0.36538461538461536,
+        "wins": 19
+      },
+      "random": {
+        "games": 24,
+        "win_rate": 0.3333333333333333,
+        "wins": 8
+      },
+      "strategic": {
+        "games": 28,
+        "win_rate": 0.2857142857142857,
+        "wins": 8
+      }
+    },
+    "ties": 38,
+    "win_rate_by_seat": [
+      0.46774193548387094,
+      0.532258064516129
+    ]
+  },
+  "population": "mixed",
+  "population_mix": {
+    "adversarial": 0.1,
+    "conservative": 0.2,
+    "greedy": 0.2,
+    "opportunistic": 0.2,
+    "random": 0.1,
+    "strategic": 0.2
+  },
+  "results_sample": [
+    {
+      "action_hist": {
+        "convert": 2,
+        "take_deck": 17,
+        "take_discard": 7
+      },
+      "game_length": 26,
+      "lead_changes": 0,
+      "num_players": 2,
+      "profiles": [
+        "greedy",
+        "greedy"
+      ],
+      "score_spread": 0.0,
+      "scores": [
+        1.0,
+        1.0
+      ],
+      "seed": 42,
+      "winner": null
+    },
+    {
+      "action_hist": {
+        "convert": 2,
+        "take_deck": 17,
+        "take_discard": 7
+      },
+      "game_length": 26,
+      "lead_changes": 0,
+      "num_players": 2,
+      "profiles": [
+        "opportunistic",
+        "opportunistic"
+      ],
+      "score_spread": 2.0,
+      "scores": [
+        2.0,
+        0.0
+      ],
+      "seed": 10015,
+      "winner": 0
+    },
+    {
+      "action_hist": {
+        "convert": 2,
+        "take_deck": 17,
+        "take_discard": 4
+      },
+      "game_length": 23,
+      "lead_changes": 1,
+      "num_players": 2,
+      "profiles": [
+        "greedy",
+        "strategic"
+      ],
+      "score_spread": 2.0,
+      "scores": [
+        1.0,
+        3.0
+      ],
+      "seed": 19988,
+      "winner": 1
+    },
+    {
+      "action_hist": {
+        "convert": 7,
+        "take_deck": 17,
+        "take_discard": 5
+      },
+      "game_length": 29,
+      "lead_changes": 1,
+      "num_players": 2,
+      "profiles": [
+        "conservative",
+        "opportunistic"
+      ],
+      "score_spread": 1.0,
+      "scores": [
+        4.0,
+        5.0
+      ],
+      "seed": 29961,
+      "winner": 1
+    },
+    {
+      "action_hist": {
+        "convert": 1,
+        "take_deck": 17,
+        "take_discard": 7
+      },
+      "game_length": 25,
+      "lead_changes": 0,
+      "num_players": 2,
+      "profiles": [
+        "opportunistic",
+        "opportunistic"
+      ],
+      "score_spread": 1.0,
+      "scores": [
+        1.0,
+        0.0
+      ],
+      "seed": 39934,
+      "winner": 0
+    }
+  ],
+  "rules_version": "R-ms-001",
+  "runs": 100,
+  "runtime_version": "0.1.0",
+  "seat_profile_counts": {
+    "adversarial": 15,
+    "conservative": 40,
+    "greedy": 41,
+    "opportunistic": 52,
+    "random": 24,
+    "strategic": 28
+  },
+  "seed": 42,
+  "simulation_version": "bgd-runtime-0.1.0"
+}

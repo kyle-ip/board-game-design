@@ -5,6 +5,27 @@ All notable changes to the **board-game-design** skill follow [Semantic Versioni
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).  
 Current skill version: declared in [`SKILL.md`](SKILL.md) YAML frontmatter (`version`).
 
+## [5.0.0] — 2026-08-25
+
+Execution Expansion — experience diagnostics, player model, co-op genre, context budget, optional `runtime/` companion (population sims + regress + P2 CLI). Skill remains Markdown-only without installing the companion.
+
+### Added
+
+- **Experience Diagnostics ED001–ED008** — fantasy, theme disconnect, emotion curve, memorable moments, generic decisions, interaction identity, narrative emergence, escalation
+- **Target Player Model** in `templates/design-state.md` + `concept-brief.md`; `theme-and-experience.md` linkage
+- **`genre-profile/coop.md`** — alpha-player, difficulty, kill overrides distinct from competitive
+- **`routing/context-budget.md`** — required / optional / forbidden loads per Mode
+- **Effective Value Range** narrative block in `balance/value-budget.md`
+- **Eval Cases H** (runtime regression, optional) and **K** (design-quality rubric, optional)
+- **`runtime/`** — Python `bgd-sim` companion: parametric agents, population presets, Micro-Scavenger adapter, regress, CLI `play`
+- Population / parametric agent schema in `prototype/runtime.md`; extended `templates/simulation-run.md`
+
+### Changed
+
+- **`SKILL.md`** — v5.0.0; Topic Index / Companion Files; Diagnose routes ED*; Simulate optional runtime
+- **`routing/symptom-index.md`**, **`cheatsheet.md`** — experience symptom trees
+- **`eval/README.md`**, **`benchmark-prompts.md`** — 5.0 gates; Case G/J/E updates
+
 ## [4.0.0] — 2026-08-25
 
 Prototype Architecture 2.0 — fidelity-aware prototyping + Simulate mode (Markdown-compatible). Runtime simulators remain optional companions (`prototype/runtime.md`). Roadmap: `docs/solution-design.md`.

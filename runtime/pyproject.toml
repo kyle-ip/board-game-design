@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bgd-runtime"
+version = "0.1.0"
+description = "Optional simulation companion for the board-game-design skill"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "board-game-design" }]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+bgd-sim = "bgd_runtime.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["bgd_runtime*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

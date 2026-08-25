@@ -25,7 +25,11 @@ Load the smallest file first. Write project templates when designing/prototyping
 | Existing project / iteration N | `templates/design-state.md` | mode-specific files below |
 | "Help me design a game" / new concept | `genre-profile/` (pick one) + `workflow.md` + `theme-and-experience.md` | concept-brief → mechanism-skeleton |
 | Vague symptom ("boring", "unfair") | `routing/symptom-index.md` | one `diagnostics/*.md` |
-| Boring / flat / no tension | `routing/symptom-index.md` → `diagnostics/endgame-drag.md` or `low-agency.md` | experiment; do not add mechanisms blindly |
+| Boring / flat / no tension | `routing/symptom-index.md` → system (`endgame-drag` / `low-agency`) **or** ED003/ED008 | experiment; do not add mechanisms blindly |
+| Forgettable / no stories / no fantasy | `routing/symptom-index.md` → `diagnostics/weak-player-fantasy.md` (ED001) or ED004/ED007 | P2–P4 only — not P1 |
+| Feels generic / like every other game | `diagnostics/generic-decision-space.md` (ED005) | Target Player Model; mechanism skeleton |
+| Parallel solitaire / weak interaction | `diagnostics/weak-interaction-identity.md` (ED006) | genre social expectation |
+| Theme feels pasted on | `diagnostics/theme-mechanism-disconnect.md` (ED002) | `theme-and-experience.md` |
 | Snowball / runaway leader | `diagnostics/runaway-leader.md` | `balance/value-budget.md` |
 | First player always wins | `diagnostics/first-player-advantage.md` | Ch 2 |
 | One strategy always wins | `diagnostics/dominant-strategy.md` | balance-spreadsheet |
@@ -47,7 +51,6 @@ Load the smallest file first. Write project templates when designing/prototyping
 | Dice pool math unsure | `balance/README.md` | McDie |
 | Playtest structure | `playtesting.md` | `templates/playtest-log.md` |
 | Print for friends vs factory | `templates/pnp-checklist.md` then `print-specs.md` | — |
-| Theme feels pasted on | `theme-and-experience.md` | revisit mechanism skeleton |
 
 ## Stage 0 — Structure & Scope
 

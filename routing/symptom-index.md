@@ -15,23 +15,41 @@ Principle: **surface symptom → discriminate → one diagnostic → hypothesis 
 
 ## Ambiguous: "Boring" / "Flat" / "Nothing Exciting"
 
-Ask or infer from evidence (do not guess):
+Ask or infer from evidence (do not guess). Split **system boring** vs **experience forgettable**:
 
 ```text
 When does it feel flat?
-├── Opening only        → low hook — theme-and-experience.md emotion curve
-├── Midgame (turns 3–7) → PRIMARY: low-agency.md
+├── Opening only        → ED003 flat-emotional-curve OR weak hook (theme-and-experience)
+├── Midgame (turns 3–7) → PRIMARY system: low-agency.md
 │   └── Same action loop? → dominant-strategy.md OR structural rethink (kill gate)
-├── Endgame only        → PRIMARY: endgame-drag.md
-└── Whole game          → kill-criteria Restructure path; check genre profile fit
+├── Endgame only        → PRIMARY: endgame-drag.md; also check ED008 insufficient-escalation
+├── Whole game "fine"   → Experience path below (not only kill gate)
+└── "Forgettable" / no stories → Experience Diagnostics (ED*), not P1 sim
 ```
 
-**Routing priority (first match wins):**
+**Routing priority — system (first match wins):**
 
 1. Identical turns 3+ in a row → `diagnostics/low-agency.md` + `dominant-strategy.md`
 2. Game runs long, final rounds empty → `diagnostics/endgame-drag.md`
 3. Players wait, no decisions → `diagnostics/low-agency.md`
 4. No quotes, only "fine" → Open question in design-state; run Good-Bad-Meh next session
+
+## Ambiguous: Experience / Theme / Forgettable
+
+These are **experience** questions. Prefer P2–P4 human evidence. **Never** claim High confidence from P1 simulation alone.
+
+```text
+Experience complaint
+├── Don't know who I am / no fantasy     → weak-player-fantasy.md (ED001)
+├── Theme feels pasted on                → theme-mechanism-disconnect.md (ED002)
+├── Intensity flat all game              → flat-emotional-curve.md (ED003)
+├── Nothing memorable / no stories       → low-memorable-moments.md (ED004)
+│                                         + poor-narrative-emergence.md (ED007)
+├── Feels like every other game          → generic-decision-space.md (ED005)
+├── Parallel solitaire / no interaction ID → weak-interaction-identity.md (ED006)
+├── No build-up / late = early           → insufficient-escalation.md (ED008)
+└── Also "broken" systems?               → route system diagnostics FIRST, then ED*
+```
 
 ## Ambiguous: "Unfair" / "Broken"
 
@@ -73,6 +91,7 @@ If genre profile loaded, check profile's **Common Failure Modes** table before e
 | social-deduction | first-player win rate metrics |
 | party | winner score spread, VP balance |
 | solo | kingmaking, first-player |
+| coop | first-player win rate; competitive runaway as primary |
 | euro | (default routing applies) |
 
 ## Evidence Discriminator Checklist
@@ -85,7 +104,9 @@ Before routing, confirm what evidence exists:
 | Turn-by-turn actions | low-agency, dominant-strategy |
 | Round scores | runaway-leader |
 | Turn timing | analysis-paralysis |
-| Player quotes | theme fit, negative interaction |
+| Player quotes | theme fit, ED001–ED008, negative interaction |
+| 24h recall / stories | ED004, ED007 |
+| Emotion curve ratings | ED003, ED008 |
 | Blind test result | rule ambiguity BG014 |
 
 Missing evidence → mark `?` in lint; do not pick diagnostic with High confidence.

@@ -78,6 +78,29 @@ Interaction: Low | Combo: Low | Timing: Low
 
 Do not present spreadsheet totals as proven balance facts. Recommend playtest before shipping numeric changes.
 
+## Effective Value Range (required narrative block)
+
+**Do not** ship balance advice as a single point estimate alone (e.g. "Estimated Value = 7.4"). Every card/action recommendation must include an **Effective Value Range** block:
+
+```text
+Base Value:           …
+Interaction adj:      ±…   (from interaction_dependency)
+Timing adj:           ±…   (from timing_sensitivity)
+Combo Potential:      ±…   (from combo_dependency)
+Variance:             ±…
+
+Effective Value:      low–high   (range, not a single float)
+Confidence:           Low / Medium / High
+Calibration:          N comparable cards / heuristic / playtest
+Use Scope:            Early balancing only | within this set | …
+```
+
+Rules:
+
+- If Confidence is Low **or** any dependency is High → prefer a **wide** range; forbid "mathematically balanced."
+- Point `total est.` may appear inside the spreadsheet row; prose recommendations must lead with the range block.
+- Case E fail if agent reports only a single VP number without range + confidence + use scope.
+
 ## Example Row
 
 **Card: Iron Mine** — Cost 3, Immediate VP 0, +1 metal/turn for 3 rounds, tempo 0.

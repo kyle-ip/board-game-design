@@ -10,6 +10,30 @@
 | Current milestone | 3 Playtest |
 | Last updated | 2026-08-24 |
 
+## Target Player Model
+
+```yaml
+target_player:
+  experience:
+    challenge: 0.6
+    discovery: 0.5
+    social: 0.3
+    mastery: 0.4
+  tolerance:
+    randomness: 0.4
+    downtime: 0.2
+    complexity: 0.3
+  motivation:
+    optimization: 0.7
+    expression: 0.2
+    negotiation: 0.1
+```
+
+| Dimension | Notes (optional) |
+|---|---|
+| Primary aesthetic / fantasy | Quick scavenger efficiency; light market race |
+| Soft limits (what they refuse) | Long teach; heavy take-that |
+
 ## Version Lineage
 
 | Field | Value |

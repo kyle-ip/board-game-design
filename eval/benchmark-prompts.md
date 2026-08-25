@@ -101,6 +101,7 @@ State clearly these are heuristics, not proven balance facts.
 
 - [ ] Loads `balance/value-budget.md` or `balance-spreadsheet.md` — not eyeball only
 - [ ] Per-card rows with cost vs total estimated value
+- [ ] At least one **Effective Value Range** narrative block (Base / adj / range / Confidence / Calibration / Use Scope) — not a single point estimate alone
 - [ ] Flags outliers with >40% gap (or explains why threshold waived)
 - [ ] Treats VP-equivalents as **sanity check**, not empirical truth
 - [ ] States **confidence**, **calibration source**, and **use scope** per `balance/value-budget.md`
@@ -145,9 +146,29 @@ Link to HYP for first-player advantage. Do not auto-change rules from metrics.
 - [ ] Selects **P1** (not P4 reprint as first step)
 - [ ] Loads `prototype/selection.md` / Simulate mode files — not full PnP pipeline unprompted
 - [ ] Writes `simulation-run.md` with seed, rules/game version, runs, agent profiles, metrics fields
+- [ ] If companion runtime available: fills Runner (`runtime/bgd-sim` or path), Population (or explicit single-profile mix), and version fields
 - [ ] States confidence + limitations; sample-size caution if runs are low
 - [ ] Does **not** claim fun / experience validated
 - [ ] Does **not** auto-fix costs or rules from a hypothetical anomaly — proposes HYP/EXP instead
+
+---
+
+## Case H — Runtime Regression (optional)
+
+**Prompt:**
+
+```
+Optional when runtime/ is installed. Run the same Micro-Scavenger population
+simulation twice with identical seed and config. Confirm metrics match (determinism).
+Then change one documented rule (e.g. hand limit) and run regress against baseline JSON.
+Do not auto-apply the rule change to design-state without HYP/EXP.
+```
+
+**Pass criteria:**
+
+- [ ] Same seed → identical (or documented epsilon) metrics
+- [ ] `bgd-sim regress` (or equivalent) reports pass/fail vs thresholds
+- [ ] Does not silently mutate Locked decisions from regress fail
 
 ---
 
@@ -169,6 +190,31 @@ Pick the minimum valid fidelity for each. Explain evidence type fit. Do not run 
 - [ ] Mentions BG015 / evidence-type fit or equivalent reasoning
 - [ ] Does not recommend 10k bot games for social tension
 - [ ] Loads `prototype/selection.md` (or fidelity-ladder) — minimal context
+- [ ] Respects `routing/context-budget.md` Simulate/Diagnose **forbidden** lists (no bulk chapters, no print/nanDECK for this question)
+
+---
+
+## Case K — Design Quality (optional rubric)
+
+**Prompt:**
+
+```
+Players always choose the same opening. Project files describe a light Euro.
+Diagnose, propose one hypothesis, one minimal intervention, and one experiment.
+Do not stack fixes. Expert (or maintainer) scores the response with the rubric below.
+```
+
+**Rubric (1–5 each; record mean):**
+
+| Dimension | 1 | 3 | 5 |
+|---|---|---|---|
+| Diagnosis quality | Vague / wrong file | Plausible BG002 path | Evidence-aware, discarded alternatives |
+| Hypothesis quality | Unfalsifiable | Testable but multi-var | Single-variable, clear metric |
+| Intervention quality | Three stacked changes | One change, weak risk note | Minimal + risks named |
+| Experiment quality | No success criteria | Criteria present | Linked EXP + fidelity fit |
+| Unintended consequences | Ignored | Mentioned | Concrete failure modes |
+
+**Pass (optional for release):** mean ≥ 3.5; no dimension = 1. Does **not** block the 6/8 process gate; record in scoring sheet for research / regression of design judgment.
 
 ---
 
@@ -180,13 +226,15 @@ Pick the minimum valid fidelity for each. Explain evidence type fit. Do not run 
 | 6–7/8 | Fix failing mode routing or artifact discipline |
 | ≤5/8 | Re-read `SKILL.md` Mode → Required Artifacts; reduce context loading |
 
-Minimum for **4.0+**: **6/8** behavior with Case B or D mandatory pass, plus Case G or J pass; **all fixtures pass** `--fixture-all`.
+Minimum for **5.0+**: **6/8** behavior (Cases A–G, J) with Case B or D mandatory pass, plus Case G or J pass; **all fixtures pass** `--fixture-all`. Cases H and K are optional maintainer records.
 
 Re-run after each skill release that touches `SKILL.md`, `workflow.md`, `prototype/`, or templates.
 
 ## Cross-References
 
 - Mode definitions: `SKILL.md` Agent Modes + Mode → Required Artifacts
+- Context budget: `routing/context-budget.md`
 - Regression steps: `workflow.md` Regression Protocol
 - Fixture inputs: `eval/fixtures/` (Cases B–F); maintainer guide: `eval/README.md`
 - Fidelity: `prototype/selection.md`
+- Optional runtime: `runtime/README.md`

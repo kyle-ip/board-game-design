@@ -17,6 +17,27 @@ Name 1–3 player feelings to evoke (e.g. tension, bluff, celebration, mastery).
 2.
 3.
 
+## Target Player Model
+
+Weights 0.0–1.0. Copy into `design-state.md` and keep in sync. Ask: does each mechanism serve these weights?
+
+```yaml
+target_player:
+  experience:
+    challenge: 0.0
+    discovery: 0.0
+    social: 0.0
+    mastery: 0.0
+  tolerance:
+    randomness: 0.0
+    downtime: 0.0
+    complexity: 0.0
+  motivation:
+    optimization: 0.0
+    expression: 0.0
+    negotiation: 0.0
+```
+
 ## Emotion Curve
 
 Sketch intensity (1–5) for opening / mid / end — see `theme-and-experience.md`.

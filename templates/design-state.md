@@ -10,9 +10,35 @@ Format reference: `templates/examples/micro-scavenger/design-state.md`
 |---|---|
 | Working title | |
 | Build / version | e.g. v0.3 |
-| Genre profile | euro / party / social-deduction / solo / … — see `genre-profile/` |
+| Genre profile | euro / party / social-deduction / solo / coop / … — see `genre-profile/` |
 | Current milestone | 0 Concept / 1 Core MVP / 2 Structure / 3 Playtest / 4 Polish / 5 Publish |
 | Last updated | |
+
+## Target Player Model
+
+Stable player experience targets. Mechanisms and diagnostics should reference these weights (0.0–1.0). Depth: `theme-and-experience.md`.
+
+```yaml
+target_player:
+  experience:
+    challenge: 0.0
+    discovery: 0.0
+    social: 0.0
+    mastery: 0.0
+  tolerance:
+    randomness: 0.0
+    downtime: 0.0
+    complexity: 0.0
+  motivation:
+    optimization: 0.0
+    expression: 0.0
+    negotiation: 0.0
+```
+
+| Dimension | Notes (optional) |
+|---|---|
+| Primary aesthetic / fantasy | |
+| Soft limits (what they refuse) | |
 
 ## Version Lineage
 

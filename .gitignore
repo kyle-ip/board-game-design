@@ -21,4 +21,8 @@ __pycache__/
 .venv/
 venv/
 *.pyc
+*.egg-info/
+.eggs/
+dist/
+build/
 node_modules/

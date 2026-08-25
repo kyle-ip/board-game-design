@@ -1,9 +1,9 @@
 ---
 name: board-game-design
-description: "Design and iterate tabletop games with an evidence-driven workflow: genre profiles, Building Blocks mechanisms (13 chapters), falsifiable hypotheses with confidence, fidelity-aware prototyping (simulation → digital → paper PnP), playtest experiments, design-state, symptom routing, diagnosis, balance, automated eval validators, and export pipeline. Invoke when designing or iterating board/card games; diagnosing symptoms (snowball, boredom, unfairness); simulating system hypotheses; running experiments with pass/fail criteria; evaluating continue/restructure/kill; maintaining design-state across sessions; balancing cards and economy; or building print-and-play prototypes."
-version: "4.0.0"
+description: "Design and iterate tabletop games with an evidence-driven workflow: genre profiles (incl. coop), Building Blocks mechanisms (13 chapters), falsifiable hypotheses with confidence, fidelity-aware prototyping (simulation → digital → paper PnP), experience diagnostics (ED*), playtest experiments, design-state + Target Player Model, symptom routing, balance with Effective Value Range, optional bgd-sim runtime, automated eval validators, and export pipeline. Invoke when designing or iterating board/card games; diagnosing system or experience symptoms; simulating system hypotheses / populations; running experiments; evaluating continue/restructure/kill; balancing cards and economy; or building print-and-play prototypes."
+version: "5.0.0"
 license: MIT
-compatibility: "Agent Skills hosts (Cursor, Claude Code, and other SKILL.md-compatible runtimes). Markdown-only; no required network or packages."
+compatibility: "Agent Skills hosts (Cursor, Claude Code, and other SKILL.md-compatible runtimes). Markdown-only; no required network or packages. Optional companion: runtime/ (bgd-sim)."
 metadata:
   open-standard: "https://agentskills.io/specification"
   primary-source: "Building Blocks of Tabletop Game Design (Engelstein & Shalev)"
@@ -32,15 +32,15 @@ Apply on every design or iteration session:
 
 ## Agent Modes
 
-Pick one mode per session. Load the smallest file set that mode requires.
+Pick one mode per session. Load the smallest file set that mode requires. Quantified lists: `routing/context-budget.md`.
 
 | Mode | Trigger | Load first | Write / update |
 |---|---|---|---|
-| **Create** | New game from scratch | `genre-profile/` (one) + `workflow.md`, `theme-and-experience.md` | concept-brief, design-state, mechanism-skeleton |
-| **Diagnose** | Symptom (boring, broken, unfair) | `routing/symptom-index.md` → `cheatsheet.md` → `diagnostics/*`; if ≥2 candidate fixes, also `reasoning/experiment-priority.md` | design-state, decision |
+| **Create** | New game from scratch | `genre-profile/` (one) + `workflow.md`, `theme-and-experience.md` | concept-brief, design-state (incl. Target Player Model), mechanism-skeleton |
+| **Diagnose** | Symptom (boring, broken, unfair, forgettable) | `routing/symptom-index.md` → `cheatsheet.md` → `diagnostics/*` (BG* or ED*); if ≥2 candidate fixes, also `reasoning/experiment-priority.md` | design-state, decision |
 | **Experiment** | Test a specific hypothesis (human playtest) | `experiments/framework.md` + `prototype/selection.md`; if ≥2 hypotheses, also `reasoning/experiment-priority.md` | experiment, playtest-log |
-| **Simulate** | System question (balance, win rate, length, dominant strategy) | `prototype/fidelity-ladder.md`, `prototype/selection.md`, `prototype/runtime.md` | simulation-run, design-state Evidence |
-| **Balance** | Numbers, cards, economy | `balance/README.md` | balance-spreadsheet, balance-notes |
+| **Simulate** | System question (balance, win rate, length, dominant strategy, population) | `prototype/fidelity-ladder.md`, `prototype/selection.md`, `prototype/runtime.md` | simulation-run, design-state Evidence |
+| **Balance** | Numbers, cards, economy | `balance/README.md` | balance-spreadsheet, balance-notes (Effective Value Range) |
 | **Prototype** | Build at chosen fidelity (often PnP) | `prototype/selection.md`; then P4 → `templates/*`, `tools/export-pipeline.md` | rulebook/components/pnp **or** sim/digital plan per fidelity |
 
 Mixed requests (e.g. "design + PnP + balance"): run **Diagnose/Balance before Create/Prototype** if symptoms exist; system questions → **Simulate** before large physical builds; else **Create → Prototype → Balance**. See `cheatsheet.md` priority tree.
@@ -73,9 +73,10 @@ Format reference for all project files: `templates/examples/micro-scavenger/`.
 - **Decision needed** — load `cheatsheet.md`; cross-ref `patterns.md` and `reasoning/decision-matrix.md`.
 - **Term lookup** — load `glossary.md`.
 - **Design / iterate a game** — follow **Default Project Outputs**; load `genre-profile/` + `workflow.md` + needed templates. Output format: `templates/examples/micro-scavenger/`.
-- **Genre** (euro, party, social-deduction, solo) — load matching `genre-profile/*.md`; set in design-state Project Status.
-- **Vague symptom** — load `routing/symptom-index.md` before diagnostics.
-- **System / balance simulation** — load `prototype/selection.md` → Simulate mode; write `simulation-run.md`.
+- **Genre** (euro, party, social-deduction, solo, coop) — load matching `genre-profile/*.md`; set in design-state Project Status.
+- **Vague symptom** — load `routing/symptom-index.md` before diagnostics (system BG* or experience ED*).
+- **System / balance simulation** — load `prototype/selection.md` → Simulate mode; write `simulation-run.md`; optional `runtime/` (`bgd-sim`) for executable Micro-Scavenger / adapters.
+- **Context budget** — `routing/context-budget.md` (required / optional / forbidden per mode).
 - **After playtests** — load `kill-criteria.md` for Continue / Restructure / Pause-or-Kill gate.
 - **Before shipping artifacts** — run `lint/checklist.md`.
 - **External links** (tools, publishing, further reading) — load `external-resources.md` only. **Never** load `references/web-resources.md` unless maintaining the skill.
@@ -98,7 +99,7 @@ When the user asks to design, iterate, prototype, or develop a tabletop game, **
 | 4 Balance | balance notes + spreadsheet | `balance-notes.md`, `balance-spreadsheet.md` |
 | Iteration pass | iteration summary | `templates/iteration.md` |
 
-**Default fidelity:** cheapest valid for the hypothesis — not automatically paper. For experience / physical questions, P4 paper PnP remains the usual first human-playable build. TTS / Tabletopia when P3 is required or after paper works. Runtime simulators are **optional** (`prototype/runtime.md`). See `tools/` for P4 export.
+**Default fidelity:** cheapest valid for the hypothesis — not automatically paper. For experience / physical questions, P4 paper PnP remains the usual first human-playable build. TTS / Tabletopia when P3 is required or after paper works. Optional companion simulator: `runtime/` (`prototype/runtime.md`). See `tools/` for P4 export.
 
 ## Core Frameworks & Mental Models
 
@@ -168,11 +169,14 @@ Single-code or narrow mechanism questions: jump **directly** to the chapter file
 
 | If you're asking... | See |
 |---|---|
-| Genre fit (party, social deduction, solo, euro) | `genre-profile/` |
+| Genre fit (party, social deduction, solo, euro, coop) | `genre-profile/` |
 | Vague symptom routing | `routing/symptom-index.md` |
+| Context budget (what not to load) | `routing/context-budget.md` |
 | Which prototype fidelity? | `prototype/selection.md` |
-| Run / plan a simulation | `prototype/runtime.md`, `templates/simulation-run.md` |
+| Run / plan a simulation | `prototype/runtime.md`, `templates/simulation-run.md`, optional `runtime/` |
 | Theme, emotion curve, theme-mechanism fit | `theme-and-experience.md` |
+| Experience / forgettable / fantasy / generic | `diagnostics/` ED001–ED008 via `routing/symptom-index.md` |
+| Target Player Model | `templates/design-state.md`, `templates/concept-brief.md` |
 | Design reasoning, compare mechanisms | `reasoning/design-reasoning.md` |
 | Symptom → diagnosis | `routing/symptom-index.md` → `cheatsheet.md` → `diagnostics/` |
 | Falsifiable hypotheses | `reasoning/hypothesis-rules.md` |
@@ -180,7 +184,7 @@ Single-code or narrow mechanism questions: jump **directly** to the chapter file
 | Run experiment | `experiments/framework.md` |
 | Continue or kill project | `kill-criteria.md` |
 | Output quality check | `lint/checklist.md` |
-| Co-op alpha-player problem | Ch 1, Ch 6 |
+| Co-op alpha-player problem | `genre-profile/coop.md`, Ch 1, Ch 6 |
 | Solo mode / Automa design | Ch 1, Ch 3 |
 | Legacy & campaign structure | Ch 1, Ch 5 |
 | First-player advantage / catch-up | Ch 2, `diagnostics/first-player-advantage.md` |
@@ -216,13 +220,15 @@ Single-code or narrow mechanism questions: jump **directly** to the chapter file
 |---|---|
 | [eval/](eval/) | Benchmarks + `validators/validate.py` + component validator + `golden/` schemas |
 | [eval/README.md](eval/README.md) | Structural + behavior eval workflow |
-| [prototype/](prototype/) | Fidelity ladder, selection, optional-runtime boundary |
-| [genre-profile/](genre-profile/) | Euro, party, social-deduction, solo design lenses |
+| [prototype/](prototype/) | Fidelity ladder, selection, optional-runtime boundary + population schema |
+| [runtime/](runtime/) | **Optional** Python companion (`bgd-sim`) — not required for Markdown skill use |
+| [genre-profile/](genre-profile/) | Euro, party, social-deduction, solo, coop design lenses |
 | [routing/symptom-index.md](routing/symptom-index.md) | Symptom → diagnostic routing ontology |
+| [routing/context-budget.md](routing/context-budget.md) | Per-mode required / optional / forbidden loads |
 | [CHANGELOG.md](CHANGELOG.md) | Semver release history (matches `version` in frontmatter) |
 | [workflow.md](workflow.md) | Milestones 0–5 with template outputs; stage regression allowed |
 | [kill-criteria.md](kill-criteria.md) | Continue / Restructure / Pause-or-Kill gate |
-| [theme-and-experience.md](theme-and-experience.md) | MDA depth, theme-mechanism matrix, emotion curve |
+| [theme-and-experience.md](theme-and-experience.md) | MDA depth, Target Player Model, theme-mechanism matrix, emotion curve |
 | [playtesting.md](playtesting.md) | Five playtest frameworks + experiment tie-in |
 | [probability-and-balance.md](probability-and-balance.md) | Failure modes, dice intuition, McDie (also indexed in `balance/`) |
 | [print-specs.md](print-specs.md) | POD vs mass production specs |
@@ -231,13 +237,12 @@ Single-code or narrow mechanism questions: jump **directly** to the chapter file
 | [glossary.md](glossary.md) | Term definitions |
 | [external-resources.md](external-resources.md) | Agent-facing links by Mode (~25); maintainer index in `references/web-resources.md` |
 | [reasoning/](reasoning/) | Design reasoning, decision matrix, hypothesis rules, experiment priority |
-| [diagnostics/](diagnostics/) | Symptom guides (8 core failure modes) |
+| [diagnostics/](diagnostics/) | System (BG*) + experience (ED001–ED008) failure modes |
 | [experiments/](experiments/) | Experiment framework |
-| [balance/](balance/) | Balance model, value budget; index to probability doc |
+| [balance/](balance/) | Balance model, value budget + Effective Value Range |
 | [lint/](lint/) | Design lint rules BG001–BG020 + Design Confidence Model |
 | [tools/](tools/) | Export pipeline, component schema, nanDECK, TTS |
 | [templates/](templates/) | Copy-out project files; see `examples/micro-scavenger/` |
-| [docs/solution-design.md](docs/solution-design.md) | v4 architecture roadmap (maintainer) |
 
 ## Scope & Limits
 
@@ -247,4 +252,4 @@ Single-code or narrow mechanism questions: jump **directly** to the chapter file
 - **Single-designer focus** — multi-agent design collaboration is out of scope.
 - **Fidelity, not medium dogma** — cheapest valid prototype for the hypothesis; paper PnP remains the usual P4 human build. Digital/sim when they fit the question.
 - **No CLI required for design** — lint and diagnostics are Markdown instructions for the agent. Maintainer validators under `eval/validators/` are optional.
-- **No required simulation runtime** — Simulate mode is procedure + artifacts; runners are project-local / companion only (`prototype/runtime.md`).
+- **No required simulation runtime** — Simulate mode is procedure + artifacts; optional companion `runtime/` (`bgd-sim`) executes seeded sims for supported adapters (`prototype/runtime.md`).

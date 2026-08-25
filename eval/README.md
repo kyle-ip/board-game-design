@@ -67,7 +67,7 @@ Fixtures are **read-only inputs**. Copy to a working directory if the agent shou
 | **6–7/8** | Pass | Fix failing mode; re-run failed cases |
 | **≤5/8** or structural fail | Fail | Stop release — re-read Mode → Required Artifacts |
 
-Minimum for **4.0+**: **6/8** behavior with Case B or D mandatory pass, plus Case G or J pass; **all fixtures pass** `--fixture-all`.
+Minimum for **5.0+**: **6/8** behavior with Case B or D mandatory pass, plus Case G or J pass; **all fixtures pass** `--fixture-all`. Cases H/K optional.
 
 ## If a Case Fails
 
@@ -80,7 +80,9 @@ Minimum for **4.0+**: **6/8** behavior with Case B or D mandatory pass, plus Cas
 | E | `balance/value-budget.md`, calibration + dependency metadata |
 | F | `lint/rules.md`, Design Confidence Model |
 | G | `prototype/*`, `templates/simulation-run.md`, Simulate mode in `SKILL.md` |
-| J | `prototype/selection.md`, BG015/BG019 |
+| H | `runtime/` CLI determinism / regress |
+| J | `prototype/selection.md`, BG015/BG019, `routing/context-budget.md` |
+| K | Diagnosis quality — `diagnostics/`, `reasoning/hypothesis-rules.md` |
 
 ## Scoring Sheet (copy per run)
 
@@ -101,6 +103,11 @@ Structural (--fixture-all): ___/___
 [ ] Case J — Fidelity Selection
 
 Total behavior: ___/8
+
+Optional:
+[ ] Case H — Runtime Regression
+[ ] Case K — Design Quality (mean rubric ___/5)
+
 Notes:
 ```
 
@@ -109,4 +116,5 @@ Notes:
 - Prompts + pass criteria: [`benchmark-prompts.md`](benchmark-prompts.md)
 - Golden artifacts: [`golden/README.md`](golden/README.md)
 - Format reference: `templates/examples/micro-scavenger/`
+- Optional runtime: [`runtime/README.md`](../runtime/README.md)
 - Release history: [`CHANGELOG.md`](../CHANGELOG.md)

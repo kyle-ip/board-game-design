@@ -28,6 +28,7 @@ Structure → Turn Order → Actions → Economics → Worker Placement → Vict
 | One strategy wins | `dominant-strategy.md` | Buff everything |
 | First player wins | `first-player-advantage.md` | Shuffle turn order only |
 | AP / slow turns | `analysis-paralysis.md` | More options |
+| Forgettable / generic | ED004, ED005 | More mechanisms |
 
 ## Playtest Frameworks by Stage
 
