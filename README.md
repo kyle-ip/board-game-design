@@ -56,9 +56,9 @@ The usual workarounds do not help:
 
 **Board Game Design turns tabletop iteration into a structured agent workflow** — design state, symptom routing, single-variable experiments, and paper PnP templates your agent maintains across sessions.
 
-Compatible with any host that loads the open [Agent Skills](https://agentskills.io/specification) standard — Cursor, Claude Code, and others read the same `SKILL.md` format.
+Compatible with any host that loads the open [Agent Skills](https://agentskills.io/specification) standard — Claude Code, Codex, Cursor, and others read the same `SKILL.md` format.
 
-> Repo-level `README.md` is for humans. Agent instructions live in [`SKILL.md`](SKILL.md) and progressive-disclosure companions — per [Anthropic skill authoring guidance](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills).
+> Agent instructions live in [`SKILL.md`](SKILL.md) and progressive-disclosure companions — per [Anthropic skill authoring guidance](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills).
 
 ---
 
@@ -94,7 +94,7 @@ Compatible with any host that loads the open [Agent Skills](https://agentskills.
 | [`eval/README.md`](eval/README.md) | Structural + behavior eval workflow |
 | [`CHANGELOG.md`](CHANGELOG.md) | Semver release history |
 
-**Chapter files load on demand** — agents should read the smallest file that answers the question, not all 13 chapters at once.
+**Chapter files load on demand** — agents should read the smallest file that answers the question, not all chapters at once.
 
 **Default outputs are project files**, not prose-only advice. Format reference: [`templates/examples/micro-scavenger/`](templates/examples/micro-scavenger/). Choose the **cheapest valid fidelity** for the hypothesis; paper PnP remains the usual P4 human-playable build.
 
@@ -133,7 +133,8 @@ Pick one mode per session. Load the smallest file set that mode requires.
 6. **Never auto-fix from a simulation anomaly**
 
 <details>
-<summary><strong>Design principles (click to expand)</strong></summary>
+<summary><strong>Design principles</strong></summary>
+
 
 1. **Evidence over opinion** — playtest logs, SIM IDs, and experiment IDs, not "should feel better"
 2. **State preservation** — `design-state.md` survives across chat sessions
@@ -144,52 +145,76 @@ Pick one mode per session. Load the smallest file set that mode requires.
 
 </details>
 
-### What's new in v5.0.0
+### Core features
 
-See [`CHANGELOG.md`](CHANGELOG.md) for full history.
-
-- **Experience Diagnostics ED001–ED008** + Target Player Model + co-op genre
-- **Context budget** — `routing/context-budget.md`
-- **Optional `runtime/`** — `bgd-sim` population Monte Carlo, regress, P2 CLI
-- **Eval Cases H & K** (optional) — runtime regression + design-quality rubric
-
-### What's new in v4.0.0
-
-- **Prototype Fidelity Ladder** — P0–P5 with hypothesis → fidelity selection
-- **Simulate mode** — seeded `simulation-run` artifacts; runtime optional (`prototype/runtime.md`)
-- **Evidence types** — simulation / digital / physical / expert with BG015–BG020
-- **Component validator** — `eval/validators/validate_components.py`
-- **Eval Cases G & J** — Simulate + Fidelity Selection behavior checks
+- **Design state across sessions** — Locked decisions, Claims, Evidence, Kill overrides, and Target Player Model in one project file
+- **Six focused modes** — Create · Diagnose · Experiment · Simulate · Balance · Prototype; load only what the mode needs (`routing/context-budget.md`)
+- **Genre + mechanism knowledge** — euro / party / social-deduction / solo / coop profiles; 13 *Building Blocks* chapter distillations on demand
+- **Dual diagnostics** — system (BG*) and experience (ED001–ED008); symptom → diagnostic routing before any rule change
+- **Fidelity-aware prototyping** — P0–P5 ladder; cheapest valid test; evidence types (simulation / digital / physical / expert)
+- **Simulate without requiring code** — seeded `simulation-run` artifacts; optional `runtime/` (`bgd-sim`) for population Monte Carlo, regress, and P2 CLI
+- **Balance + ship** — Effective Value Range, PnP export pipeline, structural validators and behavior eval cases
 
 ---
 
 ## 📥 Install
 
+Copy or clone this repo into the skills directory your host scans. 
+
+Folder name must match the skill `name`: `board-game-design`. 
+
+Root [`SKILL.md`](SKILL.md) must include YAML `name` + `description`. 
+
+Prefer trusted sources; skim bundled files before use. See [agentskills.io/specification](https://agentskills.io/specification).
+
+### Claude Code
+
+```shell
+~/.claude/skills/board-game-design/          # user-wide
+<project>/.claude/skills/board-game-design/  # project-scoped (preferred when sharing a game repo)
+```
+
+```shell
+git clone git@github.com:kyle-ip/board-game-design.git ~/.claude/skills/board-game-design
+```
+
+### Codex
+
+```shell
+~/.agents/skills/board-game-design/          # user-wide
+<project>/.agents/skills/board-game-design/  # project-scoped
+```
+
+**Vercel skills CLI** (symlinks into Codex's skills directory):
+
+```shell
+npx skills add kyle-ip/board-game-design -a codex
+# or:
+npx skills add https://github.com/kyle-ip/board-game-design -a codex
+```
+
+**git clone:**
+
+```shell
+git clone git@github.com:kyle-ip/board-game-design.git ~/.agents/skills/board-game-design
+```
+
+**inside Codex:** `$skill-installer` with this repo's URL.
+
+Codex detects new skills automatically; restart if one does not appear.
+
 ### Cursor
 
-Copy or clone into your skills directory. Folder name must match the skill `name`: `board-game-design`.
-
-```text
+```shell
 ~/.cursor/skills/board-game-design/          # user-wide
 <project>/.cursor/skills/board-game-design/  # project-scoped (preferred when sharing a game repo)
 ```
 
-```bash
+```shell
 git clone git@github.com:kyle-ip/board-game-design.git ~/.cursor/skills/board-game-design
 ```
 
-### Claude Code / other Agent Skills hosts
-
-Place the directory where your host discovers skills (often `.claude/skills/board-game-design/`).
-
-Requirements:
-
-- Root [`SKILL.md`](SKILL.md) with YAML `name` + `description`
-- Prefer installing from trusted sources; skim bundled files before use
-
-See the open standard: [agentskills.io/specification](https://agentskills.io/specification).
-
-### Optional simulation companion
+### (Optional) simulation companion
 
 Not required for design modes. For executable Micro-Scavenger Monte Carlo / population / regress / P2 CLI:
 
