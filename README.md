@@ -313,20 +313,6 @@ Explain WPL-03 vs soft blocking (bumping) for a 2p game — trade-offs only, no 
 
 ---
 
-## 🎨 Brand
-
-**Loop Hex** is the mark on the cover, square banner, and logo — hex tile + evidence loop + meeple.
-
-| Element | Cover | Square banner | Logo |
-|---------|-------|---------------|------|
-| Hex tile | full detail + paper fold + die pip | same as cover (centered) | hex + loop + meeple only |
-| Background | hex grid + glow | same | flat rounded square |
-| Text on image | **Board Game Design** only | none | none |
-
-Assets: [`assets/`](assets/) — **PNG** for preview; **SVG** for source files. MIT-licensed with the repo.
-
----
-
 ## 📁 Repository structure
 
 ```text
