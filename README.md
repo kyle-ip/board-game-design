@@ -35,7 +35,6 @@
   <a href="#-how-it-works">How it works</a> ·
   <a href="#-install">Install</a> ·
   <a href="#-usage">Usage</a> ·
-  <a href="#-brand">Brand</a> ·
   <a href="#-repository-structure">Structure</a> ·
   <a href="#-attribution--scope">Attribution</a> ·
   <a href="#-contributing">Contributing</a>
@@ -359,6 +358,8 @@ board-game-design/
 
 ---
 
+<!--
+
 ## ⚖️ Attribution & scope
 
 Mechanism frameworks, codes (e.g. `WPL-01`, `CAR-05`), and trade-off language are **synthesized** from:
@@ -372,6 +373,8 @@ Chapter files are **not** a verbatim copy of the book and are **not** a substitu
 - **Language** — in Chinese context, prefer each game's official Chinese name when one exists
 
 ---
+
+-->
 
 ## 🤝 Contributing
 
