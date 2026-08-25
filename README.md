@@ -36,7 +36,9 @@
   <a href="#-install">Install</a> ·
   <a href="#-usage">Usage</a> ·
   <a href="#-repository-structure">Structure</a> ·
+<!--
   <a href="#-attribution--scope">Attribution</a> ·
+-->
   <a href="#-contributing">Contributing</a>
 </p>
 
