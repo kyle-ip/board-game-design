@@ -2,6 +2,8 @@
 
 Shortest path from `components-sheet.md` to printable card PNGs/PDF. Free tool: [nanDECK](https://www.nand.it/nandeck/).
 
+Full pipeline: `tools/export-pipeline.md` | Schema: `tools/component-schema.json` | Example: `tools/examples/cards.csv` + `cards.nde`
+
 ## Prerequisites
 
 - Filled `components-sheet.md` (or export CSV with columns: id, name, effect, cost, vp, tags)
@@ -17,9 +19,11 @@ CARD-001,Scrap Hook,0,Take 1 Scrap from discard,0,tool
 CARD-002,Rusty Gears,1,Trade 1 Scrap for 2 VP,2,trade
 ```
 
-Save as `cards.csv` in project folder.
+Save as `cards.csv` in project folder. See `tools/export-pipeline.md` for full convention and `tools/examples/cards.csv` for a working sample.
 
 ## 2. Minimal Script (`cards.nde`)
+
+Copy from `tools/examples/cards.nde` or use:
 
 ```text
 [card]

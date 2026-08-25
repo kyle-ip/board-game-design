@@ -14,7 +14,7 @@
 
 <p align="center">
   <a href="https://agentskills.io/specification"><img src="https://img.shields.io/badge/Agent%20Skills-compatible-2a9d8f?style=flat-square" alt="Agent Skills compatible"></a>
-  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-2.3.1-f4a261?style=flat-square" alt="Version 2.3.1"></a>
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-3.0.0-f4a261?style=flat-square" alt="Version 3.0.0"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-e8dcc8?style=flat-square&labelColor=143041" alt="MIT License"></a>
   <a href="SKILL.md"><img src="https://img.shields.io/badge/skill-board--game--design-143041?style=flat-square&labelColor=1e4a5f" alt="Skill ID"></a>
 </p>
@@ -26,7 +26,7 @@
 </p> -->
 
 <p align="center">
-  <em>Design tabletop mechanisms, run playtest experiments, and ship paper prototypes — with design state, diagnostics, and evidence-driven iteration.</em>
+  <em>Design tabletop mechanisms, run playtest experiments, and ship paper prototypes — with design state, genre profiles, symptom routing, diagnostics, and evidence-driven iteration.</em>
 </p>
 
 <p align="center">
@@ -66,15 +66,17 @@ Compatible with any host that loads the open [Agent Skills](https://agentskills.
 | Path | Role |
 |------|------|
 | [`SKILL.md`](SKILL.md) | Entrypoint: modes, invariants, indexes, default outputs |
-| [`templates/design-state.md`](templates/design-state.md) | Single source of truth for project decisions |
+| [`templates/design-state.md`](templates/design-state.md) | Single source of truth — Locked, Claims, Evidence, Kill overrides |
+| [`genre-profile/`](genre-profile/) | Euro, party, social-deduction, solo design lenses |
+| [`routing/symptom-index.md`](routing/symptom-index.md) | Symptom → diagnostic routing ontology |
 | [`reasoning/`](reasoning/) | Design reasoning, decision matrix, hypothesis rules, experiment priority |
 | [`diagnostics/`](diagnostics/) | Symptom guides for 8 core failure modes |
 | [`experiments/`](experiments/) | Experiment framework |
-| [`kill-criteria.md`](kill-criteria.md) | Continue / Restructure / Pause-or-Kill gate |
-| [`lint/`](lint/) | Design lint BG001–BG014 + output checklist |
-| [`balance/`](balance/) | Balance model, value budget (links to probability doc) |
+| [`kill-criteria.md`](kill-criteria.md) | Continue / Restructure / Pause-or-Kill gate + parameterizable thresholds |
+| [`lint/`](lint/) | Design lint BG001–BG014 + Design Confidence Model |
+| [`balance/`](balance/) | Balance model, value budget with dependency dimensions |
 | [`theme-and-experience.md`](theme-and-experience.md) | MDA depth, theme-mechanism fit, emotion curve |
-| [`tools/`](tools/) | nanDECK and TTS shortest-path guides |
+| [`tools/`](tools/) | Export pipeline, component schema, nanDECK, TTS |
 | [`chapters/`](chapters/) | 13 mechanism distillations (*Building Blocks* categories) |
 | [`patterns.md`](patterns.md) | High-leverage mechanism patterns |
 | [`cheatsheet.md`](cheatsheet.md) | Decision rules + symptom routing + mixed-demand priority |
@@ -83,8 +85,9 @@ Compatible with any host that loads the open [Agent Skills](https://agentskills.
 | [`probability-and-balance.md`](probability-and-balance.md) | Failure modes, McDie, dice intuition |
 | [`templates/`](templates/) | Project copy-out files |
 | [`templates/examples/micro-scavenger/`](templates/examples/micro-scavenger/) | **Format reference** example game |
-| [`eval/benchmark-prompts.md`](eval/benchmark-prompts.md) | Manual skill evaluation cases (Create through Lint) |
-| [`eval/README.md`](eval/README.md) | Eval workflow + `eval/fixtures/` for Cases B–F |
+| [`eval/`](eval/) | Benchmarks, `validators/validate.py`, `golden/` schemas |
+| [`eval/benchmark-prompts.md`](eval/benchmark-prompts.md) | Behavior evaluation cases (Create through Lint) |
+| [`eval/README.md`](eval/README.md) | Structural + behavior eval workflow |
 | [`CHANGELOG.md`](CHANGELOG.md) | Semver release history |
 
 **Chapter files load on demand** — agents should read the smallest file that answers the question, not all 13 chapters at once.
@@ -109,11 +112,11 @@ Pick one mode per session. Load the smallest file set that mode requires.
 
 | Mode | Trigger | Load first |
 |------|---------|------------|
-| **Create** | New game from scratch | `workflow.md`, `theme-and-experience.md` |
-| **Diagnose** | Symptom (boring, broken, unfair) | `cheatsheet.md` → `diagnostics/*` |
+| **Create** | New game from scratch | `genre-profile/` (one) + `workflow.md`, `theme-and-experience.md` |
+| **Diagnose** | Symptom (boring, broken, unfair) | `routing/symptom-index.md` → `cheatsheet.md` → `diagnostics/*` |
 | **Experiment** | Test a specific hypothesis | `experiments/framework.md` |
 | **Balance** | Numbers, cards, economy | `balance/README.md` |
-| **Prototype** | PnP, rulebook, components | `templates/*`, `tools/*` |
+| **Prototype** | PnP, rulebook, components | `templates/*`, `tools/export-pipeline.md` |
 
 ### Hard invariants
 
@@ -132,12 +135,16 @@ Pick one mode per session. Load the smallest file set that mode requires.
 
 </details>
 
-### What's new in v2.3.1
+### What's new in v3.0.0
 
 See [`CHANGELOG.md`](CHANGELOG.md) for full history.
 
-- **Loop Hex branding** — cover + logo in [`assets/`](assets/); README layout refresh (badges, TOC, collapsible prompts)
-- **v2.3.0** — experiment prioritization, version lineage, eval fixtures, lint confidence, balance calibration
+- **Validation & Automation** — `eval/validators/validate.py` + `eval/golden/` for structural artifact checks
+- **Design Confidence Model** — Claim → Evidence → Confidence → Contradiction across design-state, lint, balance
+- **Genre profiles** — euro, party, social-deduction, solo with kill-criteria defaults
+- **Symptom routing** — `routing/symptom-index.md` resolves vague complaints to one diagnostic path
+- **Prototype export pipeline** — `tools/export-pipeline.md`, `component-schema.json`, nanDECK examples
+- **Balance guardrails** — interaction / combo / timing dependency dimensions in value-budget
 
 ---
 
@@ -265,14 +272,14 @@ Three hypotheses are open in design-state (HYP-001 through HYP-003). Read design
 ```
 Review CARD-014 through CARD-022 in ./deck-builder/components-sheet.md.
 Build balance-spreadsheet rows using value-budget; flag any card where cost vs total estimated value differs by >40%.
-State confidence, calibration source, and use scope for each estimate.
+State confidence, calibration source, use scope, and interaction/combo/timing dependency for each estimate.
 ```
 
 **Prototype**
 
 ```
 Turn ./v0.5/mechanism-skeleton.md into a paper PnP: rulebook-draft, components-sheet, pnp-checklist.
-2–4p, 30 min, index-card prototype — no art. Run lint/checklist before finishing.
+2–4p, 30 min, index-card prototype — no art. Export cards.csv per tools/export-pipeline.md if batch cards needed. Run lint/checklist before finishing.
 ```
 
 **Continue, restructure, or kill**
@@ -338,19 +345,28 @@ board-game-design/
 ├── cheatsheet.md
 ├── playtesting.md
 ├── probability-and-balance.md
+├── genre-profile/                # euro, party, social-deduction, solo
+├── routing/
+│   └── symptom-index.md
 ├── reasoning/
 ├── diagnostics/
 ├── experiments/
 ├── balance/
 ├── lint/
 ├── tools/
+│   ├── export-pipeline.md
+│   ├── component-schema.json
+│   └── examples/                 # cards.csv + cards.nde
 ├── eval/
 │   ├── benchmark-prompts.md
 │   ├── README.md
+│   ├── validators/validate.py
+│   ├── golden/
 │   └── fixtures/
 ├── chapters/                     # ch01–ch13
 ├── templates/
 │   └── examples/micro-scavenger/
+├── docs/                         # architecture reviews
 ├── references/
 └── …
 ```
@@ -376,7 +392,7 @@ Chapter files are **not** a verbatim copy of the book and are **not** a substitu
 - Keep [`SKILL.md`](SKILL.md) lean (<500 lines); put deep material in companions
 - Prefer decision rules, state, and experiments over encyclopedic mechanism dumps
 - Update [`CHANGELOG.md`](CHANGELOG.md) on each release
-- Before minor releases: run Cases A–F per [`eval/README.md`](eval/README.md) (≥5/6 to ship)
+- Before minor releases: run Cases A–F per [`eval/README.md`](eval/README.md) (≥5/6 behavior); `python eval/validators/validate.py --fixture-all` must pass
 
 ---
 

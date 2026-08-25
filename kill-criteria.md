@@ -37,16 +37,35 @@ Aligns with `templates/playtest-log.md` Decision field and `workflow.md` Stage 3
 
 **Action:** Honest conversation with user; archive artifacts; optional post-mortem in `iteration.md`.
 
-## Quantitative Hints (optional)
+## Default Thresholds (skill-level)
 
-Tune to project; write thresholds in `design-state.md` if used.
+Copy into project `design-state.md` **Kill Criteria Overrides** section. Tune per project; genre profiles suggest starting overrides.
 
-| Signal | Yellow flag | Red flag |
-|---|---|---|
-| Playtime vs target | >30% over target 2× in a row | >50% over, players complain |
-| Rules questions (mid stage) | >3 per player per game | Same question 3 games in a row |
-| First-player win rate (4p) | >35% for seat 1 | >45% after one fix attempt |
-| Winner score spread | Leader +50% over last place routinely | Last place cannot affect winner |
+| Signal | Yellow flag | Red flag | Notes |
+|---|---|---|---|
+| Playtime vs target | >30% over target 2× in a row | >50% over, players complain | |
+| Rules questions (mid stage) | >3 per player per game | Same question 3 games in a row | Party: use >2 (see `genre-profile/party.md`) |
+| First-player win rate (4p) | >35% for seat 1 | >45% after one fix attempt | Disable for social-deduction / party |
+| Winner score spread | Leader +50% over last place routinely | Last place cannot affect winner | Disable for party / hidden-role |
+| Avg fun (restructure) | ≤3/5 × 2 consecutive | ≤2.5/5 × 2 (party) | Genre-specific |
+
+## Override Protocol
+
+1. On Create: load genre profile → copy recommended overrides to design-state
+2. On gate review: compare evidence against **project overrides**, not skill defaults alone
+3. Document changes in `decision.md` when thresholds change
+
+Example in design-state:
+
+```markdown
+## Kill Criteria Overrides
+
+| Signal | Yellow | Red | Enabled |
+|---|---|---|---|
+| first_player_win_rate_4p | 35% | 45% | yes |
+| avg_fun_restructure | ≤3/5 × 2 | — | yes |
+| playtime_vs_target | >30% over 2× | >50% over | yes |
+```
 
 ## Decision Log (per gate review)
 
@@ -56,10 +75,14 @@ Tune to project; write thresholds in `design-state.md` if used.
 | Playtests reviewed | PT-001 … |
 | Gate result | Continue / Restructure / Pause or Kill |
 | Evidence summary | |
+| Confidence | Low / Medium / High |
+| Thresholds used | design-state overrides / skill defaults |
 | User confirmed | yes / no |
 
 ## Cross-References
 
+- Override templates: `templates/design-state.md` Kill Criteria Overrides
+- Genre defaults: `genre-profile/`
 - Stage guidance when restructuring: [TTGDA — Tips for New Game Designers](https://www.ttgda.org/get-assistance/newpage)
 - Playtest decision line: `templates/playtest-log.md`
 - Failure mode detail: `diagnostics/`

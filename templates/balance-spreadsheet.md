@@ -35,9 +35,9 @@ Expected resources **per turn** for average play:
 
 ## Card / Action Value Budget
 
-| id | name | cost | imm VP | delayed VP | resource | tempo | info | risk | total est | target | conf | calib | OK? |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| | | | | | | | | | | | L/M/H | heur/play/data | |
+| id | name | cost | imm VP | delayed VP | resource | tempo | info | risk | interact | combo | timing | total est | target | conf | calib | OK? |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| | | | | | | | | | L/M/H | L/M/H | L/M/H | | | L/M/H | heur/play/data | |
 
 ## Set Collection Curve (if applicable)
 

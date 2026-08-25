@@ -6,6 +6,7 @@
 |---|---|
 | Working title | Micro Scavenger |
 | Build / version | v0.2 (example) |
+| Genre profile | euro |
 | Current milestone | 3 Playtest |
 | Last updated | 2026-08-24 |
 
@@ -43,9 +44,9 @@
 
 ## Active Hypotheses
 
-| ID | Hypothesis | Status |
-|---|---|---|
-| HYP-001 | Limiting hand to 2 cards increases discard pile tension without AP | testing |
+| ID | Claim | Confidence | Evidence refs | Contradictions | Status |
+|---|---|---|---|---|---|
+| HYP-001 | Limiting hand to 2 cards increases discard pile tension without AP | Medium | PT-002 | — | testing |
 
 ## Recent Evidence
 
@@ -73,3 +74,11 @@
 | Objective | Test hand size 3 vs 2 |
 | Single variable | max hand size |
 | Success criteria | Both players reach discard fight in 4/5 games; fun ≥3.5/5 |
+
+## Kill Criteria Overrides
+
+| Signal | Yellow | Red | Enabled |
+|---|---|---|---|
+| first_player_win_rate_4p | 35% | 45% | yes |
+| avg_fun_restructure | ≤3/5 × 2 | — | yes |
+| playtime_vs_target | >30% over 2× | >50% over | yes |

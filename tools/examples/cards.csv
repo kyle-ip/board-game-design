@@ -1,0 +1,4 @@
+id,name,cost,effect,vp,tags
+CARD-001,Scrap Hook,0,Take 1 Scrap from discard,0,tool
+CARD-002,Rusty Gears,1,Trade 1 Scrap for 2 VP,2,trade
+CARD-003,Salvage Drone,2,+1 Scrap per turn for 2 rounds,0,engine

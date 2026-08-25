@@ -44,7 +44,7 @@ Before delivery: `lint/checklist.md` components section.
 
 Convert this sheet to printable or digital assets:
 
-- **Cards (batch PNG/PDF):** `tools/nanDECK-guide.md` — export table to CSV
+- **Cards (batch PNG/PDF):** `tools/export-pipeline.md` → `tools/nanDECK-guide.md` — export table to CSV
 - **Digital table (optional, after paper works):** `tools/TTS-guide.md`
 - **Spreadsheet-driven art:** Component.Studio — see `probability-and-balance.md`
 

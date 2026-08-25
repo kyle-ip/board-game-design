@@ -1,5 +1,13 @@
 # Playtest Log — Seat Watch (Eval Case F)
 
+## Session Meta
+
+| Field | Value |
+|---|---|
+| Experiment ID | *(blank — lint review)* |
+| Hypothesis ID | *(blank)* |
+| Variant | n/a |
+
 ## PT-010
 
 | Field | Value |

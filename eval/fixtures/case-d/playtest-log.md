@@ -1,5 +1,13 @@
 # Playtest Log — Loop Test (Eval Case D)
 
+## Session Meta
+
+| Field | Value |
+|---|---|
+| Experiment ID | EXP-001 |
+| Hypothesis ID | HYP-001 |
+| Variant | variant |
+
 ## PT-004
 
 | Field | Value |

@@ -34,6 +34,12 @@ Fixture for **Case E — Balance**.
 | Is CARD-015 dominant? | balance | high |
 | CARD-017 cost fair? | balance | medium |
 
+## Rejected
+
+| Rejected | Why not | Rejected on | Superseded by | Revivable if |
+|---|---|---|---|---|
+| — | — | — | — | — |
+
 ## Active Hypotheses
 
 | ID | Hypothesis | Status |
@@ -45,6 +51,11 @@ Fixture for **Case E — Balance**.
 | Date | Source | Key finding |
 |---|---|---|
 | 2026-08-23 | PT-008 | Winner bought CARD-015 turn 1 in 4/5 games |
+
+## Current Risks
+
+1. CARD-015 rush may dominate opening
+2. Engine cards underpriced relative to rush
 
 ## Experiment Backlog
 

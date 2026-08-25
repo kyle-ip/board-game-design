@@ -44,6 +44,8 @@ Signals:
 Missing:
 - Player count distribution across sessions
 - Skill/experience pairing by seat
+Contradictions:
+- (none — or evidence that weakens the signal)
 ```
 
 | Confidence | When to use |
@@ -56,7 +58,41 @@ Missing:
 
 - Use **?** when Confidence would be Low **and** evidence column in Rules table is unmet — do not upgrade to ⚠ without data.
 - List **Missing** fields the next playtest should capture.
+- List **Contradictions** when evidence conflicts — lowers effective confidence.
 - Route ⚠ items to `diagnostics/*`; do not propose fixes before hypothesis.
+
+## Design Confidence Model
+
+Cross-mode standard for Claims (hypotheses, lint findings, balance flags, kill-gate evidence). Apply in Diagnose, Experiment, Balance, and design-state updates.
+
+```text
+Claim
+  ↓
+Evidence refs (PT-###, EXP-###, metrics)
+  ↓
+Confidence (Low / Medium / High)
+  ↓
+Contradictions (if any)
+  ↓
+Decision (continue / experiment / restructure)
+```
+
+| Object | Where recorded | Required fields |
+|---|---|---|
+| Hypothesis | `hypothesis.md`, design-state Active Hypotheses | Claim, Confidence, Evidence refs, Contradictions |
+| Lint finding | Lint report in chat | Confidence, Evidence, Signals, Missing, Contradictions |
+| Balance flag | `balance-notes.md`, spreadsheet row | confidence, calibration source, use scope, dependency dims |
+| Kill gate | `decision.md`, design-state Evidence | Gate result, Evidence summary, Confidence |
+
+**Decision stability:** If Contradictions exist and Confidence is Low, do not Lock — run experiment first.
+
+**Prohibited phrasing** when Confidence is Low or dependency dims are High:
+
+- "Mathematically balanced"
+- "Proven fair"
+- "Definitely broken"
+
+Use instead: "Heuristic suggests…", "Confidence: Low — playtest recommended."
 
 ## Example Output (agent)
 

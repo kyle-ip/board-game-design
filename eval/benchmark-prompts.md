@@ -1,6 +1,6 @@
 # Skill Evaluation Benchmarks
 
-Manual checks to verify the agent follows v2 workflow — not automated tests. Run after skill changes or when tuning Agent behavior.
+Behavior checks verify agent routing and judgment. **Structural** checks run via `python eval/validators/validate.py`. See `eval/README.md`.
 
 Pass criteria are checklists; mark pass only if **all** applicable items are true.
 
@@ -19,7 +19,7 @@ Write concept-brief, design-state, and mechanism-skeleton to ./eval-case-a/ — 
 
 **Pass criteria:**
 
-- [ ] Loads Create mode files (`workflow.md`, `theme-and-experience.md`) — not all 13 chapters
+- [ ] Loads Create mode files (`genre-profile/`, `workflow.md`, `theme-and-experience.md`) — not all 13 chapters
 - [ ] Compares 2–4 candidates (decision matrix or equivalent table)
 - [ ] Writes `concept-brief.md`, `design-state.md`, `mechanism-skeleton.md` to requested path
 - [ ] Records provisional choice + at least one testable hypothesis or Open question
@@ -40,7 +40,7 @@ Diagnose before proposing rule changes.
 **Pass criteria:**
 
 - [ ] Reads `design-state.md` before recommending changes
-- [ ] Routes through `diagnostics/` (e.g. low-agency, endgame-drag) — not random mechanism suggestions
+- [ ] Routes through `routing/symptom-index.md` and `diagnostics/` — not random mechanism suggestions
 - [ ] Asks for or cites evidence (scores, quotes, turn counts)
 - [ ] Proposes **one** minimal experiment or Open question — does not stack three fixes
 - [ ] Updates or drafts `decision.md` if recommending an intervention path
@@ -104,6 +104,7 @@ State clearly these are heuristics, not proven balance facts.
 - [ ] Flags outliers with >40% gap (or explains why threshold waived)
 - [ ] Treats VP-equivalents as **sanity check**, not empirical truth
 - [ ] States **confidence**, **calibration source**, and **use scope** per `balance/value-budget.md`
+- [ ] Notes **interaction/combo/timing** dependency when High
 - [ ] Recommends playtest to confirm if suggesting numeric changes
 
 ---

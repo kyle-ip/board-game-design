@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "board-game-design/component-schema",
+  "title": "Board Game Component Card Schema",
+  "description": "Structured export from components-sheet.md to CSV/JSON for nanDECK and PnP pipelines.",
+  "type": "object",
+  "required": ["game", "version", "cards"],
+  "properties": {
+    "game": { "type": "string", "description": "Working title" },
+    "version": { "type": "string", "description": "Build version e.g. v0.3" },
+    "cards": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "type"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[A-Z]+-\\d{3}$", "description": "Stable code e.g. CARD-001" },
+          "type": { "enum": ["card", "tile", "board", "token", "die", "other"] },
+          "name": { "type": "string" },
+          "qty": { "type": "integer", "minimum": 1 },
+          "cost": { "type": "string", "description": "Resource cost shorthand" },
+          "effect": { "type": "string", "description": "Rules text" },
+          "tags": { "type": "string" },
+          "vp": { "type": "integer", "minimum": 0 },
+          "notes": { "type": "string" }
+        }
+      }
+    }
+  }
+}

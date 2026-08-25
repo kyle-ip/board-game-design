@@ -10,6 +10,7 @@ Format reference: `templates/examples/micro-scavenger/design-state.md`
 |---|---|
 | Working title | |
 | Build / version | e.g. v0.3 |
+| Genre profile | euro / party / social-deduction / solo / … — see `genre-profile/` |
 | Current milestone | 0 Concept / 1 Core MVP / 2 Structure / 3 Playtest / 4 Polish / 5 Publish |
 | Last updated | |
 
@@ -50,19 +51,21 @@ Ideas explicitly cut. Prevents re-litigating dead paths. Not all rejected ideas 
 
 ## Active Hypotheses
 
-Link to `hypotheses/HYP-*.md` or `experiments/EXP-*.md`.
+Link to `hypotheses/HYP-*.md` or `experiments/EXP-*.md`. Each row is a **Claim** — falsifiable, with explicit confidence.
 
-| ID | Hypothesis (one line) | Status |
-|---|---|---|
-| | testing / supported / refuted | |
+| ID | Claim (one line) | Confidence | Evidence refs | Contradictions | Status |
+|---|---|---|---|---|---|
+| | | Low / Med / High | PT-00X, EXP-00X | — | testing / supported / refuted |
+
+**Confidence rules:** Low = 1–2 plays or intuition; Medium = 3+ partial metrics; High = reproducible metric breach. See `lint/rules.md` Design Confidence Model.
 
 ## Recent Evidence
 
 Summaries only — detail lives in playtest logs and experiments.
 
-| Date | Source | Key finding |
-|---|---|---|
-| | PT-00X / EXP-00X | |
+| Date | Source | Key finding | Confidence |
+|---|---|---|---|
+| | PT-00X / EXP-00X | | Low / Med / High |
 
 ## Current Risks
 
@@ -88,6 +91,18 @@ Rank candidates before writing `experiment.md`. Method: `reasoning/experiment-pr
 | Objective | |
 | Single variable to change | |
 | Success criteria (observable) | |
+
+## Kill Criteria Overrides
+
+Project-specific thresholds. Copy defaults from `kill-criteria.md`; override when genre or player count differs. Genre profiles suggest starting values.
+
+| Signal | Yellow | Red | Enabled |
+|---|---|---|---|
+| first_player_win_rate_4p | 35% | 45% | yes / no |
+| avg_fun_restructure | ≤3/5 × 2 sessions | — | yes / no |
+| playtime_vs_target | >30% over 2× | >50% over | yes / no |
+| rules_questions_mid | >3 per player | same Q 3× | yes / no |
+| winner_score_spread | leader +50% | last cannot affect winner | yes / no |
 
 ## Sync Rules
 

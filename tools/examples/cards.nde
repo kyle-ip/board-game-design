@@ -1,0 +1,17 @@
+; Example nanDECK script — see tools/nanDECK-guide.md
+; Input: tools/examples/cards.csv (or project cards.csv)
+
+[card]
+font=Arial,12,,,#000000
+size=63,88
+dpi=300
+recto=card_front.png
+versos=none
+
+[card_front.png]
+card=1-{(cards.csv),"id"}
+text=1,{(cards.csv),"id"},2,2,30,8,L,#
+text=2,{(cards.csv),"name"},0,12,100,15,C,#
+text=3,Cost: {(cards.csv),"cost"},0,28,100,10,L,#
+htmltext=4,{(cards.csv),"effect"},5,40,90,35,L,#
+text=5,{(cards.csv),"vp"} VP,0,78,100,10,R,#

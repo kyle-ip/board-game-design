@@ -5,6 +5,36 @@ All notable changes to the **board-game-design** skill follow [Semantic Versioni
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).  
 Current skill version: declared in [`SKILL.md`](SKILL.md) YAML frontmatter (`version`).
 
+## [3.0.0] — 2026-08-25
+
+Validation & Automation release (v3 roadmap per architecture review).
+
+### Added
+
+- **`eval/validators/validate.py`** — structural artifact validator (design-state sections, EXP/HYP IDs, single-variable experiments)
+- **`eval/golden/`** — golden schemas for design-state, experiment, hypothesis, playtest-log
+- **`genre-profile/`** — euro, party, social-deduction, solo profiles with kill-criteria defaults
+- **`routing/symptom-index.md`** — formal symptom routing ontology
+- **`tools/component-schema.json`** — JSON schema for card export
+- **`tools/export-pipeline.md`** — components-sheet → CSV → nanDECK → PnP pipeline
+- **`tools/examples/cards.csv`** + **`cards.nde`** — working nanDECK example
+- **Design Confidence Model** in `lint/rules.md` — Claim → Evidence → Confidence → Contradiction → Decision
+- **Kill Criteria Overrides** section in `templates/design-state.md`
+- **Dependency dimensions** (interaction, combo, timing) in `balance/value-budget.md`
+
+### Changed
+
+- **`SKILL.md`** — v3.0.0; genre routing; Core Objects; Diagnose loads `routing/symptom-index.md`; Prototype loads export pipeline
+- **`eval/README.md`** — two-layer eval (structural + behavior); `--fixture-all` gate
+- **`kill-criteria.md`** — default thresholds + override protocol; genre-aware notes
+- **`templates/design-state.md`** — Genre profile, Claim/Confidence/Evidence refs/Contradictions columns
+- **`templates/hypothesis.md`** — Claim, Evidence refs, Contradictions, Confidence
+- **`templates/balance-spreadsheet.md`** — interaction/combo/timing columns
+- **`cheatsheet.md`** — genre + symptom-index routing
+- **`tools/nanDECK-guide.md`** — links to export pipeline and examples
+- **`templates/components-sheet.md`** — export pipeline cross-ref
+- **`eval/fixtures/`** — aligned with v3 structural checks (Cases B–F)
+
 ## [2.3.1] — 2026-08-24
 
 Branding and README polish (Loop Hex identity + book-to-skill-style layout).

@@ -22,8 +22,9 @@ Load the smallest file first. Write project templates when designing/prototyping
 | Symptom / ask | Load first | Then |
 |---|---|---|
 | Existing project / iteration N | `templates/design-state.md` | mode-specific files below |
-| "Help me design a game" / new concept | `workflow.md` + `theme-and-experience.md` | concept-brief → mechanism-skeleton |
-| Boring / flat / no tension | `diagnostics/endgame-drag.md` or `low-agency.md` | experiment; do not add mechanisms blindly |
+| "Help me design a game" / new concept | `genre-profile/` (pick one) + `workflow.md` + `theme-and-experience.md` | concept-brief → mechanism-skeleton |
+| Vague symptom ("boring", "unfair") | `routing/symptom-index.md` | one `diagnostics/*.md` |
+| Boring / flat / no tension | `routing/symptom-index.md` → `diagnostics/endgame-drag.md` or `low-agency.md` | experiment; do not add mechanisms blindly |
 | Snowball / runaway leader | `diagnostics/runaway-leader.md` | `balance/value-budget.md` |
 | First player always wins | `diagnostics/first-player-advantage.md` | Ch 2 |
 | One strategy always wins | `diagnostics/dominant-strategy.md` | balance-spreadsheet |

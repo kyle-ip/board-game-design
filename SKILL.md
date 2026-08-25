@@ -1,7 +1,7 @@
 ---
 name: board-game-design
-description: "Design and iterate tabletop games with an evidence-driven workflow: Building Blocks mechanisms (13 chapters), falsifiable hypotheses, playtest experiments, design-state, diagnosis, balance, and paper PnP. Invoke when designing or iterating board/card games; diagnosing symptoms (snowball, boredom, unfairness); running experiments with pass/fail criteria; evaluating continue/restructure/kill; maintaining design-state across sessions; balancing cards and economy; or building print-and-play prototypes."
-version: "2.3.1"
+description: "Design and iterate tabletop games with an evidence-driven workflow: genre profiles, Building Blocks mechanisms (13 chapters), falsifiable hypotheses with confidence, playtest experiments, design-state, symptom routing, diagnosis, balance, automated eval validators, and paper PnP export pipeline. Invoke when designing or iterating board/card games; diagnosing symptoms (snowball, boredom, unfairness); running experiments with pass/fail criteria; evaluating continue/restructure/kill; maintaining design-state across sessions; balancing cards and economy; or building print-and-play prototypes."
+version: "3.0.0"
 license: MIT
 compatibility: "Agent Skills hosts (Cursor, Claude Code, and other SKILL.md-compatible runtimes). Markdown-only; no required network or packages."
 metadata:
@@ -14,6 +14,8 @@ metadata:
 Knowledge base from *Building Blocks of Tabletop Game Design* by Geoffrey Engelstein & Isaac Shalev (CRC Press, ~517 pages, 13 chapters), plus workflow, playtesting, balance, print guidance, and **project templates** that turn advice into files you can playtest.
 
 **Core loop:** Intent → Model → Hypothesis → Mechanism → Prototype → Experiment → Evidence → Diagnosis → Decision → update `design-state` → repeat.
+
+**Core objects** (underlying all Modes): **State** (`design-state.md`) · **Claim** (hypothesis with confidence) · **Experiment** (single variable) · **Artifact** (templates output).
 
 Legacy pipeline shorthand: **concept → mechanism skeleton → paper PnP → playtest/balance → (optional) POD/digital**.
 
@@ -31,11 +33,11 @@ Pick one mode per session. Load the smallest file set that mode requires.
 
 | Mode | Trigger | Load first | Write / update |
 |---|---|---|---|
-| **Create** | New game from scratch | `workflow.md`, `theme-and-experience.md` | concept-brief, design-state, mechanism-skeleton |
-| **Diagnose** | Symptom (boring, broken, unfair) | `cheatsheet.md` → `diagnostics/*`; if ≥2 candidate fixes, also `reasoning/experiment-priority.md` | design-state, decision |
+| **Create** | New game from scratch | `genre-profile/` (one) + `workflow.md`, `theme-and-experience.md` | concept-brief, design-state, mechanism-skeleton |
+| **Diagnose** | Symptom (boring, broken, unfair) | `routing/symptom-index.md` → `cheatsheet.md` → `diagnostics/*`; if ≥2 candidate fixes, also `reasoning/experiment-priority.md` | design-state, decision |
 | **Experiment** | Test a specific hypothesis | `experiments/framework.md`; if ≥2 hypotheses or backlog unset, also `reasoning/experiment-priority.md` | experiment, playtest-log |
 | **Balance** | Numbers, cards, economy | `balance/README.md` | balance-spreadsheet, balance-notes |
-| **Prototype** | PnP, rulebook, components | `templates/*`, `tools/*` | rulebook-draft, components-sheet, pnp-checklist |
+| **Prototype** | PnP, rulebook, components | `templates/*`, `tools/export-pipeline.md` | rulebook-draft, components-sheet, pnp-checklist |
 
 Mixed requests (e.g. "design + PnP + balance"): run **Diagnose/Balance before Create/Prototype** if symptoms exist; else **Create → Prototype → Balance**. See `cheatsheet.md` priority tree.
 
@@ -65,7 +67,9 @@ Format reference for all project files: `templates/examples/micro-scavenger/`.
 - **Chapter number** (e.g., "ch07") — load that chapter file.
 - **Decision needed** — load `cheatsheet.md`; cross-ref `patterns.md` and `reasoning/decision-matrix.md`.
 - **Term lookup** — load `glossary.md`.
-- **Design / iterate a game** — follow **Default Project Outputs**; load `workflow.md` + needed templates. Output format: `templates/examples/micro-scavenger/`.
+- **Design / iterate a game** — follow **Default Project Outputs**; load `genre-profile/` + `workflow.md` + needed templates. Output format: `templates/examples/micro-scavenger/`.
+- **Genre** (euro, party, social-deduction, solo) — load matching `genre-profile/*.md`; set in design-state Project Status.
+- **Vague symptom** — load `routing/symptom-index.md` before diagnostics.
 - **After playtests** — load `kill-criteria.md` for Continue / Restructure / Pause-or-Kill gate.
 - **Before shipping artifacts** — run `lint/checklist.md`.
 - **External links** (tools, publishing, further reading) — load `external-resources.md` only. **Never** load `references/web-resources.md` unless maintaining the skill.
@@ -154,9 +158,11 @@ Single-code or narrow mechanism questions: jump **directly** to the chapter file
 
 | If you're asking... | See |
 |---|---|
+| Genre fit (party, social deduction, solo, euro) | `genre-profile/` |
+| Vague symptom routing | `routing/symptom-index.md` |
 | Theme, emotion curve, theme-mechanism fit | `theme-and-experience.md` |
 | Design reasoning, compare mechanisms | `reasoning/design-reasoning.md` |
-| Symptom → diagnosis | `cheatsheet.md` → `diagnostics/` |
+| Symptom → diagnosis | `routing/symptom-index.md` → `cheatsheet.md` → `diagnostics/` |
 | Falsifiable hypotheses | `reasoning/hypothesis-rules.md` |
 | Rank next experiment | `reasoning/experiment-priority.md` |
 | Run experiment | `experiments/framework.md` |
@@ -189,15 +195,17 @@ Single-code or narrow mechanism questions: jump **directly** to the chapter file
 | Playtest frameworks | `playtesting.md` |
 | Balance failure modes & McDie | `balance/README.md` |
 | PnP then POD/mass print | `templates/pnp-checklist.md`, `print-specs.md` |
-| Card generation / TTS | `tools/` |
+| Card generation / TTS | `tools/export-pipeline.md`, `tools/` |
 | External resources | `external-resources.md` |
 
 ## Companion Files
 
 | Path | Purpose |
 |---|---|
-| [eval/benchmark-prompts.md](eval/benchmark-prompts.md) | Manual skill evaluation cases (Create through Lint) |
-| [eval/README.md](eval/README.md) | Maintainer eval workflow + fixture paths |
+| [eval/](eval/) | Benchmarks + `validators/validate.py` + `golden/` schemas |
+| [eval/README.md](eval/README.md) | Structural + behavior eval workflow |
+| [genre-profile/](genre-profile/) | Euro, party, social-deduction, solo design lenses |
+| [routing/symptom-index.md](routing/symptom-index.md) | Symptom → diagnostic routing ontology |
 | [CHANGELOG.md](CHANGELOG.md) | Semver release history (matches `version` in frontmatter) |
 | [workflow.md](workflow.md) | Milestones 0–5 with template outputs; stage regression allowed |
 | [kill-criteria.md](kill-criteria.md) | Continue / Restructure / Pause-or-Kill gate |
@@ -213,8 +221,8 @@ Single-code or narrow mechanism questions: jump **directly** to the chapter file
 | [diagnostics/](diagnostics/) | Symptom guides (8 core failure modes) |
 | [experiments/](experiments/) | Experiment framework |
 | [balance/](balance/) | Balance model, value budget; index to probability doc |
-| [lint/](lint/) | Design lint rules BG001–BG014 + checklist |
-| [tools/](tools/) | nanDECK and TTS shortest-path guides |
+| [lint/](lint/) | Design lint rules BG001–BG014 + Design Confidence Model |
+| [tools/](tools/) | Export pipeline, component schema, nanDECK, TTS |
 | [templates/](templates/) | Copy-out project files; see `examples/micro-scavenger/` |
 
 ## Scope & Limits

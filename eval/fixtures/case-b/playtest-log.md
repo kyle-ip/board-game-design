@@ -1,5 +1,13 @@
 # Playtest Log — Orchard Run (Eval Case B)
 
+## Session Meta
+
+| Field | Value |
+|---|---|
+| Experiment ID | *(blank — exploratory)* |
+| Hypothesis ID | *(blank)* |
+| Variant | n/a |
+
 ## PT-003
 
 | Field | Value |

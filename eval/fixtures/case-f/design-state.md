@@ -27,6 +27,24 @@ Fixture for **Case F — Lint**. Partial playtest evidence for BG001–BG014.
 | 4-player fixed | Party game | 2026-08-20 |
 | Simultaneous reveal | Speed | 2026-08-20 |
 
+## Open Questions
+
+| Question | Blocks | Priority |
+|---|---|---|
+| Is P1 advantage real? | BG001 lint | high |
+
+## Rejected
+
+| Rejected | Why not | Rejected on | Superseded by | Revivable if |
+|---|---|---|---|---|
+| — | — | — | — | — |
+
+## Active Hypotheses
+
+| ID | Hypothesis | Status |
+|---|---|---|
+| HYP-004 | Bid-for-start reduces P1 advantage | draft |
+
 ## Recent Evidence
 
 | Date | Source | Key finding |

@@ -9,13 +9,30 @@ One hypothesis per file when formalizing outside an experiment. Copy to project 
 | ID | HYP-001 |
 | Date | |
 | Status | draft / testing / supported / refuted / inconclusive |
+| Confidence | Low / Medium / High |
 | Linked experiment | EXP-00X (if any) |
 
-## Hypothesis
+## Claim
 
 We believe **[design change or mechanism choice]**
 will cause **[observable behavior or metric]**
 because **[causal reasoning]**.
+
+## Evidence refs
+
+List supporting sources: PT-###, EXP-###, playtest quotes. Required when Status is testing or beyond.
+
+| Ref | Summary |
+|---|---|
+| | |
+
+## Contradictions
+
+Evidence that weakens or conflicts with this claim. Empty if none.
+
+| Ref | What it suggests |
+|---|---|
+| | |
 
 ## Success Criteria (observable)
 
@@ -27,9 +44,9 @@ Fail if:
 
 ## Evidence Log
 
-| Date | Source | Observation |
-|---|---|---|
-| | | |
+| Date | Source | Observation | Confidence |
+|---|---|---|---|
+| | | | Low / Med / High |
 
 ## Decision
 
@@ -40,4 +57,4 @@ Fail if:
 ## Next
 
 → `templates/experiment.md` if ready to test
-→ `templates/design-state.md` — sync Active Hypotheses
+→ `templates/design-state.md` — sync Active Hypotheses (Claim, Confidence, Evidence refs, Contradictions)
