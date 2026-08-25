@@ -60,6 +60,8 @@ Compatible with any host that loads the open [Agent Skills](https://agentskills.
 
 > Agent instructions live in [`SKILL.md`](SKILL.md) and progressive-disclosure companions — per [Anthropic skill authoring guidance](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills).
 
+> Guideline: [Build your own board game](https://kyle-ip.github.io/build-your-own-board-game)
+
 ---
 
 ## 📦 What you get
