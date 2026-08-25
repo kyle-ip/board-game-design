@@ -14,7 +14,7 @@
 
 <p align="center">
   <a href="https://agentskills.io/specification"><img src="https://img.shields.io/badge/Agent%20Skills-compatible-2a9d8f?style=flat-square" alt="Agent Skills compatible"></a>
-  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-3.0.0-f4a261?style=flat-square" alt="Version 3.0.0"></a>
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-4.0.0-f4a261?style=flat-square" alt="Version 4.0.0"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-e8dcc8?style=flat-square&labelColor=143041" alt="MIT License"></a>
   <a href="SKILL.md"><img src="https://img.shields.io/badge/skill-board--game--design-143041?style=flat-square&labelColor=1e4a5f" alt="Skill ID"></a>
 </p>
@@ -26,7 +26,7 @@
 </p> -->
 
 <p align="center">
-  <em>Design tabletop mechanisms, run playtest experiments, and ship paper prototypes — with design state, genre profiles, symptom routing, diagnostics, and evidence-driven iteration.</em>
+  <em>Design tabletop mechanisms, choose the cheapest valid prototype fidelity, run playtest experiments, and ship paper prototypes — with design state, genre profiles, symptom routing, diagnostics, and evidence-driven iteration.</em>
 </p>
 
 <p align="center">
@@ -74,7 +74,8 @@ Compatible with any host that loads the open [Agent Skills](https://agentskills.
 | [`diagnostics/`](diagnostics/) | Symptom guides for 8 core failure modes |
 | [`experiments/`](experiments/) | Experiment framework |
 | [`kill-criteria.md`](kill-criteria.md) | Continue / Restructure / Pause-or-Kill gate + parameterizable thresholds |
-| [`lint/`](lint/) | Design lint BG001–BG014 + Design Confidence Model |
+| [`lint/`](lint/) | Design lint BG001–BG020 + Design Confidence Model |
+| [`prototype/`](prototype/) | Fidelity ladder, selection matrix, optional-runtime boundary |
 | [`balance/`](balance/) | Balance model, value budget with dependency dimensions |
 | [`theme-and-experience.md`](theme-and-experience.md) | MDA depth, theme-mechanism fit, emotion curve |
 | [`tools/`](tools/) | Export pipeline, component schema, nanDECK, TTS |
@@ -84,16 +85,16 @@ Compatible with any host that loads the open [Agent Skills](https://agentskills.
 | [`workflow.md`](workflow.md) | Milestones 0–5 with regression allowed |
 | [`playtesting.md`](playtesting.md) | Five playtest frameworks + experiment tie-in |
 | [`probability-and-balance.md`](probability-and-balance.md) | Failure modes, McDie, dice intuition |
-| [`templates/`](templates/) | Project copy-out files |
+| [`templates/`](templates/) | Project copy-out files (incl. `simulation-run.md`) |
 | [`templates/examples/micro-scavenger/`](templates/examples/micro-scavenger/) | **Format reference** example game |
-| [`eval/`](eval/) | Benchmarks, `validators/validate.py`, `golden/` schemas |
-| [`eval/benchmark-prompts.md`](eval/benchmark-prompts.md) | Behavior evaluation cases (Create through Lint) |
+| [`eval/`](eval/) | Benchmarks, validators, `golden/` schemas |
+| [`eval/benchmark-prompts.md`](eval/benchmark-prompts.md) | Behavior evaluation cases (Create through Fidelity) |
 | [`eval/README.md`](eval/README.md) | Structural + behavior eval workflow |
 | [`CHANGELOG.md`](CHANGELOG.md) | Semver release history |
 
 **Chapter files load on demand** — agents should read the smallest file that answers the question, not all 13 chapters at once.
 
-**Default outputs are project files**, not prose-only advice. Format reference: [`templates/examples/micro-scavenger/`](templates/examples/micro-scavenger/). First playable build: **paper PnP**; TTS / Tabletopia come after the paper loop works.
+**Default outputs are project files**, not prose-only advice. Format reference: [`templates/examples/micro-scavenger/`](templates/examples/micro-scavenger/). Choose the **cheapest valid fidelity** for the hypothesis; paper PnP remains the usual P4 human-playable build.
 
 ---
 
@@ -102,10 +103,10 @@ Compatible with any host that loads the open [Agent Skills](https://agentskills.
 ### Core loop
 
 ```
-Intent → Hypothesis → Prototype → Experiment → Evidence → Diagnosis → Decision → (update design-state) → repeat
+Intent → Claim / Hypothesis → Select minimum valid fidelity → Prototype → Experiment → Evidence → Diagnosis → Decision → (update design-state) → repeat
 ```
 
-Shorthand: **concept → mechanism skeleton → paper PnP → playtest / balance → (optional) POD or digital**
+Shorthand: **concept → mechanism skeleton → cheapest valid prototype (sim / digital / paper) → playtest / balance → (optional) POD**
 
 ### Agent modes
 
@@ -115,37 +116,41 @@ Pick one mode per session. Load the smallest file set that mode requires.
 |------|---------|------------|
 | **Create** | New game from scratch | `genre-profile/` (one) + `workflow.md`, `theme-and-experience.md` |
 | **Diagnose** | Symptom (boring, broken, unfair) | `routing/symptom-index.md` → `cheatsheet.md` → `diagnostics/*` |
-| **Experiment** | Test a specific hypothesis | `experiments/framework.md` |
+| **Experiment** | Test a specific hypothesis | `experiments/framework.md` + `prototype/selection.md` |
+| **Simulate** | System question (balance, win rate, length) | `prototype/fidelity-ladder.md`, `selection.md`, `runtime.md` |
 | **Balance** | Numbers, cards, economy | `balance/README.md` |
-| **Prototype** | PnP, rulebook, components | `templates/*`, `tools/export-pipeline.md` |
+| **Prototype** | Build at chosen fidelity (often PnP) | `prototype/selection.md` → then P4 templates / tools |
 
 ### Hard invariants
 
 1. **Read design-state first** — do not reopen **Locked** decisions without new contradicting evidence
 2. **Diagnose before changing** — symptom + causal hypothesis before any rule change
 3. **Minimal intervention** — one variable per experiment; no stacked fixes
+4. **Cheapest valid test first** — do not over-build fidelity
+5. **System evidence ≠ experience evidence** — sims do not prove fun; digital ≠ physical when required
+6. **Never auto-fix from a simulation anomaly**
 
 <details>
 <summary><strong>Design principles (click to expand)</strong></summary>
 
-1. **Evidence over opinion** — playtest logs and experiment IDs, not "should feel better"
+1. **Evidence over opinion** — playtest logs, SIM IDs, and experiment IDs, not "should feel better"
 2. **State preservation** — `design-state.md` survives across chat sessions
 3. **Progressive disclosure** — metadata → `SKILL.md` → one companion or chapter
-4. **Paper first** — playable index-card prototype before digital or art polish
+4. **Cheapest valid fidelity** — P1 for system questions when modeled; P4 paper for table experience
 5. **Synthesized knowledge** — mechanism trade-offs from *Building Blocks*, not raw book dumps
+6. **Automation validates systems; humans validate experiences**
 
 </details>
 
-### What's new in v3.0.0
+### What's new in v4.0.0
 
 See [`CHANGELOG.md`](CHANGELOG.md) for full history.
 
-- **Validation & Automation** — `eval/validators/validate.py` + `eval/golden/` for structural artifact checks
-- **Design Confidence Model** — Claim → Evidence → Confidence → Contradiction across design-state, lint, balance
-- **Genre profiles** — euro, party, social-deduction, solo with kill-criteria defaults
-- **Symptom routing** — `routing/symptom-index.md` resolves vague complaints to one diagnostic path
-- **Prototype export pipeline** — `tools/export-pipeline.md`, `component-schema.json`, nanDECK examples
-- **Balance guardrails** — interaction / combo / timing dependency dimensions in value-budget
+- **Prototype Fidelity Ladder** — P0–P5 with hypothesis → fidelity selection
+- **Simulate mode** — seeded `simulation-run` artifacts; runtime optional (`prototype/runtime.md`)
+- **Evidence types** — simulation / digital / physical / expert with BG015–BG020
+- **Component validator** — `eval/validators/validate_components.py`
+- **Eval Cases G & J** — Simulate + Fidelity Selection behavior checks
 
 ---
 
@@ -333,6 +338,7 @@ board-game-design/
 ├── playtesting.md
 ├── probability-and-balance.md
 ├── genre-profile/                # euro, party, social-deduction, solo
+├── prototype/                    # fidelity ladder, selection, runtime boundary
 ├── routing/
 │   └── symptom-index.md
 ├── reasoning/
@@ -343,17 +349,17 @@ board-game-design/
 ├── tools/
 │   ├── export-pipeline.md
 │   ├── component-schema.json
-│   └── examples/                 # cards.csv + cards.nde
+│   └── examples/                 # cards.csv, cards.json, cards.nde
 ├── eval/
 │   ├── benchmark-prompts.md
 │   ├── README.md
-│   ├── validators/validate.py
+│   ├── validators/               # validate.py + validate_components.py
 │   ├── golden/
 │   └── fixtures/
 ├── chapters/                     # ch01–ch13
 ├── templates/
 │   └── examples/micro-scavenger/
-├── docs/                         # architecture reviews
+├── docs/                         # solution-design + architecture reviews
 ├── references/
 └── …
 ```
@@ -383,7 +389,7 @@ Chapter files are **not** a verbatim copy of the book and are **not** a substitu
 - Keep [`SKILL.md`](SKILL.md) lean (<500 lines); put deep material in companions
 - Prefer decision rules, state, and experiments over encyclopedic mechanism dumps
 - Update [`CHANGELOG.md`](CHANGELOG.md) on each release
-- Before minor releases: run Cases A–F per [`eval/README.md`](eval/README.md) (≥5/6 behavior); `python eval/validators/validate.py --fixture-all` must pass
+- Before minor/major releases: run Cases A–J per [`eval/README.md`](eval/README.md) (≥6/8 behavior, G or J required); `python eval/validators/validate.py --fixture-all` must pass; optionally `validate_components.py tools/examples/cards.json`
 
 ---
 

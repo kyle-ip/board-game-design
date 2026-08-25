@@ -11,6 +11,11 @@ One hypothesis per file when formalizing outside an experiment. Copy to project 
 | Status | draft / testing / supported / refuted / inconclusive |
 | Confidence | Low / Medium / High |
 | Linked experiment | EXP-00X (if any) |
+| Preferred fidelity | P0–P5 — see `prototype/selection.md` |
+| Minimum fidelity | |
+| Evidence type | simulation / digital_playtest / physical_playtest / expert / intuition |
+| Simulation profile | e.g. first-player-advantage (if P1) |
+| Physical dependency | true / false |
 
 ## Claim
 
@@ -20,7 +25,7 @@ because **[causal reasoning]**.
 
 ## Evidence refs
 
-List supporting sources: PT-###, EXP-###, playtest quotes. Required when Status is testing or beyond.
+List supporting sources: PT-###, EXP-###, SIM-###, playtest quotes. Required when Status is testing or beyond. Evidence type must fit the claim (BG019).
 
 | Ref | Summary |
 |---|---|

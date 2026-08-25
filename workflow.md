@@ -64,11 +64,12 @@ Per [Board Game Design Lab](https://boardgamedesignlab.com/how-to-design-a-board
 
 **Write:**
 - `mechanism-skeleton.md` (core loop + candidate comparison if debated)
-- `rulebook-draft.md`, `components-sheet.md`, `pnp-checklist.md`
+- For system risks early: Formal Model notes + optional `simulation-run.md` (P1)
+- For human-playable MVP: usually P4 — `rulebook-draft.md`, `components-sheet.md`, `pnp-checklist.md`
 
-Default medium: **paper PnP**. Digital (`tools/TTS-guide.md`) only after paper loop works.
+**Default fidelity:** cheapest valid for the open hypothesis (`prototype/selection.md`). Paper PnP is the usual **P4** first human-playable build. Escalate to digital (`tools/TTS-guide.md`) when P3 is required or after paper works. Simulation runtime is optional (`prototype/runtime.md`).
 
-**Update:** `design-state.md` Locked/Rejected as decisions land.
+**Update:** `design-state.md` Locked/Rejected + Prototype State as decisions land.
 
 ## Milestone 2 — Structure
 

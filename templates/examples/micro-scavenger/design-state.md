@@ -73,7 +73,20 @@
 | ID | EXP-001 |
 | Objective | Test hand size 3 vs 2 |
 | Single variable | max hand size |
+| Preferred fidelity | P4 |
 | Success criteria | Both players reach discard fight in 4/5 games; fun ≥3.5/5 |
+
+## Prototype State
+
+| ID | Fidelity | Version | Status | Purpose |
+|---|---|---|---|---|
+| PRT-001 | P4 | v0.2 | active | paper MVP playtests |
+
+## Simulation Evidence
+
+| ID | Runs | Seed | Metric | Finding | Confidence |
+|---|---:|---|---|---|---|
+| — | | | | (none yet — HYP-002 may use P1) | |
 
 ## Kill Criteria Overrides
 

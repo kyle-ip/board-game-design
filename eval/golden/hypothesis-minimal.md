@@ -5,6 +5,9 @@
 | ID | HYP-001 |
 | Status | testing |
 | Confidence | Medium |
+| Preferred fidelity | P2 |
+| Evidence type | physical_playtest |
+| Physical dependency | false |
 
 ## Claim
 We believe **adding a contested market row (3 slots)**

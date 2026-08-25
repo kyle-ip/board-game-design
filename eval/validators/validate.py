@@ -98,25 +98,81 @@ def check_design_state(content: str) -> list[CheckResult]:
         )
     )
 
-    has_evidence_ref = bool(re.search(r"\b(PT|EXP)-\d{3}\b", content))
+    has_evidence_ref = bool(re.search(r"\b(PT|EXP|SIM)-\d{3}\b", content))
     results.append(
         CheckResult(
             "design-state.evidence_refs",
             has_evidence_ref,
-            "Evidence refs (PT-### / EXP-###) present",
+            "Evidence refs (PT-### / EXP-### / SIM-###) present",
         )
     )
 
-    # Optional v3 fields — warn if missing but don't fail fixture compatibility
-    for optional in ("Confidence", "Kill Criteria Overrides", "Genre"):
+    # Optional v3/v4 fields — informational pass (do not fail fixtures)
+    for optional in (
+        "Confidence",
+        "Kill Criteria Overrides",
+        "Genre",
+        "Prototype State",
+        "Simulation Evidence",
+    ):
         found = optional.lower() in content.lower()
         results.append(
             CheckResult(
                 f"design-state.optional.{optional.lower().replace(' ', '_')}",
                 True,  # informational pass
-                f"Optional '{optional}' {'present' if found else 'not set (v3 recommended)'}",
+                f"Optional '{optional}' {'present' if found else 'not set (v4 recommended)'}",
             )
         )
+
+    return results
+
+
+def check_simulation_run(content: str) -> list[CheckResult]:
+    results: list[CheckResult] = []
+    has_sim_id = bool(re.search(r"\bSIM-\d{3}\b", content))
+    results.append(
+        CheckResult(
+            "simulation.sim_id",
+            has_sim_id,
+            "SIM-### ID present",
+        )
+    )
+
+    for fld in ("Seed", "Runs", "Fidelity"):
+        found = fld.lower() in content.lower()
+        results.append(
+            CheckResult(
+                f"simulation.field.{fld.lower()}",
+                found,
+                f"Field '{fld}' {'found' if found else 'missing'}",
+            )
+        )
+
+    has_version = bool(
+        re.search(r"(rules version|game version|build)", content, re.I)
+    )
+    results.append(
+        CheckResult(
+            "simulation.version_meta",
+            has_version,
+            "Rules/game version metadata present",
+        )
+    )
+
+    fun_claim = bool(
+        re.search(
+            r"(proved.{0,20}fun|fun validated|players (will )?love|definitely fun)",
+            content,
+            re.I,
+        )
+    )
+    results.append(
+        CheckResult(
+            "simulation.no_fun_claim",
+            not fun_claim,
+            "Does not claim fun validated from simulation",
+        )
+    )
 
     return results
 
@@ -243,6 +299,13 @@ def validate_project(project_dir: Path, baseline_dir: Path | None = None) -> Val
 
     for bal_path in sorted(project_dir.rglob("balance*.md")):
         report.checks.extend(check_balance_output(read_text(bal_path)))
+
+    sim_paths = {
+        *project_dir.rglob("simulation*.md"),
+        *project_dir.rglob("SIM-*.md"),
+    }
+    for sim_path in sorted(sim_paths):
+        report.checks.extend(check_simulation_run(read_text(sim_path)))
 
     report.checks.extend(check_regression_preservation(project_dir, baseline_dir))
     return report

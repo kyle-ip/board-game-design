@@ -4,16 +4,16 @@ Manual **behavior** verification plus automated **structural** validation for th
 
 ## When to Run
 
-- Before bumping `version` in `SKILL.md` (especially minor releases)
-- After changes to `SKILL.md`, `workflow.md`, templates, or mode routing
-- After adding companions under `reasoning/`, `diagnostics/`, `experiments/`, `lint/`, `balance/`, `genre-profile/`, `routing/`
+- Before bumping `version` in `SKILL.md` (especially minor/major releases)
+- After changes to `SKILL.md`, `workflow.md`, `prototype/`, templates, or mode routing
+- After adding companions under `reasoning/`, `diagnostics/`, `experiments/`, `lint/`, `balance/`, `genre-profile/`, `routing/`, `prototype/`
 
 ## Two-Layer Evaluation
 
 | Layer | What | How |
 |---|---|---|
-| **Structural** | Required sections, IDs, single-variable, meta fields | `python eval/validators/validate.py` |
-| **Behavior** | Mode routing, diagnosis, no stacked fixes | Manual Cases A–F below |
+| **Structural** | Required sections, IDs, single-variable, sim meta | `python eval/validators/validate.py` |
+| **Behavior** | Mode routing, diagnosis, fidelity selection | Manual Cases A–F, G, J below |
 
 Structural checks catch artifact discipline regressions. Behavior checks catch agent reasoning regressions. Both are required for a release.
 
@@ -28,15 +28,18 @@ python eval/validators/validate.py --fixture-all
 
 # Regression: ensure playtest history preserved
 python eval/validators/validate.py ./eval-case-d/ --baseline eval/fixtures/case-d/
+
+# Component JSON against schema (optional)
+python eval/validators/validate_components.py tools/examples/cards.json
 ```
 
-Golden schemas: `eval/golden/`. Validator source: `eval/validators/validate.py`.
+Golden schemas: `eval/golden/`. Validator source: `eval/validators/`.
 
 ## Manual Behavior Benchmarks
 
 1. Open a **fresh chat** with the skill active (project or `~/.cursor/skills/board-game-design/`).
 2. For each case in [`benchmark-prompts.md`](benchmark-prompts.md), paste the prompt verbatim.
-3. Use fixture paths below for Cases B–F (Cases A and C create new files).
+3. Use fixture paths below for Cases B–F (Cases A, C, G, J create new files or analysis).
 4. Run structural validator on agent output directory.
 5. Mark pass criteria checkboxes in scoring sheet below.
 6. Record skill version and date.
@@ -51,6 +54,8 @@ Golden schemas: `eval/golden/`. Validator source: `eval/validators/validate.py`.
 | D | Regression | `eval/fixtures/case-d/` | `./eval-case-d/` — must **preserve** existing logs |
 | E | Balance | `eval/fixtures/case-e/` | analysis output (no required write) |
 | F | Lint | `eval/fixtures/case-f/` | lint report in chat |
+| G | Simulate | *(prompt only)* | `simulations/SIM-001.md` |
+| J | Fidelity | *(prompt only)* | chat analysis |
 
 Fixtures are **read-only inputs**. Copy to a working directory if the agent should mutate files (especially Case D).
 
@@ -58,11 +63,11 @@ Fixtures are **read-only inputs**. Copy to a working directory if the agent shou
 
 | Cases passed | Structural | Action |
 |---|---|---|
-| **6/6** + all structural | Pass | Safe to ship skill version |
-| **4–5/6** | Pass | Fix failing mode; re-run failed cases |
-| **≤3/6** or structural fail | Fail | Stop release — re-read Mode → Required Artifacts |
+| **8/8** + all structural | Pass | Safe to ship skill version |
+| **6–7/8** | Pass | Fix failing mode; re-run failed cases |
+| **≤5/8** or structural fail | Fail | Stop release — re-read Mode → Required Artifacts |
 
-Minimum for minor release (**3.0+**): **5/6** behavior with Case B or D mandatory pass; **all fixtures pass** `--fixture-all`.
+Minimum for **4.0+**: **6/8** behavior with Case B or D mandatory pass, plus Case G or J pass; **all fixtures pass** `--fixture-all`.
 
 ## If a Case Fails
 
@@ -74,6 +79,8 @@ Minimum for minor release (**3.0+**): **5/6** behavior with Case B or D mandator
 | D | `kill-criteria.md`, `workflow.md` Regression Protocol |
 | E | `balance/value-budget.md`, calibration + dependency metadata |
 | F | `lint/rules.md`, Design Confidence Model |
+| G | `prototype/*`, `templates/simulation-run.md`, Simulate mode in `SKILL.md` |
+| J | `prototype/selection.md`, BG015/BG019 |
 
 ## Scoring Sheet (copy per run)
 
@@ -90,8 +97,10 @@ Structural (--fixture-all): ___/___
 [ ] Case D — Regression
 [ ] Case E — Balance
 [ ] Case F — Lint
+[ ] Case G — Simulate
+[ ] Case J — Fidelity Selection
 
-Total behavior: ___/6
+Total behavior: ___/8
 Notes:
 ```
 

@@ -35,15 +35,25 @@ because **[reason]**.
 | Variant | 3 |
 | Everything else held constant | (list what did NOT change) |
 
-## Playtests
+## Evidence Plan
 
-| Session | Log file | Players | Notes |
+| Field | Value |
+|---|---|
+| Minimum evidence source | simulation / digital_playtest / physical_playtest |
+| Prototype fidelity | P1 / P2 / P3 / P4 |
+| Simulation profile | (if P1) |
+| Human playtest required | yes / no |
+| Physical validation required | yes / no |
+
+## Playtests / Simulations
+
+| Session | Log / run | Players | Notes |
 |---|---|---|---|
-| | PT-00X | | |
+| | PT-00X / SIM-00X | | |
 
 ## Observed Data
 
-Facts only — scores, win rates, quotes, turn counts.
+Facts only — scores, win rates, sim metrics, quotes, turn counts.
 
 -
 
@@ -70,6 +80,7 @@ Summary:
 
 ## Sync
 
-- [ ] Updated `design-state.md`
+- [ ] Updated `design-state.md` (Evidence, Simulation Evidence if SIM)
 - [ ] Updated `decision.md` if Locked/Rejected
 - [ ] Updated `iteration.md` if part of a version bump
+- [ ] Linked `simulation-run.md` if fidelity was P1

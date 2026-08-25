@@ -120,7 +120,7 @@ Only flag issues with evidence; mark insufficient evidence as ? not ⚠.
 
 **Pass criteria:**
 
-- [ ] Outputs lint-style report with BG001–BG014 coverage (or subset with reason)
+- [ ] Outputs lint-style report with BG001–BG020 coverage (or subset with reason)
 - [ ] Uses ⚠ / ? / ✓ semantics from `lint/rules.md`
 - [ ] For each ⚠ or ?, uses **Confidence Output Template** (Confidence, Evidence, Signals, Missing)
 - [ ] Does **not** claim first-player advantage without seat/win data (? if missing)
@@ -129,18 +129,64 @@ Only flag issues with evidence; mark insufficient evidence as ? not ⚠.
 
 ---
 
+## Case G — Simulate
+
+**Prompt:**
+
+```
+Suspect first-player advantage at 4 players. Project has a simple Formal Model.
+Choose the correct prototype fidelity, plan (or document) a simulation strategy,
+and write simulations/SIM-001.md using the simulation-run template. Do not claim the game is fun.
+Link to HYP for first-player advantage. Do not auto-change rules from metrics.
+```
+
+**Pass criteria:**
+
+- [ ] Selects **P1** (not P4 reprint as first step)
+- [ ] Loads `prototype/selection.md` / Simulate mode files — not full PnP pipeline unprompted
+- [ ] Writes `simulation-run.md` with seed, rules/game version, runs, agent profiles, metrics fields
+- [ ] States confidence + limitations; sample-size caution if runs are low
+- [ ] Does **not** claim fun / experience validated
+- [ ] Does **not** auto-fix costs or rules from a hypothetical anomaly — proposes HYP/EXP instead
+
+---
+
+## Case J — Fidelity Selection
+
+**Prompt:**
+
+```
+Two open claims:
+(1) "First player has excessive win rate."
+(2) "Players don't feel enough tension / social presence."
+Pick the minimum valid fidelity for each. Explain evidence type fit. Do not run a full redesign.
+```
+
+**Pass criteria:**
+
+- [ ] Claim (1) → P1 / simulation
+- [ ] Claim (2) → P2–P4 human playtest (not simulation alone)
+- [ ] Mentions BG015 / evidence-type fit or equivalent reasoning
+- [ ] Does not recommend 10k bot games for social tension
+- [ ] Loads `prototype/selection.md` (or fidelity-ladder) — minimal context
+
+---
+
 ## Scoring (optional)
 
 | Cases passed | Interpretation |
 |---|---|
-| 6/6 | Integration layer working — ship skill version |
-| 4–5/6 | Fix failing mode routing or artifact discipline |
-| ≤3/6 | Re-read `SKILL.md` Mode → Required Artifacts; reduce context loading |
+| 8/8 | Integration layer working — ship skill version |
+| 6–7/8 | Fix failing mode routing or artifact discipline |
+| ≤5/8 | Re-read `SKILL.md` Mode → Required Artifacts; reduce context loading |
 
-Re-run after each skill release that touches `SKILL.md`, `workflow.md`, or templates.
+Minimum for **4.0+**: **6/8** behavior with Case B or D mandatory pass, plus Case G or J pass; **all fixtures pass** `--fixture-all`.
+
+Re-run after each skill release that touches `SKILL.md`, `workflow.md`, `prototype/`, or templates.
 
 ## Cross-References
 
 - Mode definitions: `SKILL.md` Agent Modes + Mode → Required Artifacts
 - Regression steps: `workflow.md` Regression Protocol
 - Fixture inputs: `eval/fixtures/` (Cases B–F); maintainer guide: `eval/README.md`
+- Fidelity: `prototype/selection.md`

@@ -22,15 +22,15 @@ Required sections (validator checks `## Section` headers):
 
 ### Active Hypotheses (extended columns)
 
-| ID | Claim | Confidence | Evidence refs | Contradictions | Status |
-|---|---|---|---|---|---|
-| HYP-001 | One-line falsifiable claim | Low/Med/High | PT-001, EXP-002 | — | testing |
+| ID | Claim | Confidence | Evidence refs | Contradictions | Pref. fidelity | Status |
+|---|---|---|---|---|---|---|
+| HYP-001 | One-line falsifiable claim | Low/Med/High | PT-001, EXP-002, SIM-001 | — | P1 | testing |
 
 ### Recent Evidence (extended)
 
-| Date | Source | Key finding | Confidence |
-|---|---|---|---|
-| | PT-001 | | Medium |
+| Date | Source | Source type | Key finding | Confidence |
+|---|---|---|---|---|
+| | PT-001 / SIM-001 | physical_playtest / simulation | | Medium |
 
 ### Kill Criteria Overrides
 
@@ -41,10 +41,26 @@ Project-specific thresholds. Copy defaults from `kill-criteria.md`; override per
 | first_player_win_rate_4p | 35% | 45% | yes |
 | avg_fun_restructure | ≤3/5 × 2 sessions | — | yes |
 
+## v4 Recommended Sections
+
+### Prototype State
+
+| ID | Fidelity | Version | Status | Purpose |
+|---|---|---|---|---|
+| PRT-001 | P1 | v0.3 | active | first-player test |
+
+### Simulation Evidence
+
+| ID | Runs | Seed | Metric | Finding | Confidence |
+|---|---:|---|---|---|---|
+| SIM-001 | 1000 | 482193 | first_player_win_rate | 31.8% | Medium |
+
 ## ID Conventions
 
 - Hypotheses: `HYP-###`
 - Experiments: `EXP-###`
 - Playtests: `PT-###`
+- Simulations: `SIM-###`
+- Prototypes: `PRT-###`
 - Decisions: `DEC-###`
 - Iterations: `ITER-###`

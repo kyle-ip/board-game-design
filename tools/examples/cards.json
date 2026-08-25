@@ -1,0 +1,36 @@
+{
+  "game": "Micro Scavenger (example)",
+  "version": "v0.2",
+  "cards": [
+    {
+      "id": "CARD-001",
+      "type": "card",
+      "name": "Scrap Hook",
+      "qty": 2,
+      "cost": "0",
+      "effect": "Take 1 Scrap from discard",
+      "tags": "tool",
+      "vp": 0
+    },
+    {
+      "id": "CARD-002",
+      "type": "card",
+      "name": "Rusty Gears",
+      "qty": 2,
+      "cost": "1",
+      "effect": "Trade 1 Scrap for 2 VP",
+      "tags": "trade",
+      "vp": 2
+    },
+    {
+      "id": "CARD-003",
+      "type": "card",
+      "name": "Salvage Drone",
+      "qty": 1,
+      "cost": "2",
+      "effect": "+1 Scrap per turn for 2 rounds",
+      "tags": "engine",
+      "vp": 0
+    }
+  ]
+}

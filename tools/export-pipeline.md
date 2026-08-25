@@ -60,11 +60,13 @@ Full guide: `tools/nanDECK-guide.md`
 ## Schema Validation (maintainer)
 
 ```bash
-# Future: validate project cards.json against schema
-# python eval/validators/validate_components.py project/cards.json
+python eval/validators/validate_components.py project/cards.json
+python eval/validators/validate_components.py tools/examples/cards.json
 ```
 
-Schema: `tools/component-schema.json`
+Schema: `tools/component-schema.json`. Example JSON: `tools/examples/cards.json`.
+
+Optional — not required for Markdown agent workflow.
 
 ## Cross-References
 

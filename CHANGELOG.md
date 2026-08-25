@@ -5,6 +5,30 @@ All notable changes to the **board-game-design** skill follow [Semantic Versioni
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).  
 Current skill version: declared in [`SKILL.md`](SKILL.md) YAML frontmatter (`version`).
 
+## [4.0.0] — 2026-08-25
+
+Prototype Architecture 2.0 — fidelity-aware prototyping + Simulate mode (Markdown-compatible). Runtime simulators remain optional companions (`prototype/runtime.md`). Roadmap: `docs/solution-design.md`.
+
+### Added
+
+- **`prototype/`** — `fidelity-ladder.md`, `selection.md`, `runtime.md` (optional-runtime boundary)
+- **Simulate mode** in `SKILL.md` — system hypotheses → `templates/simulation-run.md`
+- **Core object Prototype** + Hard Invariants: cheapest valid test, system ≠ experience, never auto-fix from sim anomaly
+- **Design-state** sections: Prototype State, Simulation Evidence; fidelity / source_type columns
+- **Hypothesis / Experiment** fidelity + Evidence Plan fields
+- **Lint BG015–BG020** — fidelity mismatch, digital assumption, sim seed/version, unsupported claim, physical required
+- **Eval Cases G (Simulate) and J (Fidelity Selection)**; golden `simulation-run-minimal.md`
+- **`eval/validators/validate_components.py`** + `tools/examples/cards.json`
+- Fidelity-aware **experiment priority** (Evidence Gap × Decision Relevance)
+
+### Changed
+
+- **`SKILL.md`** — v4.0.0; Prototype mode fidelity-routed; default = cheapest valid fidelity (paper still usual P4)
+- **`workflow.md`**, **`cheatsheet.md`** — Simulate in priority tree; fidelity selection before PnP
+- **`lint/rules.md`** — Evidence types in Design Confidence Model
+- **`eval/validators/validate.py`** — optional v4 sections; simulation-run structural checks when present
+- **`tools/export-pipeline.md`** — component validator is live
+
 ## [3.0.0] — 2026-08-25
 
 Validation & Automation release (v3 roadmap per architecture review).

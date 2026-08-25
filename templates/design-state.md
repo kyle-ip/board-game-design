@@ -53,19 +53,35 @@ Ideas explicitly cut. Prevents re-litigating dead paths. Not all rejected ideas 
 
 Link to `hypotheses/HYP-*.md` or `experiments/EXP-*.md`. Each row is a **Claim** — falsifiable, with explicit confidence.
 
-| ID | Claim (one line) | Confidence | Evidence refs | Contradictions | Status |
-|---|---|---|---|---|---|
-| | | Low / Med / High | PT-00X, EXP-00X | — | testing / supported / refuted |
+| ID | Claim (one line) | Confidence | Evidence refs | Contradictions | Pref. fidelity | Status |
+|---|---|---|---|---|---|---|
+| | | Low / Med / High | PT-00X, EXP-00X, SIM-00X | — | P1–P4 | testing / supported / refuted |
 
-**Confidence rules:** Low = 1–2 plays or intuition; Medium = 3+ partial metrics; High = reproducible metric breach. See `lint/rules.md` Design Confidence Model.
+**Confidence rules:** Low = 1–2 plays or intuition; Medium = 3+ partial metrics or 100–999 stable sim runs; High = reproducible metric breach across sessions/seeds. See `lint/rules.md` Design Confidence Model. Match evidence type to claim (BG019).
+
+## Prototype State
+
+Track active prototypes by fidelity. See `prototype/fidelity-ladder.md`.
+
+| ID | Fidelity | Version | Status | Purpose |
+|---|---|---|---|---|
+| | P0–P5 | e.g. v0.3 | planned / active / retired | one-line hypothesis link |
+
+## Simulation Evidence
+
+Summaries of P1 runs — detail in `simulations/SIM-*.md`.
+
+| ID | Runs | Seed | Metric | Finding | Confidence |
+|---|---:|---|---|---|---|
+| SIM-00X | | | | | Low / Med / High |
 
 ## Recent Evidence
 
-Summaries only — detail lives in playtest logs and experiments.
+Summaries only — detail lives in playtest logs, experiments, and simulation runs.
 
-| Date | Source | Key finding | Confidence |
-|---|---|---|---|
-| | PT-00X / EXP-00X | | Low / Med / High |
+| Date | Source | Source type | Key finding | Confidence |
+|---|---|---|---|---|
+| | PT-00X / EXP-00X / SIM-00X | simulation / digital_playtest / physical_playtest / expert / intuition | | Low / Med / High |
 
 ## Current Risks
 
@@ -76,12 +92,12 @@ Top design risks right now (max 5).
 
 ## Experiment Backlog
 
-Rank candidates before writing `experiment.md`. Method: `reasoning/experiment-priority.md`. When ≥2 active hypotheses, rank all; otherwise rank 1 is the next test.
+Rank candidates before writing `experiment.md`. Method: `reasoning/experiment-priority.md` (fidelity-aware). When ≥2 active hypotheses, rank all; otherwise rank 1 is the next test.
 
-| Rank | ID | Impact | Uncertainty | Cost | Score | Rationale |
-|---|---|---|---|---|---|---|
-| 1 | HYP-00X | H/M/L | H/M/L | H/M/L | | |
-| 2 | | | | | | |
+| Rank | ID | Impact | Uncertainty | Evidence Gap | Cost | Fidelity | Score | Rationale |
+|---|---|---|---|---|---|---|---|---|
+| 1 | HYP-00X | H/M/L | H/M/L | H/M/L | H/M/L | P1–P4 | | |
+| 2 | | | | | | | | |
 
 ### Next Experiment (rank 1)
 
@@ -90,6 +106,7 @@ Rank candidates before writing `experiment.md`. Method: `reasoning/experiment-pr
 | ID | EXP-00X |
 | Objective | |
 | Single variable to change | |
+| Preferred fidelity | P1 / P2 / P4 |
 | Success criteria (observable) | |
 
 ## Kill Criteria Overrides
@@ -109,6 +126,7 @@ Project-specific thresholds. Copy defaults from `kill-criteria.md`; override whe
 After updating this file, also sync when applicable:
 
 - **Locked / Rejected** → `mechanism-skeleton.md` (Rejected Alternatives), `decision.md`
-- **Hypotheses / Evidence / Backlog** → `experiment.md`, `playtest-log.md`
+- **Hypotheses / Evidence / Backlog** → `experiment.md`, `playtest-log.md`, `simulation-run.md`
+- **Prototype State / Simulation Evidence** → `simulations/SIM-*.md`, fidelity notes
 - **Version Lineage** → `iteration.md` on bump; link superseded decisions
 - **Risks / balance tells** → `balance-notes.md`

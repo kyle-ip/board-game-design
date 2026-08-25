@@ -7,11 +7,12 @@ Decision rules, trade-off matrices, and tells distilled from *Building Blocks of
 When the user asks for multiple things in one message, run in this order:
 
 1. **Diagnose / Balance** — if symptoms, unfairness, or numbers are mentioned (`diagnostics/`, `balance/`, `design-state.md` first)
-2. **Create / Mechanism** — concept, skeleton, reasoning (`workflow.md`, `reasoning/`)
-3. **Prototype** — rulebook, components, PnP (`templates/`, `tools/`)
-4. **Polish / Publish** — art-adjacent, print specs (last)
+2. **Simulate** — if the question is system-only (win rate, economy, dominant strategy, length) and a Formal Model can exist (`prototype/selection.md`)
+3. **Create / Mechanism** — concept, skeleton, reasoning (`workflow.md`, `reasoning/`)
+4. **Prototype** — fidelity-selected build; P4 → rulebook, components, PnP (`prototype/selection.md`, `templates/`, `tools/`)
+5. **Polish / Publish** — art-adjacent, print specs (last)
 
-Principle: fix the **core loop skeleton** before packaging. Do not generate full PnP for a broken loop unless user explicitly wants a throwaway mockup.
+Principle: fix the **core loop skeleton** before packaging. Prefer **cheapest valid fidelity**. Do not generate full PnP for a broken loop unless user explicitly wants a throwaway mockup.
 
 Existing project: always read `templates/design-state.md` (project copy) before any step.
 
@@ -31,11 +32,13 @@ Load the smallest file first. Write project templates when designing/prototyping
 | Feels too random | `diagnostics/randomness-dominates-skill.md` | Ch 4, Ch 6 |
 | Analysis paralysis | `diagnostics/analysis-paralysis.md` | cut branching; Ch 2 simultaneous |
 | Kingmaking / spite | `diagnostics/kingmaking.md` | Ch 5 |
-| Test a hypothesis | `experiments/framework.md` | `templates/experiment.md` |
+| Test a hypothesis | `experiments/framework.md` + `prototype/selection.md` | `templates/experiment.md` |
+| System balance / win-rate / length (many games) | `prototype/selection.md` → Simulate | `templates/simulation-run.md` |
+| Which prototype fidelity? | `prototype/fidelity-ladder.md` | `prototype/selection.md` |
 | Multiple hypotheses — what to test next? | `reasoning/experiment-priority.md` | update **Experiment Backlog** in `design-state.md` |
 | Continue or kill project | `kill-criteria.md` | `decision.md` |
 | Output quality before delivery | `lint/checklist.md` | fix or flag TBD |
-| Need a playable prototype soon | `templates/pnp-checklist.md` | rulebook + components-sheet + `tools/` |
+| Need a playable prototype soon | `prototype/selection.md` then usually `templates/pnp-checklist.md` | rulebook + components-sheet + `tools/` |
 | Open vs closed economy? | this file Stage 6 | `chapters/ch07-economics.md` |
 | Alpha player in co-op | Stage 0 below | Ch 1, Ch 6 |
 | Which auction form? | Stage 7 | Ch 8 |

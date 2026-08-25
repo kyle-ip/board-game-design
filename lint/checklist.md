@@ -6,11 +6,14 @@ Format reference for project files: `templates/examples/micro-scavenger/`
 
 ## Playtest Evidence Lint
 
-Use with `lint/rules.md` BG001–BG012. For each ⚠ or ?, use the **Confidence Output Template** (Confidence, Evidence, Signals, Missing, Contradictions). See **Design Confidence Model** in `lint/rules.md`.
+Use with `lint/rules.md` BG001–BG020. For each ⚠ or ?, use the **Confidence Output Template** (Confidence, Evidence, Signals, Missing, Contradictions). See **Design Confidence Model** in `lint/rules.md`.
 
-- [ ] Latest playtest log linked from `design-state.md`
+- [ ] Latest playtest / simulation linked from `design-state.md`
+- [ ] Evidence `source_type` fits the claim (BG019); fidelity match (BG015)
+- [ ] Physical-dependency claims have physical evidence (BG020)
 - [ ] Win/seat data recorded if competitive
-- [ ] At least one verbatim player quote captured
+- [ ] Simulation runs include seed + rules version when used (BG017/BG018)
+- [ ] At least one verbatim player quote captured (human tests)
 - [ ] Hypothesis or experiment ID noted if change was intentional
 - [ ] Turn timing noted if AP suspected
 
@@ -55,6 +58,7 @@ Use with `lint/rules.md` BG001–BG012. For each ⚠ or ?, use the **Confidence 
 ## Design State
 
 - [ ] Locked / Open / Rejected sections populated
+- [ ] Prototype State / Simulation Evidence present when sims or multi-fidelity prototypes exist
 - [ ] Experiment Backlog ranked if ≥2 hypotheses; rank 1 filled in Next Experiment
 - [ ] Version Lineage updated on build bump
 - [ ] Current risks ≤5 items
