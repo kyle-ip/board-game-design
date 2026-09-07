@@ -5,6 +5,36 @@ All notable changes to the **board-game-design** skill follow [Semantic Versioni
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).  
 Current skill version: declared in [`SKILL.md`](SKILL.md) YAML frontmatter (`version`).
 
+## [5.2.0] — 2026-09-07
+
+Explicit slash commands — every major capability invocable as `/bgd-<name> <description>`.
+
+### Added
+
+- **`slash/`** — 18 thin skills (`bgd-create`, `bgd-diagnose`, `bgd-experiment`, `bgd-simulate`, `bgd-balance`, `bgd-prototype`, `bgd-assets`, `bgd-export`, `bgd-tts`, `bgd-lint`, `bgd-kill`, `bgd-genre`, `bgd-playtest`, `bgd-print`, `bgd-workflow`, `bgd-cheatsheet`, `bgd-glossary`, `bgd-resources`); each `disable-model-invocation: true`
+- **`slash/README.md`** — command index
+- **`SKILL.md`** Slash commands table + Topic Index pointers
+
+### Changed
+
+- **`SKILL.md`** — v5.2.0; description lists `/bgd-*` entry points
+
+## [5.1.0] — 2026-09-07
+
+Digital assets companion — free/CC0 art, icons, fonts, SFX, and digital tabletops wired into Prototype optional loads.
+
+### Added
+
+- **`tools/digital-assets.md`** — Load-when + Quick pick + catalog (board-game CC0 packs, Screentop/PlayingCards.io/Tabletopia, standard SVG cards, Iconify, Printables, production tools)
+- Prototype optional loads: `tools/digital-assets.md`, `tools/TTS-guide.md`, `tools/nanDECK-guide.md` in `routing/context-budget.md`
+- `external-resources.md` Prototype: Screentop.gg, game-icons.net, pointer to full catalog
+- Maintainer entries in `references/web-resources.md` for digital-assets / Screentop
+
+### Changed
+
+- **`SKILL.md`** — v5.1.0; invocation for art/digital assets; Topic Index + tools companion blurb
+- **`tools/TTS-guide.md`**, **`tools/export-pipeline.md`** — cross-ref digital-assets
+
 ## [5.0.0] — 2026-08-25
 
 Execution Expansion — experience diagnostics, player model, co-op genre, context budget, optional `runtime/` companion (population sims + regress + P2 CLI). Skill remains Markdown-only without installing the companion.

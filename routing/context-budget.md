@@ -150,6 +150,9 @@ optional:
   - templates/components-sheet.md    # P4
   - templates/pnp-checklist.md       # P4
   - tools/export-pipeline.md         # P4 export
+  - tools/digital-assets.md          # art / icons / fonts / digital tabletops
+  - tools/TTS-guide.md               # P3 after paper
+  - tools/nanDECK-guide.md           # card batch render
   - lint/checklist.md
   - runtime/README.md                # P1/P2 companion
 forbidden:

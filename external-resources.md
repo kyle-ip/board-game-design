@@ -65,8 +65,12 @@ Also use: `balance/README.md`, `probability-and-balance.md`.
 | NanDeck | Scripted card generation | https://www.nand.it/nandeck/ |
 | Component.Studio | Spreadsheet-driven art generation | https://component.studio/ |
 | Tabletop Simulator | Digital smoke test **after paper works** | https://www.tabletopsimulator.com/ |
+| Screentop.gg | Browser digital tabletop (free tier) | https://screentop.gg/ |
+| game-icons.net | Game-style icons (CC BY — attribute) | https://game-icons.net/ |
 
-Also use: `tools/nanDECK-guide.md`, `tools/TTS-guide.md`, `templates/pnp-checklist.md`.
+**Full free-art / font / SFX / CC0 catalog:** `tools/digital-assets.md` (load when user asks for assets; recommend 2–4, do not dump the table).
+
+Also use: `tools/nanDECK-guide.md`, `tools/TTS-guide.md`, `tools/digital-assets.md`, `templates/pnp-checklist.md`.
 
 ---
 

@@ -52,3 +52,4 @@ Tip: filename prefix `001_`, `002_` preserves sort order.
 - Paper first: `SKILL.md` Hard Invariants / default medium
 - PnP checklist digital section: `templates/pnp-checklist.md`
 - Card generation: `tools/nanDECK-guide.md`
+- Free art / icons / 3D bits / browser tabletops: `tools/digital-assets.md`

@@ -72,5 +72,6 @@ Optional — not required for Markdown agent workflow.
 
 - nanDECK guide: `tools/nanDECK-guide.md`
 - TTS (after paper): `tools/TTS-guide.md`
+- Free art / icons / fonts: `tools/digital-assets.md`
 - Components template: `templates/components-sheet.md`
 - Prototype mode: `SKILL.md` Agent Modes

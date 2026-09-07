@@ -168,7 +168,17 @@ Primary mechanism content is synthesized in `chapters/` from Engelstein & Shalev
 
 ### Game-icons.net (CC BY icons)
 - URL: https://game-icons.net/
-- tier: optional | used-by: `templates/pnp-checklist.md` (icon clarity)
+- tier: optional | used-by: `templates/pnp-checklist.md` (icon clarity), `tools/digital-assets.md`, `external-resources.md`
+
+### Digital assets catalog (skill companion)
+- Path: `tools/digital-assets.md`
+- tier: optional | used-by: `SKILL.md` (art / digitalization), `routing/context-budget.md` (Prototype), `external-resources.md`
+- Value: Free/CC0 art, icons, fonts, SFX, digital tabletops; agent loads on asset requests only.
+
+### Screentop.gg
+- URL: https://screentop.gg/
+- tier: optional | used-by: `tools/digital-assets.md`, `external-resources.md`
+- Value: Browser digital tabletop for P3 smoke tests.
 
 ---
 
@@ -235,7 +245,7 @@ Removed in v2.2.0 (redundant, paywalled, unstable, or misleading):
 | Local `building blocks.pdf` / `book-to-skill/` paths | Not in public repo |
 | Shapeways | Service shut down |
 | GDC Vault | Mostly paywalled; low agent value |
-| Board Game Arena, Roll20 | Out of scope (skill is paper-first) |
+| Board Game Arena, Roll20 | Out of scope for default design sessions (paper-first); BGA wiki listed in `tools/digital-assets.md` for digitization only |
 
 ---
 
@@ -245,4 +255,4 @@ Removed in v2.2.0 (redundant, paywalled, unstable, or misleading):
 2. Broken link → check TTGDA resources page or BGG designer forums.
 3. Do not grow this file to replace `chapters/` — mechanism knowledge stays synthesized.
 
-*Last updated: 2026-08-24 (v2.2.0 resource audit)*
+*Last updated: 2026-09-07 (v5.1.0 digital-assets companion)*

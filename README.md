@@ -14,7 +14,7 @@
 
 <p align="center">
   <a href="https://agentskills.io/specification"><img src="https://img.shields.io/badge/Agent%20Skills-compatible-2a9d8f?style=flat-square" alt="Agent Skills compatible"></a>
-  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-5.0.0-f4a261?style=flat-square" alt="Version 5.0.0"></a>
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-5.2.0-f4a261?style=flat-square" alt="Version 5.2.0"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-e8dcc8?style=flat-square&labelColor=143041" alt="MIT License"></a>
   <a href="SKILL.md"><img src="https://img.shields.io/badge/skill-board--game--design-143041?style=flat-square&labelColor=1e4a5f" alt="Skill ID"></a>
 </p>
@@ -26,7 +26,7 @@
 </p> -->
 
 <p align="center">
-  <em>Design tabletop mechanisms, choose the cheapest valid prototype fidelity, run playtest experiments, and ship paper prototypes — with design state, genre profiles, symptom routing, diagnostics, and evidence-driven iteration.</em>
+  <em>Design tabletop mechanisms, choose the cheapest valid prototype fidelity, run playtest experiments, and ship paper prototypes — with design state, genre profiles, symptom routing, diagnostics, free digital-asset picks, and explicit <code>/bgd-*</code> slash commands.</em>
 </p>
 
 <p align="center">
@@ -82,7 +82,8 @@ Compatible with any host that loads the open [Agent Skills](https://agentskills.
 | [`runtime/`](runtime/) | **Optional** Python companion (`bgd-sim`) — Monte Carlo, population, P2 CLI |
 | [`balance/`](balance/) | Balance model, value budget with Effective Value Range |
 | [`theme-and-experience.md`](theme-and-experience.md) | MDA depth, Target Player Model, theme-mechanism fit, emotion curve |
-| [`tools/`](tools/) | Export pipeline, component schema, nanDECK, TTS |
+| [`tools/`](tools/) | Export pipeline, component schema, nanDECK, TTS, digital-assets catalog |
+| [`slash/`](slash/) | Explicit `/bgd-*` commands (`/<name> <description>`) |
 | [`chapters/`](chapters/) | 13 mechanism distillations (*Building Blocks* categories) |
 | [`patterns.md`](patterns.md) | High-leverage mechanism patterns |
 | [`cheatsheet.md`](cheatsheet.md) | Decision rules + symptom routing + mixed-demand priority |
@@ -156,6 +157,8 @@ Pick one mode per session. Load the smallest file set that mode requires.
 - **Fidelity-aware prototyping** — P0–P5 ladder; cheapest valid test; evidence types (simulation / digital / physical / expert)
 - **Simulate without requiring code** — seeded `simulation-run` artifacts; optional `runtime/` (`bgd-sim`) for population Monte Carlo, regress, and P2 CLI
 - **Balance + ship** — Effective Value Range, PnP export pipeline, structural validators and behavior eval cases
+- **Digital assets** — `tools/digital-assets.md` Quick pick for CC0 art, icons, fonts, SFX, and browser tabletops (Screentop / TTS)
+- **Explicit slash commands** — `/bgd-create`, `/bgd-diagnose`, `/bgd-assets`, … (`slash/`); format `/bgd-<name> <description>`
 
 ---
 
@@ -253,6 +256,35 @@ Good prompts give the agent **mode**, **constraints**, and **artifacts** (or pat
 - **Rank** which experiment to run next
 - Evaluate **continue / kill** after 3+ playtests
 - Build a print-and-play prototype
+- Recommend free / CC0 art or digital tabletop assets
+- Invoke a capability explicitly with `/bgd-*`
+
+### Slash commands (`/<name> <description>`)
+
+Every major capability has an explicit command under [`slash/`](slash/). Text after the command is the task brief.
+
+| Command | Does |
+|---------|------|
+| `/bgd-create <description>` | Create mode — concept, design-state, mechanism skeleton |
+| `/bgd-diagnose <description>` | Diagnose mode — symptom → BG*/ED* |
+| `/bgd-experiment <description>` | Single-variable playtest experiment |
+| `/bgd-simulate <description>` | System simulation artifacts |
+| `/bgd-balance <description>` | Numbers / economy / EVR |
+| `/bgd-prototype <description>` | Fidelity-selected prototype build |
+| `/bgd-assets <description>` | Free art / icons / fonts / digital tabletops |
+| `/bgd-export` · `/bgd-tts` · `/bgd-lint` · `/bgd-kill` | Export, TTS, lint, continue/kill gate |
+| `/bgd-genre` · `/bgd-playtest` · `/bgd-print` · `/bgd-workflow` | Genre, playtest, print, milestones |
+| `/bgd-cheatsheet` · `/bgd-glossary` · `/bgd-resources` | Cheatsheet, terms, external links |
+
+Hub skill: `/board-game-design`. Full index: [`slash/README.md`](slash/README.md).
+
+```
+/bgd-assets Need CC0 meeple and dice icons for a Screentop prototype; commercial OK
+```
+
+```
+/bgd-create 2–4p, 30 min coop about scavenging; target feel: tension + discovery; write files to ./micro-scavenger/
+```
 
 <details>
 <summary><strong>Create — new game from scratch</strong></summary>
@@ -335,6 +367,12 @@ Turn ./v0.5/mechanism-skeleton.md into a paper PnP: rulebook-draft, components-s
 2–4p, 30 min, index-card prototype — no art. Export cards.csv per tools/export-pipeline.md if batch cards needed. Run lint/checklist before finishing.
 ```
 
+**Digital assets**
+
+```
+/bgd-assets Recommend 3 CC0 sources for card icons and wood-table textures for TTS; note attribution if any
+```
+
 **Continue, restructure, or kill**
 
 ```
@@ -396,9 +434,17 @@ board-game-design/
 ├── balance/
 ├── lint/
 ├── tools/
+│   ├── digital-assets.md         # free/CC0 art, icons, fonts, digital tabletops
 │   ├── export-pipeline.md
+│   ├── TTS-guide.md
+│   ├── nanDECK-guide.md
 │   ├── component-schema.json
 │   └── examples/                 # cards.csv, cards.json, cards.nde
+├── slash/                        # explicit /bgd-* thin skills
+│   ├── README.md
+│   ├── bgd-create/
+│   ├── bgd-assets/
+│   └── …                         # see slash/README.md
 ├── eval/
 │   ├── benchmark-prompts.md
 │   ├── README.md
@@ -408,7 +454,6 @@ board-game-design/
 ├── chapters/                     # ch01–ch13
 ├── templates/
 │   └── examples/micro-scavenger/
-├── docs/                         # solution-design + architecture reviews
 ├── references/
 └── …
 ```
