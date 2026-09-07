@@ -6,7 +6,7 @@ Agent-facing catalog for **art, icons, fonts, audio, and digital tabletops** whe
 
 ## Load When
 
-Load this file in **Prototype** mode (optional), or when the user runs **`/bgd-assets <description>`**, when they ask about:
+Load this file in **Prototype** mode (optional), or when companion skill **`bgd-assets`** is active, when the user asks about:
 
 - Free / CC0 art, sprites, meeples, tokens, dice, icons
 - Fonts (especially CJK), SFX / music for digital builds

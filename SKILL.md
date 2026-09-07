@@ -1,7 +1,7 @@
 ---
 name: board-game-design
-description: "Design and iterate tabletop games with an evidence-driven workflow: genre profiles (incl. coop), Building Blocks mechanisms (13 chapters), falsifiable hypotheses with confidence, fidelity-aware prototyping (simulation → digital → paper PnP), experience diagnostics (ED*), playtest experiments, design-state + Target Player Model, symptom routing, balance with Effective Value Range, optional bgd-sim runtime, automated eval validators, export pipeline, and free digital-assets catalog. Invoke when designing or iterating board/card games; diagnosing system or experience symptoms; simulating system hypotheses / populations; running experiments; evaluating continue/restructure/kill; balancing cards and economy; building print-and-play prototypes; or recommending CC0/digitalization art. Explicit slash: /bgd-create /bgd-diagnose /bgd-experiment /bgd-simulate /bgd-balance /bgd-prototype /bgd-assets and other /bgd-* commands (see slash/)."
-version: "5.2.0"
+description: "Design and iterate tabletop games with an evidence-driven workflow: genre profiles (incl. coop), Building Blocks mechanisms (13 chapters), falsifiable hypotheses with confidence, fidelity-aware prototyping (simulation → digital → paper PnP), experience diagnostics (ED*), playtest experiments, design-state + Target Player Model, symptom routing, balance with Effective Value Range, optional bgd-sim runtime, automated eval validators, export pipeline, and free digital-assets catalog. Invoke when designing or iterating board/card games; diagnosing system or experience symptoms; simulating system hypotheses / populations; running experiments; evaluating continue/restructure/kill; balancing cards and economy; building print-and-play prototypes; or recommending CC0/digitalization art. Focused companion skills under skills/ (bgd-create, bgd-diagnose, bgd-assets, …) can be auto-loaded independently by Agent Skills hosts."
+version: "5.3.0"
 license: MIT
 compatibility: "Agent Skills hosts (Cursor, Claude Code, and other SKILL.md-compatible runtimes). Markdown-only; no required network or packages. Optional companion: runtime/ (bgd-sim)."
 metadata:
@@ -64,32 +64,37 @@ Format reference for all project files: `templates/examples/micro-scavenger/`.
 
 ## How to Use This Skill
 
-### Slash commands (`/<name> <description>`)
+### Companion skills (standalone entrypoints)
 
-Every major capability is explicitly invocable as **`/bgd-<name> <description>`**. Text after the command is the task brief. Thin skills live under [`slash/`](slash/) (`disable-model-invocation: true` — user/explicit only). Hub skill remains `/board-game-design`.
+Major capabilities also ship as **independent Agent Skills** under [`skills/`](skills/) (`bgd-create`, `bgd-diagnose`, `bgd-assets`, …). Cursor / Codex / Claude Code and other hosts should:
 
-| Command | Mode / focus | Loads (start here) |
+1. **Auto-load** the matching companion from its `description` when the user request fits (no special syntax required)
+2. Optionally let the user pick it from the host skill menu (some UIs show `/bgd-*` as a label — that is optional sugar, not a requirement)
+
+This hub (`board-game-design`) remains the overview + router. Companions share Hard Invariants and resolve files from this package root.
+
+| Skill `name` | Mode / focus | Loads (start here) |
 |---|---|---|
-| `/bgd-create <description>` | Create | `routing/context-budget.md` Create + templates |
-| `/bgd-diagnose <description>` | Diagnose | `routing/symptom-index.md` → diagnostics |
-| `/bgd-experiment <description>` | Experiment | `experiments/framework.md` |
-| `/bgd-simulate <description>` | Simulate | `prototype/selection.md`, `prototype/runtime.md` |
-| `/bgd-balance <description>` | Balance | `balance/README.md` |
-| `/bgd-prototype <description>` | Prototype | `prototype/selection.md` |
-| `/bgd-assets <description>` | Free art / digital tabletops | `tools/digital-assets.md` |
-| `/bgd-export <description>` | Card export pipeline | `tools/export-pipeline.md` |
-| `/bgd-tts <description>` | Tabletop Simulator | `tools/TTS-guide.md` |
-| `/bgd-lint <description>` | Output lint | `lint/checklist.md` |
-| `/bgd-kill <description>` | Continue / kill gate | `kill-criteria.md` |
-| `/bgd-genre <description>` | Genre lens | `genre-profile/*.md` (one) |
-| `/bgd-playtest <description>` | Playtest frameworks | `playtesting.md` |
-| `/bgd-print <description>` | POD / mass print | `print-specs.md` |
-| `/bgd-workflow <description>` | Milestones 0–5 | `workflow.md` |
-| `/bgd-cheatsheet <description>` | Decision rules | `cheatsheet.md` |
-| `/bgd-glossary <description>` | Term lookup | `glossary.md` |
-| `/bgd-resources <description>` | External links by Mode | `external-resources.md` |
+| `bgd-create` | Create | `routing/context-budget.md` Create + templates |
+| `bgd-diagnose` | Diagnose | `routing/symptom-index.md` → diagnostics |
+| `bgd-experiment` | Experiment | `experiments/framework.md` |
+| `bgd-simulate` | Simulate | `prototype/selection.md`, `prototype/runtime.md` |
+| `bgd-balance` | Balance | `balance/README.md` |
+| `bgd-prototype` | Prototype | `prototype/selection.md` |
+| `bgd-assets` | Free art / digital tabletops | `tools/digital-assets.md` |
+| `bgd-export` | Card export pipeline | `tools/export-pipeline.md` |
+| `bgd-tts` | Tabletop Simulator | `tools/TTS-guide.md` |
+| `bgd-lint` | Output lint | `lint/checklist.md` |
+| `bgd-kill` | Continue / kill gate | `kill-criteria.md` |
+| `bgd-genre` | Genre lens | `genre-profile/*.md` (one) |
+| `bgd-playtest` | Playtest frameworks | `playtesting.md` |
+| `bgd-print` | POD / mass print | `print-specs.md` |
+| `bgd-workflow` | Milestones 0–5 | `workflow.md` |
+| `bgd-cheatsheet` | Decision rules | `cheatsheet.md` |
+| `bgd-glossary` | Term lookup | `glossary.md` |
+| `bgd-resources` | External links by Mode | `external-resources.md` |
 
-Full index: [`slash/README.md`](slash/README.md). If the user writes `/bgd-*` without loading the thin skill, treat it the same: pick the matching row and load those files.
+Index: [`skills/README.md`](skills/README.md).
 
 ### Other invocation patterns
 
@@ -97,17 +102,17 @@ Full index: [`slash/README.md`](slash/README.md). If the user writes `/bgd-*` wi
 - **Mechanism code** (e.g., `WPL-03`, `CAR-05`) — jump directly to the matching `chapters/chNN-*.md` from the Chapter Index below; skip cheatsheet unless trade-offs are unclear.
 - **Topic** (e.g., "auctions", "worker placement") — load matching chapter + relevant `patterns.md` entry.
 - **Chapter number** (e.g., "ch07") — load that chapter file.
-- **Decision needed** — load `cheatsheet.md` (or `/bgd-cheatsheet`); cross-ref `patterns.md` and `reasoning/decision-matrix.md`.
-- **Term lookup** — load `glossary.md` (or `/bgd-glossary`).
-- **Design / iterate a game** — `/bgd-create` or follow **Default Project Outputs**; load `genre-profile/` + `workflow.md` + needed templates. Output format: `templates/examples/micro-scavenger/`.
-- **Genre** (euro, party, social-deduction, solo, coop) — `/bgd-genre` or load matching `genre-profile/*.md`; set in design-state Project Status.
-- **Vague symptom** — `/bgd-diagnose` or load `routing/symptom-index.md` before diagnostics (system BG* or experience ED*).
-- **System / balance simulation** — `/bgd-simulate` or load `prototype/selection.md` → Simulate mode; write `simulation-run.md`; optional `runtime/` (`bgd-sim`) for executable Micro-Scavenger / adapters.
+- **Decision needed** — load `cheatsheet.md` (or companion `bgd-cheatsheet`); cross-ref `patterns.md` and `reasoning/decision-matrix.md`.
+- **Term lookup** — load `glossary.md` (or companion `bgd-glossary`).
+- **Design / iterate a game** — companion `bgd-create` or follow **Default Project Outputs**; load `genre-profile/` + `workflow.md` + needed templates. Output format: `templates/examples/micro-scavenger/`.
+- **Genre** (euro, party, social-deduction, solo, coop) — companion `bgd-genre` or load matching `genre-profile/*.md`; set in design-state Project Status.
+- **Vague symptom** — companion `bgd-diagnose` or load `routing/symptom-index.md` before diagnostics (system BG* or experience ED*).
+- **System / balance simulation** — companion `bgd-simulate` or load `prototype/selection.md` → Simulate mode; write `simulation-run.md`; optional `runtime/` (`bgd-sim`) for executable Micro-Scavenger / adapters.
 - **Context budget** — `routing/context-budget.md` (required / optional / forbidden per mode).
-- **After playtests** — `/bgd-kill` or load `kill-criteria.md` for Continue / Restructure / Pause-or-Kill gate.
-- **Before shipping artifacts** — `/bgd-lint` or run `lint/checklist.md`.
-- **External links** (tools, publishing, further reading) — `/bgd-resources` or load `external-resources.md` only. **Never** load `references/web-resources.md` unless maintaining the skill.
-- **Art / digital assets** (CC0 packs, icons, fonts, SFX, Screentop/TTS art) — `/bgd-assets` or load `tools/digital-assets.md` (Prototype optional). Recommend 2–4 sources; do not dump the full catalog.
+- **After playtests** — companion `bgd-kill` or load `kill-criteria.md` for Continue / Restructure / Pause-or-Kill gate.
+- **Before shipping artifacts** — companion `bgd-lint` or run `lint/checklist.md`.
+- **External links** (tools, publishing, further reading) — companion `bgd-resources` or load `external-resources.md` only. **Never** load `references/web-resources.md` unless maintaining the skill.
+- **Art / digital assets** (CC0 packs, icons, fonts, SFX, Screentop/TTS art) — companion `bgd-assets` or load `tools/digital-assets.md` (Prototype optional). Recommend 2–4 sources; do not dump the full catalog.
 
 **Always load the smallest file that answers the question.** Do not bulk-load chapters unless the user asks for a survey.
 
@@ -240,9 +245,9 @@ Single-code or narrow mechanism questions: jump **directly** to the chapter file
 | Balance failure modes & McDie | `balance/README.md` |
 | PnP then POD/mass print | `templates/pnp-checklist.md`, `print-specs.md` |
 | Card generation / TTS | `tools/export-pipeline.md`, `tools/` |
-| Free art / icons / fonts / digital tabletops | `tools/digital-assets.md` · `/bgd-assets` |
-| External resources | `external-resources.md` · `/bgd-resources` |
-| Explicit slash commands | `slash/` (`/bgd-* <description>`) |
+| Free art / icons / fonts / digital tabletops | `tools/digital-assets.md` · companion `bgd-assets` |
+| External resources | `external-resources.md` · companion `bgd-resources` |
+| Standalone companion skills | `skills/` (`bgd-*`) |
 
 ## Companion Files
 
@@ -271,7 +276,7 @@ Single-code or narrow mechanism questions: jump **directly** to the chapter file
 | [experiments/](experiments/) | Experiment framework |
 | [balance/](balance/) | Balance model, value budget + Effective Value Range |
 | [lint/](lint/) | Design lint rules BG001–BG020 + Design Confidence Model |
-| [slash/](slash/) | Explicit `/bgd-*` thin skills (`/<name> <description>`); see `slash/README.md` |
+| [skills/](skills/) | Standalone companion skills (`bgd-*`); auto-loadable by Agent Skills hosts — see `skills/README.md` |
 | [tools/](tools/) | Export pipeline, component schema, nanDECK, TTS, digital-assets catalog |
 | [templates/](templates/) | Copy-out project files; see `examples/micro-scavenger/` |
 

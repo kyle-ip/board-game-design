@@ -5,6 +5,17 @@ All notable changes to the **board-game-design** skill follow [Semantic Versioni
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).  
 Current skill version: declared in [`SKILL.md`](SKILL.md) YAML frontmatter (`version`).
 
+## [5.3.0] — 2026-09-07
+
+Companion skills are **standalone Auto-invocable Agent Skills**, not slash-only commands.
+
+### Changed
+
+- Renamed **`slash/` → `skills/`**; removed `disable-model-invocation` so Cursor / Codex / Claude Code can auto-load `bgd-*` from descriptions
+- Rewrote companion `description` fields for natural-language triggering
+- **`SKILL.md`**, **`README.md`**, **`tools/digital-assets.md`** — document companions as independent skills; slash UI (if any) is optional sugar
+- **`SKILL.md`** — v5.3.0
+
 ## [5.2.0] — 2026-09-07
 
 Explicit slash commands — every major capability invocable as `/bgd-<name> <description>`.
